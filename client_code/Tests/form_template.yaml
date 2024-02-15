@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: ctests
+  properties: {}
+  type: form:dep_i3kq70u5al9g:ClientTests
+  layout_properties: {grid_position: 'GWFMWC,TBYSMB'}
+is_package: true
