@@ -17,6 +17,16 @@ components:
     properties: {align: right, vertical_align: middle}
     type: FlowPanel
     components:
+    - name: link_dev
+      properties: {text: Dev}
+      type: Link
+      layout_properties: {}
+      event_bindings: {click: nav_click}
+    - name: link_help
+      properties: {icon: 'fa:question-circle', text: ''}
+      type: Link
+      layout_properties: {}
+      event_bindings: {click: link_help_click}
     - name: link_login
       properties: {text: Login}
       type: Link
@@ -42,3 +52,8 @@ components:
     type: Link
     layout_properties: {grid_position: 'CHAVES,CHUIDO'}
     event_bindings: {click: nav_click}
+  - name: link_logout
+    properties: {text: Logout}
+    type: Link
+    layout_properties: {grid_position: 'GHZOLU,BVEMER'}
+    event_bindings: {click: icon_logout_click}

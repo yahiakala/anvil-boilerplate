@@ -1,9 +1,19 @@
 import anvil.server
 import anvil.users
 
+
 global_dict = {
     'user': None
 }
+
+
+attributes_to_clear = list(global_dict.keys())
+
+
+def clear_global_attributes():
+    for name in attributes_to_clear:
+        global_dict[name] = None
+
 
 def __getattr__(name):
     if name in global_dict:

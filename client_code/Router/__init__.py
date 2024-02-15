@@ -9,6 +9,7 @@ from anvil_extras import routing
 
 from ..HomeAnon import HomeAnon
 from ..HomeDetail import HomeDetail
+from ..Tests import Tests
 
 
 @routing.template(path='', priority=0, condition=None)
@@ -18,6 +19,8 @@ class Router(RouterTemplate):
         self.init_components(**properties)
 
         self.link_home.tag.url_hash = ''
+        self.link_dev.tag.url_hash = 'tests'
+        self.link_logout.tag.url_hash = 'logout'
         
         user = Global.user
 
@@ -62,3 +65,8 @@ class Router(RouterTemplate):
         self.icon_logout.visible = user is not None
         self.link_login.visible = user is None
         self.link_signup.visible = user is None
+        self.link_dev.visible = user is not None and user['auth_dev'] == True
+
+    def link_help_click(self, **event_args):
+        """This method is called when the link is clicked"""
+        alert('For help, contact example@example.com')
