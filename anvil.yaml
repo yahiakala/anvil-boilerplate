@@ -63,4 +63,37 @@ db_schema:
     - name: customer_id
       admin_ui: {width: 200}
       type: string
+  permissions:
+    client: none
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200, order: 0}
+      type: string
+    title: Permissions
+  roles:
+    client: none
+    server: full
+    columns:
+    - name: name
+      admin_ui: {width: 200, order: 0}
+      type: string
+    - name: permissions
+      admin_ui: {width: 200, order: 1}
+      type: link_multiple
+      target: permissions
+    title: Roles
+  usermap:
+    client: none
+    server: full
+    columns:
+    - name: user
+      admin_ui: {width: 200, order: 0}
+      type: link_single
+      target: users
+    - name: roles
+      admin_ui: {width: 200, order: 1}
+      type: link_multiple
+      target: roles
+    title: UserMap
 renamed: true
