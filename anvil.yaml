@@ -57,9 +57,6 @@ db_schema:
     - name: signed_up
       admin_ui: {width: 200}
       type: datetime
-    - name: auth_dev
-      admin_ui: {width: 200}
-      type: bool
     - name: customer_id
       admin_ui: {width: 200}
       type: string
