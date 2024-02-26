@@ -1,4 +1,4 @@
-"""Interacting with LemonSqueezy API."""
+"""Payments functions with LemonSqueezy API."""
 import anvil.server
 import anvil.http
 import anvil.secrets
@@ -95,7 +95,7 @@ def update_user_permissions(user_dict):
         user = app_tables.users.get(email=user_dict['user_email'])
     role = app_tables.roles.get(name=user_dict['variant_name'])
     maprow = app_tables.usermap.get(user=user)
-    
+
     if user:
         user['customer_id'] = str(user_dict['customer_id'])
         if not maprow:
