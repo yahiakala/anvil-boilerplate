@@ -9,7 +9,8 @@ unique_ids:
     startup: '1708026084459407830736219.7556'
     test_client: '1708026070597875677834098.6647'
     utils: '1708024882479119151829182.782'
-  server_modules: {}
+  server_modules:
+    lemons: '1708960838065402008963929.401'
   assets:
     standard-page.html: DF5HECAPDAZVLMLCK7DMZ4RT3NYXQ76F
     theme.css: 7HI7AYPE4EKWKAQ46GCZOJUHO34BFB2X
