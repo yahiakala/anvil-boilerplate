@@ -97,9 +97,9 @@ def update_user_permissions(user_dict):
     maprow = app_tables.usermap.get(user=user)
 
     if user:
-        user['customer_id'] = str(user_dict['customer_id'])
         if not maprow:
             maprow = app_tables.usermap.add_row(user=user)
+        maprow['customer_id'] = str(user_dict['customer_id'])
         if not role:
             role = app_tables.roles.add_row(name=user_dict['variant_name'])
 
