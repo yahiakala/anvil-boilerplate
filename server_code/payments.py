@@ -13,7 +13,7 @@ from anvil_squared.helpers import print_timestamp
 prod_url = 'app.chatbeaver.ca'
 
 
-if prod_url in anvil.server.get_app_origin():
+if anvil.server.get_app_origin() and prod_url in anvil.server.get_app_origin():
     product_id = ''
     lemon_signing = 'LEMON_SIGNING'
     lemon_api = 'LEMON_API'
