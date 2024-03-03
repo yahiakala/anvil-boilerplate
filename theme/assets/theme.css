@@ -1046,3 +1046,26 @@ div.plot-container.plotly svg.main-svg {
 .anvil-spinner {
     --anvil-spinner-bg: %color:Surface Variant%;
 }
+
+
+/* YK Customizations */
+
+.anvil-role-soft-button > .btn {
+    color: %color:Primary%;
+    border: solid 1px %color:Outline%;
+    border-radius: 10px;
+}
+
+.anvil-role-soft-button > .btn:hover {
+    background-color: %color:Light Overlay 1%;
+}
+
+.anvil-role-soft-button > .btn:focus, .anvil-role-soft-button > .btn:active {
+    background-color: %color:Light Overlay 2%;
+    color: %color:Primary%;
+}
+
+.anvil-role-soft-button > .btn[disabled] {
+    border-color: %color:On Disabled%;
+    background-color: transparent;
+}

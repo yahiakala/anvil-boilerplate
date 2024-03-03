@@ -1,0 +1,38 @@
+container: {type: ColumnPanel}
+components:
+- name: cp_login
+  properties: {role: elevated-card}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'RPIVTG,YCKLWX'}
+  components:
+  - name: img_logo
+    properties: {display_mode: shrink_to_fit}
+    type: Image
+    layout_properties: {grid_position: 'RSYWSE,JCIXPL'}
+  - name: lbl_title
+    properties: {align: center, text: Login to App, bold: true, role: title}
+    type: Label
+    layout_properties: {grid_position: 'QCIIZV,JUYABG'}
+  - name: btn_google
+    properties: {text: Sign in with Google, icon: 'fa:google', role: filled-button,
+      align: center}
+    type: Button
+    layout_properties: {grid_position: 'ZOSTSU,WNSCXQ'}
+  - name: link_google
+    properties: {text: '', align: center, wrap_on: never, border: '', role: null}
+    type: Link
+    layout_properties: {grid_position: 'RQHPDK,JDAKPV'}
+    components:
+    - name: fp_google_login
+      properties: {align: center, vertical_align: middle, border: ''}
+      type: FlowPanel
+      layout_properties: {grid_position: 'TBLSOG,XKVCEP'}
+      components:
+      - name: img_google
+        properties: {source: _/theme/search.png, height: '20', display_mode: shrink_to_fit}
+        type: Image
+        layout_properties: {width: 20}
+      - name: lbl_google
+        properties: {text: Sign in with Google}
+        type: Label
+is_package: true
