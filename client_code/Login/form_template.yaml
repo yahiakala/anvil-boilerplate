@@ -6,22 +6,13 @@ components:
   layout_properties: {grid_position: 'RPIVTG,YCKLWX'}
   components:
   - name: img_logo
-    properties: {display_mode: shrink_to_fit}
+    properties: {display_mode: shrink_to_fit, source: _/theme/notalone.png}
     type: Image
     layout_properties: {grid_position: 'RSYWSE,JCIXPL'}
-  - name: lbl_title
-    properties: {align: center, text: Login to App, bold: true, role: title}
-    type: Label
-    layout_properties: {grid_position: 'QCIIZV,JUYABG'}
-  - name: btn_google
-    properties: {text: Sign in with Google, icon: 'fa:google', role: filled-button,
-      align: center}
-    type: Button
-    layout_properties: {grid_position: 'ZOSTSU,WNSCXQ'}
   - name: link_google
     properties: {text: '', align: center, wrap_on: never, border: '', role: null}
     type: Link
-    layout_properties: {grid_position: 'RQHPDK,JDAKPV'}
+    layout_properties: {grid_position: 'XNPXFO,GMOUMV'}
     components:
     - name: fp_google_login
       properties: {align: center, vertical_align: middle, border: ''}
@@ -35,4 +26,47 @@ components:
       - name: lbl_google
         properties: {text: Sign in with Google}
         type: Label
+  - name: lbl_title
+    properties: {align: center, text: Sign in to App, bold: true, role: title}
+    type: Label
+    layout_properties: {grid_position: 'QCIIZV,JUYABG'}
+  - name: btn_google
+    properties:
+      text: Sign in with Google
+      icon: fa:google
+      role: [soft-button, filled-button]
+      align: center
+    type: Button
+    layout_properties: {grid_position: 'ZOSTSU,WNSCXQ'}
+  - name: tb_email
+    properties: {role: outlined, placeholder: Email Address}
+    type: TextBox
+    layout_properties: {grid_position: 'LNZGPA,VMCQXE'}
+  - name: tb_password
+    properties: {role: outlined, placeholder: Password}
+    type: TextBox
+    layout_properties: {grid_position: 'YSBFLK,JSZBJZ'}
+  - name: btn_signin
+    properties:
+      text: Sign in
+      icon: ''
+      role: [soft-button, filled-button]
+      align: full
+    type: Button
+    layout_properties: {grid_position: 'NVVDWP,PDHNKJ'}
+  - name: fp_options
+    properties: {vertical_align: middle, align: center}
+    type: FlowPanel
+    layout_properties: {grid_position: 'VQUKEV,CIUDLM'}
+    components:
+    - name: link_forgot
+      properties: {text: 'Forgot your password?'}
+      type: Link
+      layout_properties: {}
+      components: []
+    - name: link_signup
+      properties: {text: Sign up}
+      type: Link
+      layout_properties: {}
+      components: []
 is_package: true
