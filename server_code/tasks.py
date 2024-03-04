@@ -1,7 +1,7 @@
 import anvil.server
 import anvil.users
 from anvil.tables import app_tables
-
+from anvil_extras.authorisation import authorisation_required
 
 @anvil.server.callable(require_user=True)
 def get_permissions():
@@ -14,3 +14,9 @@ def get_permissions():
         for permission in role["permissions"]
     )
     return list(user_permissions)
+
+@anvil.server.callable(require_user=True)
+@authorisation_required('admin2')
+def do_admin():
+    print('doing admin thing.')
+    pass

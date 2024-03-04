@@ -1,6 +1,6 @@
 dependencies:
 - dep_id: dep_y3wjt8qhkkrbfy
-  version: {version_tag: v04}
+  version: {version_tag: v05}
   resolution_hints: {app_id: CVAFGUBPSRFZNPZD, name: anvil_extras, package_name: anvil_extras}
 - dep_id: dep_i3kq70u5al9g
   version: {dev: false}
@@ -60,6 +60,10 @@ db_schema:
     - name: signed_up
       admin_ui: {width: 200}
       type: datetime
+    - name: roles
+      admin_ui: {width: 200, order: 9}
+      type: link_multiple
+      target: roles
   permissions:
     client: none
     server: full
