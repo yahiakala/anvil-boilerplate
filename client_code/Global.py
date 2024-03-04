@@ -4,7 +4,8 @@ import anvil.users
 
 global_dict = {
     'user': None,
-    'customer_portal': None
+    'customer_portal': None,
+    'permissions': None
 }
 
 

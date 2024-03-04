@@ -57,3 +57,9 @@ components:
     type: Link
     layout_properties: {grid_position: 'GHZOLU,BVEMER'}
     event_bindings: {click: icon_logout_click}
+    components: []
+  - name: link_settings
+    properties: {text: Settings}
+    type: Link
+    layout_properties: {grid_position: 'FPKVPS,GRULCP'}
+    event_bindings: {click: nav_click}

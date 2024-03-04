@@ -9,6 +9,7 @@ from anvil_extras import routing
 
 from ..HomeAnon import HomeAnon
 from ..HomeDetail import HomeDetail
+from ..Settings import Settings
 from ..Tests import Tests
 
 
@@ -21,6 +22,7 @@ class Router(RouterTemplate):
         self.link_home.tag.url_hash = ''
         self.link_dev.tag.url_hash = 'tests'
         self.link_logout.tag.url_hash = 'logout'
+        self.link_settings.tag.url_hash = 'settings'
         
         user = Global.user
 
@@ -65,7 +67,7 @@ class Router(RouterTemplate):
         self.icon_logout.visible = user is not None
         self.link_login.visible = user is None
         self.link_signup.visible = user is None
-        self.link_dev.visible = user is not None and user['auth_dev'] == True
+        self.link_dev.visible = user is not None and 'dev' in Global.permissions
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""

@@ -41,9 +41,6 @@ class Settings(SettingsTemplate):
             self.lbl_pw_error.visible = True
         
 
-    def btn_crawlsite_click(self, **event_args):
+    def btn_add_mfa_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # TODO: validate URL first
-        # show some kind of loading message
-        # 'this may take a few minutes'
-        task = anvil.server.call('crawl_site', self.tb_site_input.text)
+        anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
