@@ -21,6 +21,7 @@ class Signin(SigninTemplate):
 
     def btn_signin_click(self, **event_args):
         """This method is called when the button is clicked"""
+        # TODO: if the user has mfa, throw the mfa flow in there
         user = anvil.users.login_with_email(self.tb_email.text, self.tb_password.text)
         if user:
             Global.user = user

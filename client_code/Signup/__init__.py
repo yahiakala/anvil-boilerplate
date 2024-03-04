@@ -22,7 +22,6 @@ class Signup(SignupTemplate):
 
     def btn_signup_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # TODO: check for password strength
         proceed = self.tb_password_repeat_lost_focus()
         if proceed and self.tb_password.text == self.tb_password_repeat.text:
             user = anvil.users.signup_with_email(
