@@ -1,0 +1,61 @@
+container: {type: ColumnPanel}
+components:
+- name: cp_login
+  properties: {role: elevated-card}
+  type: ColumnPanel
+  layout_properties: {grid_position: 'KFJMFT,VTNHTX'}
+  components:
+  - name: img_logo
+    properties: {display_mode: shrink_to_fit, source: _/theme/notalone.png}
+    type: Image
+    layout_properties: {grid_position: 'RSYWSE,JCIXPL'}
+  - name: lbl_title
+    properties: {align: center, text: Sign up for App, bold: true, role: title}
+    type: Label
+    layout_properties: {grid_position: 'QCIIZV,JUYABG'}
+  - name: btn_google
+    properties:
+      text: Sign up with Google
+      icon: fa:google
+      role: [soft-button, filled-button]
+      align: center
+    type: Button
+    layout_properties: {grid_position: 'ZOSTSU,WNSCXQ'}
+    event_bindings: {click: btn_google_click}
+  - name: lbl_or
+    properties: {text: Or, align: center}
+    type: Label
+    layout_properties: {grid_position: 'JSQIIM,APXOXO'}
+  - name: tb_email
+    properties: {role: outlined, placeholder: Email Address}
+    type: TextBox
+    layout_properties: {grid_position: 'LNZGPA,VMCQXE'}
+  - name: tb_password
+    properties: {role: outlined, placeholder: Password, hide_text: true}
+    type: TextBox
+    layout_properties: {grid_position: 'YSBFLK,JSZBJZ'}
+  - name: tb_password_repeat
+    properties: {role: outlined, placeholder: Re-enter Password, hide_text: true}
+    type: TextBox
+    layout_properties: {grid_position: 'USHBNH,MHLMUI'}
+    event_bindings: {lost_focus: tb_password_repeat_lost_focus}
+  - name: lbl_password_match
+    properties: {text: Passwords must match, align: center, foreground: 'theme:Error',
+      visible: false}
+    type: Label
+    layout_properties: {grid_position: 'JSKUOZ,ULFNPD'}
+  - name: lbl_password_strength
+    properties: {text: Password not strong enough., align: center, foreground: 'theme:Error',
+      visible: false}
+    type: Label
+    layout_properties: {grid_position: 'EWOVVV,RNYRBA'}
+  - name: btn_signup
+    properties:
+      text: Sign up
+      icon: ''
+      role: [soft-button, filled-button]
+      align: full
+    type: Button
+    layout_properties: {grid_position: 'NVVDWP,PDHNKJ'}
+    event_bindings: {click: btn_signup_click}
+is_package: true

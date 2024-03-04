@@ -11,11 +11,14 @@ services:
   server_config: {}
 - source: /runtime/services/anvil/users.yml
   client_config: {mfa_timeout_days: 7, require_secure_passwords: true, share_login_status: true,
-    use_token: true, use_email: true, allow_remember_me: true, allow_signup: true,
-    enable_automatically: true, confirm_email: true, require_mfa: true, remember_me_days: 30,
-    use_google: true}
+    use_token: true, allow_mfa_email_reset: true, use_email: true, allow_remember_me: true,
+    allow_signup: true, enable_automatically: true, confirm_email: true, require_mfa: true,
+    remember_me_days: 30, use_google: true}
   server_config: {user_table: users}
 - source: /runtime/services/google.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/email.yml
   client_config: {}
   server_config: {}
 startup: {type: module, module: startup}
