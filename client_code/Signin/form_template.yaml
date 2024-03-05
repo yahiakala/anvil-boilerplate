@@ -39,6 +39,15 @@ components:
     type: Button
     layout_properties: {grid_position: 'ZOSTSU,WNSCXQ'}
     event_bindings: {click: btn_google_click}
+  - name: btn_google_copy
+    properties:
+      text: Sign in with Google
+      icon: ''
+      role: [google-sign, outlined-button, soft-button]
+      align: center
+    type: Button
+    layout_properties: {grid_position: 'LYBEYH,MAKHJR'}
+    event_bindings: {click: btn_google_click}
   - name: lbl_or
     properties: {text: Or, align: center}
     type: Label

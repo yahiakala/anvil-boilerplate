@@ -4,7 +4,7 @@ from anvil.tables import app_tables
 from anvil_extras.authorisation import authorisation_required
 from anvil_extras import authorisation
 
-authorisation.set_config(get_roles_row='usermap')
+authorisation.set_config(get_roles='usermap')
 
 
 @anvil.server.callable(require_user=True)

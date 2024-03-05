@@ -50,6 +50,7 @@ roles:
 - name: input-error
   components: [TextBox, TextArea, DatePicker, DropDown]
 - {name: soft-button}
+- {name: google-sign}
 color_scheme:
   preset_groups:
   - name: Colour Scheme
