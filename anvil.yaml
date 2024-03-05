@@ -21,6 +21,9 @@ services:
 - source: /runtime/services/anvil/email.yml
   client_config: {}
   server_config: {}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
 startup: {type: module, module: startup}
 package_name: Boilerplate
 allow_embedding: false
@@ -100,4 +103,17 @@ db_schema:
       admin_ui: {width: 200, order: 2}
       type: string
     title: UserMap
+secrets:
+  LEMON_API_TEST:
+    value: {WQET73GEV5APXBAG: uL1uywQAun5YpPJVv+NCPZrEf6JEpRf345syjF9W0KtBsyPoInTQ39eFXFt4aR1cS2ewp8gK4aZKUUWR3ZjuyGDw8GpFyoKE8S8NeSfRH3HDK8+LndmthNckWzsqx/5eEe6N7w==}
+    type: secret
+  LEMON_SIGNING_TEST:
+    value: {WQET73GEV5APXBAG: XnFfIiuY5EzYPj6LKzIyfg8UeNOUWWqRQ/9vN4w0lb/8u70iEigYkb8ua8H78Jd8QOQXSu47quZleaI2akkLxeVXbPASJsd+SqlYu7QLr7dJb09C55vmYx8euZsBP5DCeaQpBA==}
+    type: secret
+  LEMON_API:
+    value: {WQET73GEV5APXBAG: qIFwYXcfuwgkYMBeDIlFUwknqiFrAstU/BsQPmGf+Cwx+TiB0Cf14NHH/9+TuSvSeC/kBRP6IVYD5sC3zaaoLaH7IF+eUM6VuPtCQJenvt6o7ivDIZf/PgizJR3GAbH3ZnbP}
+    type: secret
+  LEMON_SIGNING:
+    value: {WQET73GEV5APXBAG: dsFw7YDaXCQiKeqTMpqAryFP9eoCPY7+qbYfYMBtHUYuEIGamJxXUO2/Xm8r0biHqjLDuZU8AgjOtrrpAAj43AZ3GY1Gu6azBfQbM5nnTdkdIbT7aFJJkqZ3kXQi5iXEHlZJOiQ=}
+    type: secret
 renamed: true

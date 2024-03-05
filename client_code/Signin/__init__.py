@@ -3,6 +3,7 @@ from anvil import *
 import anvil.users
 from anvil_extras import routing
 
+from .. import utils
 from .. import Global
 
 
@@ -22,10 +23,15 @@ class Signin(SigninTemplate):
     def btn_signin_click(self, **event_args):
         """This method is called when the button is clicked"""
         # TODO: if the user has mfa, throw the mfa flow in there
-        user = anvil.users.login_with_email(self.tb_email.text, self.tb_password.text)
-        if user:
-            Global.user = user
-            routing.set_url_hash('homedetail')
+        self.lbl_error = False
+        try:
+            user = utils.login_with_email(self.tb_email.text, self.tb_password.text)
+            if user:
+                Global.user = user
+                routing.set_url_hash('homedetail')
+        except anvil.users.EmailNotConfirmed as e:
+            self.lbl_error = "You haven't confirmed your email address. Please check your email and click the confirmation link, or reset your password."
+            self.lbl_error.visible = True
 
     def link_forgot_click(self, **event_args):
         """This method is called when the link is clicked"""

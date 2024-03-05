@@ -119,7 +119,9 @@ def get_customer_portal():
     from anvil_squared.lemons import get_customer
     user = anvil.users.get_user(allow_remembered=True)
     usermap = app_tables.usermap.get(user=user)
-    if not usermap['customer_id']:
+    if not usermap:
+        return ''
+    elif not usermap['customer_id']:
         return ''
     cust_portal, _ = get_customer(
         api_key=anvil.secrets.get_secret(lemon_api),

@@ -12,12 +12,15 @@ def get_permissions():
     # TODO: add to anvil extras
     user = anvil.users.get_user(allow_remembered=True)
     usermap = app_tables.usermap.get(user=user)
-    user_permissions = set(
-        permission["name"]
-        for role in usermap["roles"]
-        for permission in role["permissions"]
-    )
-    return list(user_permissions)
+    try:
+        user_permissions = set(
+            permission["name"]
+            for role in usermap["roles"]
+            for permission in role["permissions"]
+        )
+        return list(user_permissions)
+    except TypeError:
+        return []
 
 @anvil.server.callable(require_user=True)
 @authorisation_required('admin')

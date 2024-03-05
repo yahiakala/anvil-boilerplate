@@ -31,12 +31,12 @@ components:
       properties: {text: Login}
       type: Link
       layout_properties: {}
-      event_bindings: {click: link_login_click}
+      event_bindings: {click: nav_click}
     - name: link_signup
       properties: {text: Signup}
       type: Link
       layout_properties: {}
-      event_bindings: {click: link_signup_click}
+      event_bindings: {click: nav_click}
     - name: icon_logout
       properties: {icon: 'fa:sign-out'}
       type: Link

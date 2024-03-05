@@ -25,6 +25,8 @@ class Router(RouterTemplate):
         self.link_dev.tag.url_hash = 'tests'
         self.link_logout.tag.url_hash = 'logout'
         self.link_settings.tag.url_hash = 'settings'
+        self.link_login.tag.url_hash = 'signin'
+        self.link_signup.tag.url_hash = 'signup'
         
         user = Global.user
 

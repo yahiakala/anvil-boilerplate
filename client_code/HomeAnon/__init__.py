@@ -23,7 +23,7 @@ class HomeAnon(HomeAnonTemplate):
             routing.set_url_hash('homedetail')
 
     def btn_login_click(self, **event_args):
-        utils.login()
+        routing.set_url_hash('signin')
 
     def btn_register_click(self, **event_args):
-        utils.register()
+        routing.set_url_hash('signup')
