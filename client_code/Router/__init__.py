@@ -44,7 +44,7 @@ class Router(RouterTemplate):
         for link in self.cp_sidebar.get_components():
             if type(link) == Link:
                 link.role = 'selected' if link.tag.url_hash == url_hash else None
-        if url_hash in ['homeanon', 'homedetail']:
+        if url_hash in ['homeanon', 'homedetail', 'app']:
             self.link_home.role = 'selected'
 
     def on_form_load(self, url_hash, url_pattern, url_dict, form):

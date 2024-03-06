@@ -28,9 +28,9 @@ class Signin(SigninTemplate):
 
     def btn_google_click(self, **event_args):
         """This method is called when the button is clicked"""
-        user = anvil.users.login_with_google(remember=True)
-        if user:
-            Global.user = user
+        self.user = anvil.users.login_with_google(remember=True)
+        if self.user:
+            Global.user = self.user
             routing.set_url_hash('app')
 
     def btn_signin_click(self, **event_args):
