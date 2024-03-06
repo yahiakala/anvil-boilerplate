@@ -22,8 +22,25 @@ def get_permissions():
     except TypeError:
         return []
 
+
 @anvil.server.callable(require_user=True)
 @authorisation_required('admin')
 def do_admin():
     print('doing admin thing.')
     pass
+
+
+@anvil.server.callable
+def login_with_email_mfa(email, password):
+    """Try to log user in without MFA. Return exception if user has MFA configured."""
+    user = app_tables.users.get(email=email)
+    if user:
+        if user['mfa'] is not None:
+            return anvil.users.MFARequired('User needs to enter MFA credentials.')
+        elif user['confirmed_email'] != True:
+            return anvil.users.EmailNotConfirmed('Please confirm your email before logging in.')
+        elif bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
+            anvil.users.force_login(user)
+            return user
+        else:
+            return anvil.users.AuthenticationFailed('Password is incorrect.')
