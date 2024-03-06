@@ -28,6 +28,7 @@ class Signin(SigninTemplate):
         password = self.tb_password.text
         if self.user:
             Global.user = self.user
+            routing.set_url_hash('homedetail')
         else:
             try:
                 self.user = anvil.users.login_with_email(email, password, remember=True)
