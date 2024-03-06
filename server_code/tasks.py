@@ -36,12 +36,18 @@ def login_with_email_mfa(email, password):
     import bcrypt
     user = app_tables.users.get(email=email)
     if user:
-        if user['mfa'] is not None:
+        if user['n_password_failures'] >= 10:
+            raise anvil.users.TooManyPasswordFailures('You have reached your limit of password attempts. Please reset your password.')
+        elif user['mfa'] is not None:
             raise anvil.users.MFARequired('User needs to enter MFA credentials.')
         elif user['confirmed_email'] != True:
             raise anvil.users.EmailNotConfirmed('Please confirm your email before logging in.')
         elif bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
             anvil.users.force_login(user, remember=True)
+            user['n_password_failures'] = 0
             return user
         else:
-            raise anvil.users.AuthenticationFailed('Password is incorrect.')
+            user['n_password_failures'] += 1
+            raise anvil.users.AuthenticationFailed('Email or password is incorrect.')
+    else:
+        raise anvil.users.AuthenticationFailed('Email or password is incorrect.')

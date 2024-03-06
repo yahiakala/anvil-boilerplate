@@ -110,3 +110,6 @@ class Signin(SigninTemplate):
             except anvil.users.EmailNotConfirmed as e:
                 self.lbl_error.text = "You haven't confirmed your email address. Please check your email and click the confirmation link, or reset your password."
                 self.lbl_error.visible = True
+            except anvil.users.TooManyPasswordFailures as e:
+                self.lbl_error.text = e.args[0]
+                self.lbl_error.visible = True
