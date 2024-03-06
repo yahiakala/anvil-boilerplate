@@ -3,7 +3,7 @@ from anvil import *
 from anvil_extras import routing
 
 
-@routing.route('tests')
+@routing.route('/tests', template='Router')
 class Tests(TestsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

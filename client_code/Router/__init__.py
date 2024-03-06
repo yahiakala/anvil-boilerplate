@@ -20,9 +20,9 @@ class Router(RouterTemplate):
         self.init_components(**properties)
 
         self.link_home.tag.url_hash = ''
-        self.link_dev.tag.url_hash = 'tests'
-        self.link_logout.tag.url_hash = 'logout'
-        self.link_settings.tag.url_hash = 'settings'
+        self.link_dev.tag.url_hash = 'app/tests'
+        self.link_logout.tag.url_hash = 'app/logout'
+        self.link_settings.tag.url_hash = 'app/settings'
         self.link_login.tag.url_hash = 'signin'
         self.link_signup.tag.url_hash = 'signup'
         
@@ -33,9 +33,9 @@ class Router(RouterTemplate):
         if sender.tag.url_hash == '':
             if Global.user:
                 self.set_account_state(Global.user)
-                routing.set_url_hash('homedetail')
+                routing.set_url_hash('app/homedetail')
             else:
-                routing.set_url_hash('homeanon')
+                routing.set_url_hash('')
         else:
             routing.set_url_hash(sender.tag.url_hash)
 
