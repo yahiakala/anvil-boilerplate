@@ -27,6 +27,7 @@ class Signin(SigninTemplate):
         email = self.tb_email.text
         password = self.tb_password.text
         if self.user:
+            utils.print_timestamp('User already logged in')
             Global.user = self.user
             routing.set_url_hash('homedetail')
         else:
