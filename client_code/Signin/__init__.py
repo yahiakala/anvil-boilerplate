@@ -69,7 +69,7 @@ class Signin(SigninTemplate):
             except anvil.users.TooManyPasswordFailures as e:
                 self.lbl_error.text = e.args[0]
                 self.lbl_error.visible = True
-    
+
     def link_forgot_click(self, **event_args):
         """This method is called when the link is clicked"""
         anvil.users.send_password_reset_email(self.tb_email.text)
