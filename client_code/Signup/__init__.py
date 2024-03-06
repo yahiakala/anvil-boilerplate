@@ -28,15 +28,27 @@ class Signup(SignupTemplate):
 
     def btn_signup_click(self, **event_args):
         """This method is called when the button is clicked"""
-
+        self.lbl_error.visible = False
+        self.user = None
         proceed = self.tb_password_repeat_lost_focus()
         if proceed:
-            user = utils.signup_with_email(
-                self.tb_email.text, self.tb_password.text
+            try:
+                self.user = anvil.users.signup_with_email(email, password, remember=True)
+            except anvil.users.MFARequired:
+                mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
+                self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
+            except anvil.users.UserExists as e:
+                self.lbl_error.text = str(e.args[0])
+                self.lbl_error.visible = True
+            except anvil.users.PasswordNotAcceptable as e:
+                self.lbl_error.text = str(e.args[0])
+                self.lbl_error.visible = True
+    
+        if self.user:
+            self.lbl_error.text = (
+                "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup."
             )
-            if user:
-                # Still needs to verify email
-                routing.set_url_hash('homeanon')
+            self.lbl_error.visible = True
 
     def tb_password_repeat_lost_focus(self, **event_args):
         """This method is called when the TextBox loses focus."""
