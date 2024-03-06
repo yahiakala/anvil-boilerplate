@@ -6,7 +6,7 @@ from anvil_extras import routing
 from .. import Global
 
 
-@routing.route('settings')
+@routing.route('settings', template='Router')
 class Settings(SettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

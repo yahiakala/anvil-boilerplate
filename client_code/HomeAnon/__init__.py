@@ -5,7 +5,7 @@ from anvil_extras import routing
 from .. import Global
 
 
-@routing.route('')
+# @routing.route('')
 @routing.route('homeanon')
 @routing.route('home', url_keys=['action'])
 class HomeAnon(HomeAnonTemplate):
@@ -21,10 +21,10 @@ class HomeAnon(HomeAnonTemplate):
         if Global.user:
             routing.set_url_hash('homedetail')
         else:
-            routing.set_url_hash('blank/signin')
+            routing.set_url_hash('signin')
 
     def btn_login_click(self, **event_args):
-        routing.set_url_hash('blank/signin')
+        routing.set_url_hash('signin')
 
     def btn_register_click(self, **event_args):
-        routing.set_url_hash('blank/signup')
+        routing.set_url_hash('signup')

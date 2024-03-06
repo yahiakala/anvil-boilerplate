@@ -3,9 +3,10 @@ from anvil import *
 from anvil_extras import routing
 from ..Signin import Signin
 from ..Signup import Signup
+from ..HomeAnon import HomeAnon
 
 
-@routing.template(path='blank', priority=1, condition=None)
+@routing.template(path='', priority=0, condition=None)
 class BlankTemplate(BlankTemplateTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

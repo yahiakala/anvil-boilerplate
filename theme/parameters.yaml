@@ -53,7 +53,6 @@ roles:
 - {name: google-sign}
 - {name: soft-fp}
 - {name: narrow-col}
-- {name: vertical-shift}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

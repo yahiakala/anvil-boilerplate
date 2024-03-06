@@ -4,7 +4,7 @@ import anvil.server
 from anvil_extras import routing
 
 
-@routing.route('homedetail')
+@routing.route('', template='Router')
 class HomeDetail(HomeDetailTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

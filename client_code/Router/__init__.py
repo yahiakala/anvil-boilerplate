@@ -10,11 +10,10 @@ from anvil_extras import routing
 from ..HomeAnon import HomeAnon
 from ..HomeDetail import HomeDetail
 from ..Settings import Settings
-# from ..BlankTemplate import BlankTemplate
 from ..Tests import Tests
 
 
-@routing.template(path='', priority=0, condition=None)
+@routing.template(path='app', priority=1, condition=None)
 class Router(RouterTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
