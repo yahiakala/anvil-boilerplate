@@ -1056,7 +1056,7 @@ div.plot-container.plotly svg.main-svg {
     border: solid 1px %color:Outline%;
 }
 .anvil-role-soft-button > .btn {
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 /* Create a picture inside of the button */
@@ -1083,4 +1083,9 @@ div.plot-container.plotly svg.main-svg {
 /* Set hover effect on the button */
 .anvil-role-google-sign > button:hover {
     background-color: lightgray;
+}
+
+.anvil-role-narrow-col {
+    max-width: 400px;
+    padding: 35px;
 }

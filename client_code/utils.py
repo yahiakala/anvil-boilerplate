@@ -43,51 +43,45 @@ def reset_password(email):
     # else:
     #     error_lbl.text = ""
 
-def login_with_email(email, password, mfa=True):
+def login_with_email(email, password):
     """Login with email with optional mfa."""
     u = anvil.users.get_user()
     if u:
         return u
 
     try:
-        if mfa:
-            r = anvil.users.mfa.mfa_login_with_form(email, password)
-            if r == 'reset_mfa':
-                anvil.users.mfa.send_mfa_reset_email(email)
-                anvil.alert("Requested 2-factor authentication reset for " + email + ". Check your email.")
-            elif r == None:
-                return None
-            else:
-                return anvil.users.login_with_email(email, password, mfa=r, remember=True)
+        return anvil.users.login_with_email(email, password, remember=True)
+    except anvil.users.MFARequired as e:
+        r = anvil.users.mfa.mfa_login_with_form(email, password)
+        if r == 'reset_mfa':
+            anvil.users.mfa.send_mfa_reset_email(email)
+            anvil.alert("Requested 2-factor authentication reset for " + email + ". Check your email.")
+        elif r == None:
+            return None
         else:
-            return anvil.users.login_with_email(email, password, remember=True)
+            return anvil.users.login_with_email(email, password, mfa=r, remember=True)
     except anvil.users.AuthenticationFailed as e:
         anvil.alert(e.args[0])
         return None
 
 
-def signup_with_email(email, password, mfa=True, confirm_email=True):
+def signup_with_email(email, password, confirm_email=True):
     try:
-        if mfa:
-            mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
-            user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
-            # user = anvil.users.signup_with_email(email, password, mfa_method=mfa_method, remember=True)
-        else:
-            user = anvil.users.signup_with_email(email, password, remember=True)
-
-        if confirm_email:
-            anvil.alert(
-                "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup.",
-                title="Confirm your Email",
-                buttons=[("OK", None, "primary")]
-            )
-
+        user = anvil.users.signup_with_email(email, password, remember=True)
+    except anvil.users.MFARequired:
+        mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
+        user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
     except anvil.users.UserExists as e:
         anvil.alert(str(e.args[0]))
         return None
-
     except anvil.users.PasswordNotAcceptable as e:
         anvil.alert(str(e.args[0]))
         return None
 
+    if confirm_email:
+        anvil.alert(
+            "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup.",
+            title="Confirm your Email",
+            buttons=[("OK", None, "primary")]
+        )
     return user

@@ -22,7 +22,6 @@ class Signin(SigninTemplate):
 
     def btn_signin_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # TODO: if the user has mfa, throw the mfa flow in there
         self.lbl_error = False
         try:
             user = utils.login_with_email(self.tb_email.text, self.tb_password.text)
