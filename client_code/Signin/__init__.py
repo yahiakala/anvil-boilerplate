@@ -7,11 +7,14 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('signin', template='blank')
+@routing.route('/signin', template='BlankTemplate')
 class Signin(SigninTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
+        is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
+        if is_mobile:
+            self.spacer_1.visible = False
 
     def btn_google_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -61,4 +64,4 @@ class Signin(SigninTemplate):
 
     def link_signup_click(self, **event_args):
         """This method is called when the link is clicked"""
-        routing.set_url_hash('signup')
+        routing.set_url_hash('blank/signup')

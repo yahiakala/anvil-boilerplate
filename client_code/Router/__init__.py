@@ -10,8 +10,7 @@ from anvil_extras import routing
 from ..HomeAnon import HomeAnon
 from ..HomeDetail import HomeDetail
 from ..Settings import Settings
-from ..BlankTemplate import BlankTemplate
-from ..Signin import Signin
+# from ..BlankTemplate import BlankTemplate
 from ..Tests import Tests
 
 

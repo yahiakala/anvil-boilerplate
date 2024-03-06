@@ -1,9 +1,6 @@
 from ._anvil_designer import HomeAnonTemplate
 from anvil import *
-from .. import utils
 from anvil_extras import routing
-from ..BlankTemplate import BlankTemplate
-from ..Signin import Signin
 
 from .. import Global
 
@@ -24,10 +21,10 @@ class HomeAnon(HomeAnonTemplate):
         if Global.user:
             routing.set_url_hash('homedetail')
         else:
-            routing.set_url_hash('signin')
+            routing.set_url_hash('blank/signin')
 
     def btn_login_click(self, **event_args):
-        routing.set_url_hash('signin')
+        routing.set_url_hash('blank/signin')
 
     def btn_register_click(self, **event_args):
-        routing.set_url_hash('signup')
+        routing.set_url_hash('blank/signup')
