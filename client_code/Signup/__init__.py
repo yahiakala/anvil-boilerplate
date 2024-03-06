@@ -30,6 +30,8 @@ class Signup(SignupTemplate):
         """This method is called when the button is clicked"""
         self.lbl_error.visible = False
         self.user = None
+        email = self.tb_email.text
+        password = self.tb_password.text
         proceed = self.tb_password_repeat_lost_focus()
         if proceed:
             try:

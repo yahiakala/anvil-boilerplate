@@ -24,6 +24,8 @@ class Signin(SigninTemplate):
         """This method is called when the button is clicked"""
         self.lbl_error.visible = False
         self.user = anvil.users.get_user()
+        email = self.tb_email.text
+        password = self.tb_password.text
         if self.user:
             Global.user = self.user
         else:
@@ -40,6 +42,8 @@ class Signin(SigninTemplate):
                     self.lbl_error.text = "Cancelled login."
                 else:
                     self.user = anvil.users.login_with_email(email, password, mfa=r, remember=True)
+                    Global.user = self.user
+                    routing.set_url_hash('homedetail')
             except anvil.users.AuthenticationFailed as e:
                 self.lbl_error.text = e.args[0]
                 self.lbl_error.visible = True

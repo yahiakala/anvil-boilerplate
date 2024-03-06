@@ -28,7 +28,7 @@ components:
       layout_properties: {}
       event_bindings: {click: link_help_click}
     - name: link_login
-      properties: {text: Login}
+      properties: {text: Sign in}
       type: Link
       layout_properties: {}
       event_bindings: {click: nav_click}

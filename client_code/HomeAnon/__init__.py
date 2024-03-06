@@ -21,6 +21,8 @@ class HomeAnon(HomeAnonTemplate):
 
         if Global.user:
             routing.set_url_hash('homedetail')
+        else:
+            routing.set_url_hash('signin')
 
     def btn_login_click(self, **event_args):
         routing.set_url_hash('signin')
