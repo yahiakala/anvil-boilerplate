@@ -34,6 +34,7 @@ class Signin(SigninTemplate):
             try:
                 self.user = anvil.users.login_with_email(email, password, remember=True)
                 Global.user = self.user
+                utils.print_timestamp('Login worked without mfa')
                 routing.set_url_hash('homedetail')
             except anvil.users.MFARequired as e:
                 r = anvil.users.mfa.mfa_login_with_form(email, password)
