@@ -7,7 +7,7 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('signup')
+@routing.route('signup', template='blank')
 class Signup(SignupTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -47,6 +47,9 @@ class Signup(SignupTemplate):
                 self.lbl_error.visible = True
     
         if self.user:
+            self.tb_email.text = ''
+            self.tb_password.text = ''
+            self.tb_password_repeat.text = ''
             self.lbl_error.text = (
                 "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup."
             )

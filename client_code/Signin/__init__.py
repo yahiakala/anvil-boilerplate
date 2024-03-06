@@ -7,7 +7,7 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('signin')
+@routing.route('signin', template='blank')
 class Signin(SigninTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

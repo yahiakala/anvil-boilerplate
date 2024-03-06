@@ -10,8 +10,8 @@ from anvil_extras import routing
 from ..HomeAnon import HomeAnon
 from ..HomeDetail import HomeDetail
 from ..Settings import Settings
+from ..BlankTemplate import BlankTemplate
 from ..Signin import Signin
-from ..Signup import Signup
 from ..Tests import Tests
 
 
@@ -29,6 +29,7 @@ class Router(RouterTemplate):
         self.link_signup.tag.url_hash = 'signup'
         
         user = Global.user
+        self.set_account_state(user)
 
     def nav_click(self, sender, **event_args):
         if sender.tag.url_hash == '':
@@ -69,8 +70,10 @@ class Router(RouterTemplate):
 
     def set_account_state(self, user):
         self.icon_logout.visible = user is not None
+        self.link_logout.visible = user is not None
         self.link_login.visible = user is None
         self.link_signup.visible = user is None
+        self.link_settings.visible = user is not None
         self.link_dev.visible = user is not None and 'dev' in Global.permissions
 
     def link_help_click(self, **event_args):

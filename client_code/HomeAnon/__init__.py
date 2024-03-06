@@ -2,6 +2,8 @@ from ._anvil_designer import HomeAnonTemplate
 from anvil import *
 from .. import utils
 from anvil_extras import routing
+from ..BlankTemplate import BlankTemplate
+from ..Signin import Signin
 
 from .. import Global
 
