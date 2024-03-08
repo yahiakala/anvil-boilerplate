@@ -71,6 +71,11 @@ components:
         layout_properties: {}
         components: []
         event_bindings: {click: link_signup_click}
+      - name: link_help
+        properties: {text: 'Need help?'}
+        type: Link
+        layout_properties: {}
+        event_bindings: {click: link_help_click}
     - name: img_logo
       properties: {display_mode: shrink_to_fit, source: _/theme/notalone.png}
       type: Image
