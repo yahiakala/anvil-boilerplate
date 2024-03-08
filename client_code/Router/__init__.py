@@ -7,8 +7,7 @@ from .. import utils
 
 from anvil_extras import routing
 
-from ..HomeAnon import HomeAnon
-from ..HomeDetail import HomeDetail
+from ..Home import Home
 from ..Settings import Settings
 from ..Tests import Tests
 
@@ -19,7 +18,7 @@ class Router(RouterTemplate):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
-        self.link_home.tag.url_hash = ''
+        self.link_home.tag.url_hash = 'app/home'
         self.link_dev.tag.url_hash = 'app/tests'
         self.link_logout.tag.url_hash = 'app/logout'
         self.link_settings.tag.url_hash = 'app/settings'
@@ -33,9 +32,9 @@ class Router(RouterTemplate):
         if sender.tag.url_hash == '':
             if Global.user:
                 self.set_account_state(Global.user)
-                routing.set_url_hash('app/homedetail')
+                routing.set_url_hash('app/home')
             else:
-                routing.set_url_hash('')
+                routing.set_url_hash('signin')
         else:
             routing.set_url_hash(sender.tag.url_hash)
 
@@ -44,7 +43,7 @@ class Router(RouterTemplate):
         for link in self.cp_sidebar.get_components():
             if type(link) == Link:
                 link.role = 'selected' if link.tag.url_hash == url_hash else None
-        if url_hash in ['homeanon', 'homedetail', 'app']:
+        if url_pattern in ['home', 'app', '']:
             self.link_home.role = 'selected'
 
     def on_form_load(self, url_hash, url_pattern, url_dict, form):
@@ -64,7 +63,7 @@ class Router(RouterTemplate):
         anvil.users.logout()
         self.set_account_state(None)
         Global.user = None
-        self.nav_click(self.link_home)
+        routing.set_url_hash('signin')
 
     def set_account_state(self, user):
         self.icon_logout.visible = user is not None
