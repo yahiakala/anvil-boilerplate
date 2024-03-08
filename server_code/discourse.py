@@ -10,13 +10,9 @@ import urllib.parse
 import json
 
 
-@anvil.server.http_endpoint('/login-sso', cross_site_session=True, enable_cors=True)
-def login_sso(sso, sig, session_id=None):
-    # params['key']
-    # print(sso)
-    # print(sig)
-
-    secret_key = anvil.secrets.get_secret('discourse_secret')
+@anvil.server.http_endpoint('/discourse-connect', cross_site_session=True, enable_cors=True)
+def login_sso(sso, sig):
+    secret_key = anvil.secrets.get_secret('DISCOURSE_CONNECT')
 
     # Verify the signature
     expected_sig = hmac.new(secret_key.encode(), msg=sso.encode(), digestmod=hashlib.sha256).hexdigest()
@@ -29,26 +25,20 @@ def login_sso(sso, sig, session_id=None):
     params = dict(urllib.parse.parse_qsl(payload))
     nonce = params['nonce']
 
-    user = None
-    # if session_id:
-    #     user = get_user_by_session_id(session_id)
-    if not user:
-        user = anvil.users.get_user(allow_remembered=True)
-    print('user')
-    print(user)
-    if not user or user['auth_forumchat'] != True:
-        return anvil.server.HttpResponse(302, headers={"Location": anvil.server.get_app_origin()})
+    discourse_url = 'forum.dreambyte.ai'
 
-    discourse_url = app_tables.forum.get(tenant=user['tenant'])['discourse_url']
-    # print(discourse_url)
+    user = anvil.users.get_user(allow_remembered=True)
+    if not user:
+        return anvil.server.HttpResponse(302, headers={"Location": anvil.server.get_app_origin() + '#signin?redirect=https://' + discourse_url})
+
     
     # Prepare the return payload with user info
     user_info = {
         'nonce': nonce,
         'email': user['email'],
         'external_id': user.get_id(),
-        'username': user['first_name'] + '_' + user['last_name'],
-        'name': user['first_name'] + ' ' + user['last_name']
+        'username': user['email'].split('@')[0],
+        'name': user['email'].split('@')[0]
     }
     print(user_info)
     # unsigned payload generated
@@ -74,7 +64,7 @@ def login_sso(sso, sig, session_id=None):
     return anvil.server.HttpResponse(302, headers={"Location": discourse_redirect_url})
 
 
-@anvil.server.http_endpoint('/new_member', methods=['POST'])
+@anvil.server.http_endpoint('/discourse-new-member', methods=['POST'])
 def new_member():
     payload = anvil.server.request.body.get_bytes()
     # print(payload)
@@ -102,7 +92,7 @@ def new_member():
 def create_topic(title='Test post', message='Test post this is a test', discourse_url=None):
     post_url = f"{discourse_url}/posts"
     headers = {
-        'Api-Key': anvil.secrets.get_secret('discourse_api_key'),
+        'Api-Key': anvil.secrets.get_secret('DISCOURSE_API'),
         'Api-Username': 'system',
         'Content-Type': 'application/json'
     }
@@ -123,7 +113,7 @@ def create_topic(title='Test post', message='Test post this is a test', discours
 def verify_signature(payload, header_signature):
     # Assuming Discourse sends the signature in the format `sha256=signature`
     algorithm, signature = header_signature.split('=')
-    secret_key = anvil.secrets.get_secret('discourse_secret')
+    secret_key = anvil.secrets.get_secret('DISCOURSE_WEBHOOK')
     # Use the corresponding hash function for the algorithm used by Discourse
     if algorithm == 'sha256':
         hash_function = hashlib.sha256

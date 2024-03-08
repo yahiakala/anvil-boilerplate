@@ -7,7 +7,7 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('signup', template='BlankTemplate')
+@routing.route('signup', template='BlankTemplate', url_keys=[routing.ANY])
 class Signup(SignupTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -16,18 +16,27 @@ class Signup(SignupTemplate):
         if is_mobile:
             self.spacer_1.visible = False
 
+    def route_user(self, **event_args):
+        """Send the user on their way."""
+        if 'redirect' in self.url_dict and self.user:
+            Global.user = self.user
+            anvil.js.window.location.href = self.url_dict['redirect']
+        elif self.user:
+            Global.user = self.user
+            routing.set_url_hash('app')
+
     def btn_google_click(self, **event_args):
         """This method is called when the button is clicked"""
         try:
-            user = anvil.users.signup_with_google(remember=True)
+            self.user = anvil.users.signup_with_google(remember=True)
+            self.route_user()
         except anvil.users.UserExists as e:
             anvil.alert(str(e.args[0]))
-            user = None
-            routing.set_url_hash('signin')
-        
-        if user:
-            Global.user = user
-            routing.set_url_hash('homedetail')
+            self.user = None
+            routing.set_url_hash(url_pattern='signin', url_dict=self.url_dict)
+
+        if self.user:
+            self.route_user()
 
     def btn_signup_click(self, **event_args):
         """This method is called when the button is clicked"""
@@ -43,8 +52,9 @@ class Signup(SignupTemplate):
                 mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
                 self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
             except anvil.users.UserExists as e:
-                self.lbl_error.text = str(e.args[0])
-                self.lbl_error.visible = True
+                anvil.alert(str(e.args[0]))
+                self.user = None
+                routing.set_url_hash(url_pattern='signin', url_dict=self.url_dict)
             except anvil.users.PasswordNotAcceptable as e:
                 self.lbl_error.text = str(e.args[0])
                 self.lbl_error.visible = True
@@ -72,3 +82,7 @@ class Signup(SignupTemplate):
 
         self.lbl_error.visible = True
         return False
+
+    def link_help_click(self, **event_args):
+        """This method is called when the link is clicked"""
+        alert("Email support@dreambyte.ai and we'll get back to you within 24-48 hours.")
