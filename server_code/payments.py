@@ -125,6 +125,6 @@ def get_customer_portal():
         return ''
     cust_portal, _ = get_customer(
         api_key=anvil.secrets.get_secret(lemon_api),
-        customer_id=user['customer_id']
+        customer_id=usermap['customer_id']
     )
     return cust_portal
