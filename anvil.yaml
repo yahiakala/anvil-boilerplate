@@ -119,4 +119,13 @@ secrets:
   LEMON_SIGNING:
     value: {WQET73GEV5APXBAG: dsFw7YDaXCQiKeqTMpqAryFP9eoCPY7+qbYfYMBtHUYuEIGamJxXUO2/Xm8r0biHqjLDuZU8AgjOtrrpAAj43AZ3GY1Gu6azBfQbM5nnTdkdIbT7aFJJkqZ3kXQi5iXEHlZJOiQ=}
     type: secret
+  DISCOURSE_CONNECT:
+    type: secret
+    value: {WQET73GEV5APXBAG: ''}
+  DISCOURSE_API:
+    type: secret
+    value: {WQET73GEV5APXBAG: ''}
+  DISCOURSE_WEBHOOK:
+    type: secret
+    value: {WQET73GEV5APXBAG: ''}
 renamed: true
