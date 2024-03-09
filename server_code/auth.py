@@ -31,6 +31,17 @@ def login_with_email_mfa(email, password):
         raise anvil.users.AuthenticationFailed('Email or password is incorrect.')
 
 
+@anvil.server.callable
+def signup_with_email_custom(email, password):
+    """Signup a new user. Require them to confirm email before logging in."""
+    if app_tables.users.get(email=email):
+        raise anvil.users.UserExists('User already exists')
+    if is_password_pwned(password) or len(password) < 8:
+        raise anvil.users.PasswordNotAcceptable('Please use a stronger password of at least 8 characters with a combination of numbers, letters, and symbols.')
+    user = create_new_user(email, password, confirm_email=True, require_mfa=False, mfa_method=None, remember=False)
+    send_confirmation_email(email, user['email_confirmation_key'], from_name='Dreambyte')
+
+
 def is_password_pwned(password):
     """Check if a password has been leaked using the "Have I Been Pwned" API."""
     # Compute the SHA-1 hash of the password
@@ -62,15 +73,16 @@ def generate_confirmation_key(length=10):
     # Also, strip off the '==' padding for a cleaner URL part
     confirmation_key = base64.urlsafe_b64encode(random_bytes).decode('utf-8').rstrip('=')
     # Return the confirmation key with the desired length
-    return confirmation_key[:length]
+    return confirmation_key
 
 
 def create_new_user(email, password, confirm_email=False, require_mfa=False, mfa_method=None, remember=False):
     """Create a new user."""
     import bcrypt
+
     # Hash the password with bcrypt
     password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-    
+
     # Prepare the user data dictionary
     user_data = {
         'email': email,
@@ -105,15 +117,14 @@ def generate_confirmation_url(email, confirmation_key):
 
 
 @anvil.server.callable
-def send_confirmation_email(email, confirmation_key, confirm_email):
+def send_confirmation_email(email, confirmation_key, from_name='App'):
     # Check if we need to send a confirmation email
-    if confirm_email:
-        # Generate the confirmation URL
-        confirm_url = generate_confirmation_url(email, confirmation_key)
-        
-        # Define the email properties
-        subject = "Please confirm your email address"
-        body = f"""Hello,
+    # Generate the confirmation URL
+    confirm_url = generate_confirmation_url(email, confirmation_key)
+
+    # Define the email properties
+    subject = "Please confirm your email address"
+    body = f"""Hello,
 
 Please click on the link below to confirm your email address:
 
@@ -121,7 +132,12 @@ Please click on the link below to confirm your email address:
 
 Thank you."""
 
-        # Send the email
-        anvil.email.send(to=email, subject=subject, text=body)
-    # Optionally, you could return a value or message indicating success or next steps
-    return "Confirmation email sent" if confirm_email else "No confirmation needed"
+    # Send the email
+    anvil.email.send(
+        to=email,
+        subject=subject,
+        text=body,
+        from_address='accounts',
+        from_name=from_name + ' Accounts'
+    )
+    return f"Confirmation email sent to {email}."
