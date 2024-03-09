@@ -28,9 +28,13 @@ class Signin(SigninTemplate):
     def route_user(self, **event_args):
         """Send the user on their way."""
         if 'redirect' in self.url_dict and self.user:
+            self.tb_email.text = ''
+            self.tb_password.text = ''
             Global.user = self.user
             anvil.js.window.location.href = self.url_dict['redirect']
         elif self.user:
+            self.tb_email.text = ''
+            self.tb_password.text = ''
             Global.user = self.user
             routing.set_url_hash('app')
     
