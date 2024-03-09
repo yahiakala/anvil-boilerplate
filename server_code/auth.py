@@ -40,7 +40,7 @@ def signup_with_email_custom(email, password):
         raise anvil.users.PasswordNotAcceptable('Please use a stronger password of at least 8 characters with a combination of numbers, letters, and symbols.')
     user = create_new_user(email, password, confirm_email=True, require_mfa=False, mfa_method=None, remember=False)
     response = send_confirmation_email(email, user['email_confirmation_key'], from_name='Dreambyte')
-    return response
+    return user
 
 
 def is_password_pwned(password):

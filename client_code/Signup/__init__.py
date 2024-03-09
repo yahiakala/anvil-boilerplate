@@ -47,7 +47,8 @@ class Signup(SignupTemplate):
         proceed = self.tb_password_repeat_lost_focus()
         if proceed:
             try:
-                self.user = anvil.users.signup_with_email(email, password, remember=True)
+                # self.user = anvil.users.signup_with_email(email, password, remember=True)
+                self.user = anvil.server.call('signup_with_email_custom', email, password)
             except anvil.users.MFARequired:
                 mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
                 self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
