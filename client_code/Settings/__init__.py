@@ -17,7 +17,7 @@ class Settings(SettingsTemplate):
         if self.link_portal.url:
             self.link_portal.visible = True
         # self.rp_websites.items = self.admin_data['sites']
-        # self.user = Global.user
+        self.user = Global.user
 
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False

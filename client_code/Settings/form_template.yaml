@@ -67,7 +67,7 @@ components:
     type: Label
     layout_properties: {grid_position: 'YYFVOM,NLVZSH'}
   - name: btn_add_mfa
-    properties: {text: Add MFA, role: filled-button}
+    properties: {text: Add/Reset MFA, role: filled-button}
     type: Button
     layout_properties: {grid_position: 'PHFUZS,ARIHLI'}
     event_bindings: {click: btn_add_mfa_click}
