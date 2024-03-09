@@ -58,11 +58,17 @@ components:
       type: FlowPanel
       layout_properties: {grid_position: 'LUBYQT,QHYQQZ'}
       components:
+      - name: link_signin
+        properties: {text: 'Already have an account?'}
+        type: Link
+        layout_properties: {}
+        event_bindings: {click: link_signin_click}
       - name: link_help
         properties: {text: 'Need help?'}
         type: Link
         layout_properties: {}
         event_bindings: {click: link_help_click}
+        components: []
     - name: lbl_error
       properties: {text: Passwords must match, align: center, foreground: 'theme:Error',
         visible: false}

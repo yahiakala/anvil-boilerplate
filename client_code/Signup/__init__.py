@@ -86,3 +86,7 @@ class Signup(SignupTemplate):
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""
         alert("Email support@dreambyte.ai and we'll get back to you within 24-48 hours.")
+
+    def link_signin_click(self, **event_args):
+        """This method is called when the link is clicked"""
+        routing.set_url_hash(url_pattern='signin', url_dict=self.url_dict)
