@@ -39,7 +39,8 @@ def signup_with_email_custom(email, password):
     if is_password_pwned(password) or len(password) < 8:
         raise anvil.users.PasswordNotAcceptable('Please use a stronger password of at least 8 characters with a combination of numbers, letters, and symbols.')
     user = create_new_user(email, password, confirm_email=True, require_mfa=False, mfa_method=None, remember=False)
-    send_confirmation_email(email, user['email_confirmation_key'], from_name='Dreambyte')
+    response = send_confirmation_email(email, user['email_confirmation_key'], from_name='Dreambyte')
+    return response
 
 
 def is_password_pwned(password):
@@ -60,7 +61,6 @@ def is_password_pwned(password):
     for hash_tail, count in hashes:
         if hash_tail == tail:
             return True
-    
     return False
 
 
