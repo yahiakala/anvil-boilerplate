@@ -14,7 +14,7 @@ def login_with_email_mfa(email, password):
     import bcrypt
     user = app_tables.users.get(email=email)
     if user:
-        if user['n_password_failures'] >= 10:
+        if user['n_password_failures'] is not None and user['n_password_failures'] >= 10:
             raise anvil.users.TooManyPasswordFailures('You have reached your limit of password attempts. Please reset your password.')
         elif user['mfa'] is not None:
             raise anvil.users.MFARequired('User needs to enter MFA credentials.')
