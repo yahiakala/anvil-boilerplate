@@ -18,6 +18,9 @@ class Settings(SettingsTemplate):
             self.link_portal.visible = True
         # self.rp_websites.items = self.admin_data['sites']
         self.user = Global.user
+        if self.user['password_hash']:
+            self.cp_password.visible = True
+            self.cp_mfa.visible = True
 
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False
@@ -35,7 +38,7 @@ class Settings(SettingsTemplate):
                 self.lbl_pw_error.text = 'Old password is incorrect.'
                 self.lbl_pw_error.visible = True
             except anvil.users.PasswordNotAcceptable:
-                self.lbl_pw_error.text = 'Passwords must be 8 characters or more.'
+                self.lbl_pw_error.text = 'Passwords must be 8 characters or more and be harder to guess.'
                 self.lbl_pw_error.visible = True
         else:
             self.lbl_pw_error.text = 'Old or new entered password is blank.'
