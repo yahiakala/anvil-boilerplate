@@ -9,7 +9,7 @@ import secrets
 import base64
 
 @anvil.server.callable
-def login_with_email_mfa(email, password):
+def login_with_email_custom(email, password):
     """Try to log user in without MFA. Return exception if user has MFA configured."""
     import bcrypt
     user = app_tables.users.get(email=email)
@@ -32,14 +32,14 @@ def login_with_email_mfa(email, password):
 
 
 @anvil.server.callable
-def signup_with_email_custom(email, password):
+def signup_with_email_custom(email, password, app_name='App'):
     """Signup a new user. Require them to confirm email before logging in."""
     if app_tables.users.get(email=email):
         raise anvil.users.UserExists('User already exists')
     if is_password_pwned(password) or len(password) < 8:
         raise anvil.users.PasswordNotAcceptable('Please use a stronger password of at least 8 characters with a combination of numbers, letters, and symbols.')
     user = create_new_user(email, password, confirm_email=True, require_mfa=False, mfa_method=None, remember=False)
-    response = send_confirmation_email(email, user['email_confirmation_key'], from_name='Dreambyte')
+    response = send_confirmation_email(email, user['email_confirmation_key'], from_name=app_name)
     return user
 
 
@@ -81,23 +81,26 @@ def create_new_user(email, password, confirm_email=False, require_mfa=False, mfa
     import bcrypt
 
     # Hash the password with bcrypt
-    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-
-    # Prepare the user data dictionary
-    user_data = {
-        'email': email,
-        'password_hash': password_hash,
-    }
+    password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     
     if confirm_email:
         confirmation_key = generate_confirmation_key()
-        user_data['confirmed_email'] = False
-        user_data['email_confirmation_key'] = confirmation_key
+    else:
+        confirmation_key = None
     
     if require_mfa:
-        user_data['mfa'] = [mfa_method]
+        mfa = [mfa_method]
+    else:
+        mfa = None
     
-    new_user_row = app_tables.users.add_row(**user_data)
+    new_user_row = app_tables.users.add_row(
+        email=email,
+        enabled=True,
+        password_hash=password_hash,
+        confirmed_email=False,
+        email_confirmation_key=confirmation_key,
+        mfa=mfa
+    )
 
     if remember and not confirm_email:
         new_user_row = anvil.users.force_login(new_user_row, remember=True)
@@ -107,7 +110,7 @@ def create_new_user(email, password, confirm_email=False, require_mfa=False, mfa
 
 def generate_confirmation_url(email, confirmation_key):
     """Generate confirmation email."""
-    import urrllib.parse
+    import urllib.parse
     # URL-encode the email and confirmation key
     encoded_email = urllib.parse.quote(email)
     encoded_confirmation_key = urllib.parse.quote(confirmation_key)

@@ -68,7 +68,7 @@ class Signin(SigninTemplate):
             self.route_user()
         else:
             try:
-                self.user = anvil.server.call('login_with_email_mfa', email, password)
+                self.user = anvil.server.call('login_with_email_custom', email, password)
                 # self.user = anvil.users.login_with_email(email, password, remember=True)
                 self.route_user()
             except anvil.users.MFARequired as e:
