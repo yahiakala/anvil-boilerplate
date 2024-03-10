@@ -45,20 +45,21 @@ class Settings(SettingsTemplate):
 
     def btn_add_mfa_click(self, **event_args):
         """This method is called when the button is clicked"""
-        anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
-        # self.configure_mfa_custom()
-        self.user = anvil.users.get_user(allow_remembered=True)
-        Global.user = self.user
+        # anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
+        self.configure_mfa_custom()
+        # self.user = anvil.users.get_user(allow_remembered=True)
+        # Global.user = self.user
         self.rp_mfa.items = self.user['mfa']
 
     def configure_mfa_custom(self):
         error = None
         while True:
             mfa_method, password = anvil.users.mfa._configure_mfa(self.user['email'], error, True, True, "Save")
-
+            
             if mfa_method:
                 try:
-                    anvil.users.mfa.add_mfa_method(password, mfa_method)
+                    # anvil.users.mfa.add_mfa_method(password, mfa_method)
+                    self.user = anvil.server.call('add_mfa_method', password, mfa_method)
                     alert("Your two-factor authentication configuration has been added.")
                     return True
                 except anvil.users.AuthenticationFailed as e:
