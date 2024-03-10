@@ -11,12 +11,9 @@ class Settings(SettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-        self.admin_data = {}
-        self.admin_data['sites'] = ['url 1', 'url 2']
         self.link_portal.url = Global.customer_portal
         if self.link_portal.url:
             self.link_portal.visible = True
-        # self.rp_websites.items = self.admin_data['sites']
         self.user = Global.user
         if self.user['password_hash']:
             self.cp_password.visible = True
