@@ -73,8 +73,12 @@ components:
       background: '', bold: false, underline: false, icon: 'fa:user'}
     type: Label
     layout_properties: {grid_position: 'PMPUZI,HNHBUG'}
+  - name: rp_mfa
+    properties: {item_template: Settings.MFAItem}
+    type: RepeatingPanel
+    layout_properties: {grid_position: 'SSJSZY,HKGEQU'}
   - name: btn_add_mfa
-    properties: {text: Add/Reset MFA, role: filled-button}
+    properties: {text: Add MFA Method, role: filled-button}
     type: Button
     layout_properties: {grid_position: 'OXZBJX,GOBNOE'}
     event_bindings: {click: btn_add_mfa_click}

@@ -143,3 +143,17 @@ Thank you."""
         from_name=from_name + ' Accounts'
     )
     return f"Confirmation email sent to {email}."
+
+
+@anvil.server.callable(require_user=True)
+def delete_mfa_method(password, id):
+    """Delete mfa method if the password is correct."""
+    import bcrypt
+    user = anvil.users.get_user(allow_remembered=True)
+    if bcrypt.checkpw(password.encode('utf-8'), user['password_hash'].encode('utf-8')):
+        user['mfa'] = [i for i in user['mfa'] if i['id'] != id]
+        if len(user['mfa']) == 0:
+            user['mfa'] = None
+    else:
+        raise anvil.users.AuthenticationFailed('Incorrect password.')
+    return user

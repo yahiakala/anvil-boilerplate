@@ -1,5 +1,5 @@
 from ._anvil_designer import SettingsTemplate
-import anvil
+from anvil import *
 import anvil.users
 from anvil_extras import routing
 
@@ -11,6 +11,7 @@ class Settings(SettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
+        self.rp_mfa.add_event_handler('x-remove-mfa-id', self.remove_mfa_id)
         self.link_portal.url = Global.customer_portal
         if self.link_portal.url:
             self.link_portal.visible = True
@@ -18,6 +19,7 @@ class Settings(SettingsTemplate):
         if self.user['password_hash']:
             self.cp_password.visible = True
             self.cp_mfa.visible = True
+        self.rp_mfa.items = self.user['mfa']
 
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False
@@ -43,19 +45,34 @@ class Settings(SettingsTemplate):
 
     def btn_add_mfa_click(self, **event_args):
         """This method is called when the button is clicked"""
-        # anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
+        anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
+        # self.configure_mfa_custom()
+        self.user = anvil.users.get_user(allow_remembered=True)
+        Global.user = self.user
+        self.rp_mfa.items = self.user['mfa']
+
+    def configure_mfa_custom(self):
         error = None
         while True:
-            mfa_method, password = anvil.users.mfa._configure_mfa(None, error, True, allow_cancel, "Save")
+            mfa_method, password = anvil.users.mfa._configure_mfa(self.user['email'], error, True, True, "Save")
 
             if mfa_method:
                 try:
-                    anvil.users.mfa.add_mfa_method(password, mfa_method, clear_existing=True)
-                    alert("Your two-factor authentication configuration has been reset.")
+                    anvil.users.mfa.add_mfa_method(password, mfa_method)
+                    alert("Your two-factor authentication configuration has been added.")
                     return True
-                except AuthenticationFailed as e:
+                except anvil.users.AuthenticationFailed as e:
                     error = e.args[0]
                 except Exception as e:
                     error = str(e)
             else:
                 return None
+
+    def remove_mfa_id(self, **event_args):
+        """Remove a configured MFA method."""
+        try:
+            self.user = anvil.server.call('delete_mfa_method', event_args['password'], event_args['id'])
+            Global.user = self.user
+            self.rp_mfa.items = self.user['mfa']
+        except anvil.users.AuthenticationFailed as e:
+            alert('Password is incorrect.')
