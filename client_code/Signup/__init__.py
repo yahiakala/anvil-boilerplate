@@ -49,9 +49,9 @@ class Signup(SignupTemplate):
             try:
                 # self.user = anvil.users.signup_with_email(email, password, remember=True)
                 self.user = anvil.server.call('signup_with_email_custom', email, password, app_name='Dreambyte')
-            except anvil.users.MFARequired:
-                mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
-                self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
+            # except anvil.users.MFARequired:
+            #     mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
+            #     self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
             except anvil.users.UserExists as e:
                 anvil.alert(str(e.args[0]))
                 self.user = None
