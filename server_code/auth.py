@@ -3,10 +3,6 @@ from anvil.tables import app_tables
 import anvil.users
 import anvil.email
 
-import hashlib
-import requests
-import secrets
-import base64
 
 @anvil.server.callable
 def login_with_email_custom(email, password):
@@ -45,6 +41,7 @@ def signup_with_email_custom(email, password, app_name='App'):
 
 def is_password_pwned(password):
     """Check if a password has been leaked using the "Have I Been Pwned" API."""
+    import hashlib
     # Compute the SHA-1 hash of the password
     sha1sum = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()
 
@@ -66,6 +63,8 @@ def is_password_pwned(password):
 
 def generate_confirmation_key(length=10):
     """Generate a secure random byte string of adequate length."""
+    import secrets
+    import base64
     # The length needs to be adjusted because base64 encoding increases the size
     # Here, we aim for approximately the same number of URL-safe characters as the desired length
     random_bytes = secrets.token_bytes(length)
