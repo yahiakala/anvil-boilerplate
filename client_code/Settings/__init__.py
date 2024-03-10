@@ -43,8 +43,22 @@ class Settings(SettingsTemplate):
         else:
             self.lbl_pw_error.text = 'Old or new entered password is blank.'
             self.lbl_pw_error.visible = True
-        
 
     def btn_add_mfa_click(self, **event_args):
         """This method is called when the button is clicked"""
-        anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
+        # anvil.users.mfa.configure_mfa_with_form(allow_cancel=True)
+        error = None
+        while True:
+            mfa_method, password = anvil.users.mfa._configure_mfa(None, error, True, allow_cancel, "Save")
+
+            if mfa_method:
+                try:
+                    anvil.users.mfa.add_mfa_method(password, mfa_method, clear_existing=True)
+                    alert("Your two-factor authentication configuration has been reset.")
+                    return True
+                except AuthenticationFailed as e:
+                    error = e.args[0]
+                except Exception as e:
+                    error = str(e)
+            else:
+                return None
