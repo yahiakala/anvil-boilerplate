@@ -6,7 +6,7 @@ from ..Signin import Signin
 from ..Signup import Signup
 
 
-@routing.template(path='static', priority=0, condition=None)
+@routing.template(path='', priority=0, condition=None)
 class Static(StaticTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

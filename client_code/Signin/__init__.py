@@ -8,8 +8,8 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('', template='BlankTemplate')
-@routing.route('signin', template='BlankTemplate', url_keys=[routing.ANY])
+@routing.route('', template='Static')
+@routing.route('signin', template='Static', url_keys=[routing.ANY])
 class Signin(SigninTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

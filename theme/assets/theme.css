@@ -1099,6 +1099,7 @@ div.plot-container.plotly svg.main-svg {
 /* And get rid of overflow horizontally */
 html,
 body {
+    height: 100%;
     overscroll-behavior-x: none;
     -webkit-overflow-scrolling-x: auto;
     overflow-x: hidden;

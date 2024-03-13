@@ -7,7 +7,7 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('signup', template='BlankTemplate', url_keys=[routing.ANY])
+@routing.route('signup', template='Static', url_keys=[routing.ANY])
 class Signup(SignupTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.

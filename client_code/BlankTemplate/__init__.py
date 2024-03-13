@@ -5,7 +5,7 @@ from ..Signin import Signin
 from ..Signup import Signup
 
 
-@routing.template(path='', priority=0, condition=None)
+@routing.template(path='blank', priority=0, condition=None)
 class BlankTemplate(BlankTemplateTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
