@@ -160,7 +160,8 @@ color: %color:On Primary Container%;
 /*   display: flex;
   flex-direction: column; */
   min-height: 100vh;
-  min-height: calc(100vh - %anvil-banner-height% - 56px); /* YK */
+  /* YK Remove this min-height, causing page size too big on mobile */
+/*   min-height: calc(100vh - %anvil-banner-height% - 56px); */
 /*   height: 0; /* To make flex-grow work in IE */
 }
 
