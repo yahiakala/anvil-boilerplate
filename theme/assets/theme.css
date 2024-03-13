@@ -1089,3 +1089,7 @@ div.plot-container.plotly svg.main-svg {
     max-width: 400px;
     padding: 35px;
 }
+
+body {
+  overflow-x: hidden;
+}
