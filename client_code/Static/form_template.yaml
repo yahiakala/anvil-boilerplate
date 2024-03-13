@@ -1,0 +1,12 @@
+container:
+  type: HtmlTemplate
+  properties: {html: "<!-- Static with no Bounce Scroll -->\n<div anvil-slot=\"default\"\
+      ></div>\n<style>\n    html,\n    body {\n        overscroll-behavior: none;\n\
+      \        -webkit-overflow-scrolling: auto;\n        overflow-x: hidden;\n  \
+      \  }\n</style>"}
+components:
+- name: content_panel
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: default}
+is_package: true

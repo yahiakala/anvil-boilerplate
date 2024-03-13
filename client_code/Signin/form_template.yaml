@@ -1,7 +1,7 @@
 container: {type: ColumnPanel}
 components:
 - name: spacer_1
-  properties: {height: '50'}
+  properties: {height: '50', visible: true}
   type: Spacer
   layout_properties: {grid_position: 'UUEUAQ,BIZINF'}
 - name: fp_outer
