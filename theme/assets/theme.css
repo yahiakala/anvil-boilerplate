@@ -1088,6 +1088,8 @@ div.plot-container.plotly svg.main-svg {
 .anvil-role-narrow-col {
     max-width: 400px;
     padding: 35px;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 /* Don't let users scroll beyond limits */
@@ -1098,7 +1100,7 @@ body {
 }
 
 /* Get rid of the side scroll on column panels that have drop shadows */
-.anvil-container-overflow {
+/* .anvil-container-overflow {
     overflow-x: hidden;
     overflow-y: hidden;
-}
+} */
