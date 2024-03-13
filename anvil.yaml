@@ -35,6 +35,7 @@ runtime_options:
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
 startup_form: null
+native_deps: {head_html: <meta name="theme-color" content="#FFFBFE">}
 db_schema:
   users:
     title: Users
