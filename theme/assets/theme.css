@@ -1090,12 +1090,14 @@ div.plot-container.plotly svg.main-svg {
     padding: 35px;
 }
 
+/* Don't let users scroll beyond limits */
 html,
 body {
   overscroll-behavior: none; /* Disables overscroll effect globally */
   -webkit-overflow-scrolling: auto; /* Disables momentum scrolling in iOS Safari */
 }
 
+/* Get rid of the side scroll on column panels that have drop shadows */
 .anvil-container-overflow {
   overflow-x: hidden;
   overflow-y: hidden;
