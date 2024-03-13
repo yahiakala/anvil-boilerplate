@@ -1091,22 +1091,11 @@ div.plot-container.plotly svg.main-svg {
     overflow-x: hidden !important;
 }
 
-/* Get rid of the side scroll on column panels that have drop shadows */
-.anvil-role-no-flow {
-    overflow-x: hidden !important;
-    overflow-y: hidden;
-}
-
 /* Don't let users scroll beyond limits */
+/* And get rid of horizontal scroll bar for some things */
 html,
 body {
     overscroll-behavior: none;
     -webkit-overflow-scrolling: auto;
     overflow-x: hidden;
 }
-
-/* Get rid of the side scroll on column panels that have drop shadows */
-/* .anvil-container-overflow {
-    overflow-x: hidden;
-    overflow-y: hidden;
-} */
