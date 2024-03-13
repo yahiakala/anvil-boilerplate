@@ -1090,6 +1090,8 @@ div.plot-container.plotly svg.main-svg {
     padding: 35px;
 }
 
+html,
 body {
-  overflow-x: hidden;
+  overscroll-behavior: none; /* Disables overscroll effect globally */
+  -webkit-overflow-scrolling: auto; /* Disables momentum scrolling in iOS Safari */
 }
