@@ -1095,3 +1095,8 @@ body {
   overscroll-behavior: none; /* Disables overscroll effect globally */
   -webkit-overflow-scrolling: auto; /* Disables momentum scrolling in iOS Safari */
 }
+
+.anvil-container-overflow {
+  overflow-x: visible;
+  overflow-y: visible;
+}
