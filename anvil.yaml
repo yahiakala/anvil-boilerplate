@@ -35,10 +35,14 @@ runtime_options:
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
 startup_form: null
-native_deps: {head_html: "<meta name=\"theme-color\" content=\"#FFFBFE\">\n<meta name=\"\
-    background-color\" content=\"#FFFBFE\">\n\n<script>\n    document.querySelectorAll('[rel=\"\
+native_deps: {head_html: "<!-- <meta name=\"theme-color\" content=\"#FFFBFE\">\n<meta\
+    \ name=\"background-color\" content=\"#FFFBFE\">\n\n<script>\n    document.querySelectorAll('[rel=\"\
     manifest\"]')[0].remove()\n</script>\n<link rel=\"manifest\" href=\"_/theme/manifest.json\"\
-    >"}
+    > -->\n\n<script>\ndocument.addEventListener('DOMContentLoaded', (event) => {\n\
+    \    var oldManifest = document.querySelector('link[rel=\"manifest\"]');\n   \
+    \ if(oldManifest) oldManifest.remove();\n\n    var newManifest = document.createElement('link');\n\
+    \    newManifest.rel = 'manifest';\n    newManifest.href = '_/theme/manifest.json';\n\
+    \    document.head.appendChild(newManifest);\n});\n</script>"}
 db_schema:
   users:
     title: Users
