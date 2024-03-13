@@ -156,12 +156,12 @@ color: %color:On Primary Container%;
 }
 
 /* Page structure: App bar with optional left nav */
+/* YK Remove min height - don't need now that you have set theme color */
 .structure {
 /*   display: flex;
   flex-direction: column; */
-  min-height: 100vh;
-  /* YK Remove this min-height, causing page size too big on mobile */
-/*   min-height: calc(100vh - %anvil-banner-height% - 56px); */
+/*   min-height: 100vh; */
+/*   min-height: calc(100vh - %anvil-banner-height%); */
 /*   height: 0; /* To make flex-grow work in IE */
 }
 
