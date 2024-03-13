@@ -1095,7 +1095,7 @@ html,
 body {
 /*     overscroll-behavior: none; */
 /*     -webkit-overflow-scrolling: auto; */
-    background-color: %color:Background%;
+    background-color: %color:Background% !important;
 }
 
 /* Get rid of the side scroll on column panels that have drop shadows */
