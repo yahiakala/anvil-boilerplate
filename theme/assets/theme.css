@@ -156,11 +156,10 @@ color: %color:On Primary Container%;
 }
 
 /* Page structure: App bar with optional left nav */
-/* YK Remove min height - don't need now that you have set theme color */
 .structure {
 /*   display: flex;
   flex-direction: column; */
-/*   min-height: 100vh; */
+  min-height: 100vh;
   min-height: calc(100vh - %anvil-banner-height%);
 /*   height: 0; /* To make flex-grow work in IE */
 }
@@ -1093,7 +1092,7 @@ div.plot-container.plotly svg.main-svg {
 .anvil-role-narrow-col {
     max-width: 400px;
     padding: 35px;
-    overflow-x: hidden !important;
+    overflow-x: hidden;
 }
 
 /* Don't let users scroll beyond limits horizontally */
