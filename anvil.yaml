@@ -44,9 +44,10 @@ native_deps: {head_html: "<!-- <script>\n    document.querySelectorAll('[rel=\"m
     \ > 0) {\n    console.log(\"Found manifest link:\", manifestElements[0]);\n  \
     \  // Remove the first manifest link\n    manifestElements[0].remove();\n    console.log(\"\
     Manifest link removed.\");\n  } else {\n    console.log(\"No manifest link found.\"\
-    );\n  }\n</script>\n\n<!-- <script>\ndocument.addEventListener('DOMContentLoaded',\
-    \ (event) => {\n    var oldManifest = document.querySelector('link[rel=\"manifest\"\
-    ]');\n    if(oldManifest) oldManifest.remove();\n\n    var newManifest = document.createElement('link');\n\
+    );\n  }\n</script>\n<link rel=\"manifest\" href=\"_/theme/manifest.json?buildTime=0\"\
+    >\n\n<!-- <script>\ndocument.addEventListener('DOMContentLoaded', (event) => {\n\
+    \    var oldManifest = document.querySelector('link[rel=\"manifest\"]');\n   \
+    \ if(oldManifest) oldManifest.remove();\n\n    var newManifest = document.createElement('link');\n\
     \    newManifest.rel = 'manifest';\n    newManifest.href = '_/theme/manifest.json';\n\
     \    document.head.appendChild(newManifest);\n});\n</script> -->"}
 db_schema:
