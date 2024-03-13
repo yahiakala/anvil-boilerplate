@@ -35,7 +35,17 @@ runtime_options:
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
 startup_form: null
-native_deps: {head_html: <meta name="theme-color" content="#FFFBFE">}
+native_deps: {head_html: '<meta name="theme-color" content="#FFFBFE">
+
+
+    <script>
+
+    document.querySelectorAll(''[rel="manifest"]'')[0].remove()
+
+    </script>
+
+
+    <link rel="manifest" href="_/theme/manifest.json">'}
 db_schema:
   users:
     title: Users
