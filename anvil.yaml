@@ -37,7 +37,7 @@ runtime_options:
 startup_form: null
 native_deps: {head_html: "<meta name=\"theme-color\" content=\"#FFFBFE\">\n<meta name=\"\
     background-color\" content=\"#FFFBFE\">\n\n<script>\n    document.querySelectorAll('[rel=\"\
-    manifest\"]')[0].remove()\n</script>\n\n<link rel=\"manifest\" href=\"_/theme/manifest.json\"\
+    manifest\"]')[0].remove()\n</script>\n<link rel=\"manifest\" href=\"_/theme/assets/manifest.json\"\
     >"}
 db_schema:
   users:
