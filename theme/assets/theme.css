@@ -1095,12 +1095,12 @@ div.plot-container.plotly svg.main-svg {
     overflow-x: hidden !important;
 }
 
-/* Don't let users scroll beyond limits */
-/* And get rid of horizontal scroll bar for some things */
+/* Don't let users scroll beyond limits horizontally */
+/* And get rid of overflow horizontally */
 html,
 body {
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling-x: auto;
     overflow-x: hidden;
 }
 
