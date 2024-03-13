@@ -21,9 +21,6 @@ class Signin(SigninTemplate):
         if is_mobile:
             self.spacer_1.visible = False
             self.cp_login.role = None
-            self.cp_login.remove_from_parent()
-            self.fp_outer.visible = False
-            self.add_component(self.cp_login)
     
     def form_show(self, **event_args):
         time.sleep(0.3)  # Hack around weird initialization of flowpanel
