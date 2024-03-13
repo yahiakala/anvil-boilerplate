@@ -95,7 +95,12 @@ components:
     type: Label
     layout_properties: {grid_position: 'JJQQEZ,KWFYWY'}
   - name: link_portal
-    properties: {visible: false, align: center, text: Portal Link}
+    properties: {visible: true, align: center, text: Portal Link}
     type: Link
     layout_properties: {grid_position: 'RKIOMU,MKGOFF'}
+    components: []
+  - name: link_portal_copy
+    properties: {visible: true, align: center, text: Portal Link}
+    type: Link
+    layout_properties: {grid_position: 'KDKZYK,JDVZAD'}
 is_package: true
