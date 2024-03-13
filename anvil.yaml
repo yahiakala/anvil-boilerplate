@@ -35,18 +35,18 @@ runtime_options:
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
 startup_form: null
-native_deps: {head_html: "<!-- <meta name=\"theme-color\" content=\"#FFFBFE\"> -->\n\
-    <script>\n    document.querySelectorAll('[rel=\"manifest\"]')[0].remove()\n</script>\n\
-    <link rel=\"manifest\" href=\"_/theme/manifest.json?buildTime=0\">\n\n<script>\n\
-    document.addEventListener('DOMContentLoaded', (event) => {\n  // Attempt to find\
-    \ an existing theme-color meta tag\n  var themeColorMetaTag = document.querySelector('meta[name=\"\
-    theme-color\"]');\n\n  if (themeColorMetaTag) {\n    // If found, update its content\
-    \ attribute to the new color\n    themeColorMetaTag.setAttribute('content', '#FFFBFE');\n\
-    \    console.log(\"Theme color updated to #FFFBFE.\");\n  } else {\n    // If\
-    \ not found, create a new meta tag for theme-color\n    themeColorMetaTag = document.createElement('meta');\n\
-    \    themeColorMetaTag.name = 'theme-color';\n    themeColorMetaTag.content =\
-    \ '#FFFBFE';\n    document.head.appendChild(themeColorMetaTag);\n    console.log(\"\
-    Theme color meta tag added with color #FFFBFE.\");\n  }\n});\n</script>"}
+native_deps: {head_html: "<!-- <script>\n    document.querySelectorAll('[rel=\"manifest\"\
+    ]')[0].remove()\n</script>\n<link rel=\"manifest\" href=\"_/theme/manifest.json?buildTime=0\"\
+    > -->\n\n<script>\ndocument.addEventListener('DOMContentLoaded', (event) => {\n\
+    \  // Attempt to find an existing theme-color meta tag\n  var themeColorMetaTag\
+    \ = document.querySelector('meta[name=\"theme-color\"]');\n\n  if (themeColorMetaTag)\
+    \ {\n    // If found, update its content attribute to the new color\n    themeColorMetaTag.setAttribute('content',\
+    \ '#FFFBFE');\n    console.log(\"Theme color updated to #FFFBFE.\");\n  } else\
+    \ {\n    // If not found, create a new meta tag for theme-color\n    themeColorMetaTag\
+    \ = document.createElement('meta');\n    themeColorMetaTag.name = 'theme-color';\n\
+    \    themeColorMetaTag.content = '#FFFBFE';\n    document.head.appendChild(themeColorMetaTag);\n\
+    \    console.log(\"Theme color meta tag added with color #FFFBFE.\");\n  }\n});\n\
+    </script>"}
 db_schema:
   users:
     title: Users
