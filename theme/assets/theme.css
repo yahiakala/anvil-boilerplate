@@ -1093,9 +1093,8 @@ div.plot-container.plotly svg.main-svg {
 /* Don't let users scroll beyond limits */
 html,
 body {
-/*     overscroll-behavior: none; */
-/*     -webkit-overflow-scrolling: auto; */
-    background-color: %color:Background% !important;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: auto;
 }
 
 /* Get rid of the side scroll on column panels that have drop shadows */
