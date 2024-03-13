@@ -1091,7 +1091,7 @@ div.plot-container.plotly svg.main-svg {
 }
 
 /* Get rid of the side scroll on column panels that have drop shadows */
-.anvil-role-narrow-col.anvil-container-overflow {
+.anvil-role-narrow-col > .anvil-container-overflow {
     overflow-x: hidden;
     overflow-y: hidden;
 }
