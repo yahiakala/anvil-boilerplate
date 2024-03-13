@@ -1102,6 +1102,7 @@ html,
 body {
     overscroll-behavior: none;
     -webkit-overflow-scrolling: auto;
+    overflow-x: hidden;
 }
 
 /* Get rid of the side scroll on column panels that have drop shadows */
