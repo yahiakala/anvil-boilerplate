@@ -269,7 +269,7 @@ color: %color:On Primary Container%;
     left: 0;
     right: 0;
     z-index: 2;
-/*     background-color: rgba(0,0,0,0.2); */
+    background-color: rgba(0,0,0,0.2);
   }
  }
 
@@ -1098,4 +1098,9 @@ body {
     overscroll-behavior: none;
     -webkit-overflow-scrolling: auto;
     overflow-x: hidden;
+}
+
+/* Make the left nav same background color */
+.nav-holder .left-nav, .left-nav-placeholder {
+  background: %color:Background%;
 }
