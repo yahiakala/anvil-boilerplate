@@ -37,7 +37,7 @@ runtime_options:
 startup_form: null
 native_deps: {head_html: "<meta name=\"theme-color\" content=\"#FFFBFE\">\n<script>\n\
     \    document.querySelectorAll('[rel=\"manifest\"]')[0].remove()\n</script>\n\
-    <link rel=\"manifest\" href=\"_/theme/manifest.jsonbuildTime=0\">\n\n<!-- <script>\n\
+    <link rel=\"manifest\" href=\"_/theme/manifest.json?buildTime=0\">\n\n<!-- <script>\n\
     \  // Find all elements with rel=\"manifest\"\n  var manifestElements = document.querySelectorAll('link[rel=\"\
     manifest\"]');\n  \n  // Log the elements to the console\n  console.log(manifestElements);\n\
     \n  // Check if at least one element was found and log the first one if it exists\n\
