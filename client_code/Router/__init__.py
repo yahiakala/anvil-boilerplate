@@ -11,7 +11,7 @@ from ..Settings import Settings
 from ..Tests import Tests
 
 
-@routing.template(path='app', priority=1, condition=None)
+@routing.template(path='app', priority=1, condition=Global.user is not None)
 class Router(RouterTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -21,8 +21,6 @@ class Router(RouterTemplate):
         self.link_dev.tag.url_hash = 'app/tests'
         self.link_logout.tag.url_hash = 'app/logout'
         self.link_settings.tag.url_hash = 'app/settings'
-        self.link_login.tag.url_hash = 'signin'
-        self.link_signup.tag.url_hash = 'signup'
         
         user = Global.user
         self.set_account_state(user)
@@ -59,8 +57,6 @@ class Router(RouterTemplate):
     def set_account_state(self, user):
         self.icon_logout.visible = user is not None
         self.link_logout.visible = user is not None
-        self.link_login.visible = user is None
-        self.link_signup.visible = user is None
         self.link_settings.visible = user is not None
         self.link_dev.visible = user is not None and 'dev' in Global.permissions
 
