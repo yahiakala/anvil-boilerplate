@@ -11,7 +11,7 @@ from ..Settings import Settings
 from ..Tests import Tests
 
 
-@routing.template(path='app', priority=1, condition=Global.user is not None)
+@routing.template(path='app', priority=1, condition=lambda: Global.user is not None)
 class Router(RouterTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
