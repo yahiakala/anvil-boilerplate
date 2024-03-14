@@ -3,7 +3,6 @@ from anvil import *
 import anvil.users
 
 from .. import Global
-from .. import utils
 
 from anvil_extras import routing
 
@@ -49,14 +48,6 @@ class Router(RouterTemplate):
     def on_form_load(self, url_hash, url_pattern, url_dict, form):
         """Any time a form is loaded."""
         self.set_account_state(Global.user)
-
-    def link_signup_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        utils.register()
-
-    def link_login_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        utils.login()
 
     def icon_logout_click(self, **event_args):
         """This method is called when the link is clicked"""

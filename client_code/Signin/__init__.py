@@ -4,7 +4,6 @@ import anvil.users
 import time
 from anvil_extras import routing
 
-from .. import utils
 from .. import Global
 
 
@@ -21,10 +20,6 @@ class Signin(SigninTemplate):
         if is_mobile:
             self.spacer_1.visible = False
             self.cp_login.role = ['narrow-col', 'narrow-col-mobile']
-    
-    def form_show(self, **event_args):
-        time.sleep(0.3)  # Hack around weird initialization of flowpanel
-        # self.fp_outer.visible = True
 
     def route_user(self, **event_args):
         """Send the user on their way."""

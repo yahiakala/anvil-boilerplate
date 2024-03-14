@@ -4,7 +4,6 @@ import anvil.users
 import time
 from anvil_extras import routing
 
-from .. import utils
 from .. import Global
 
 
@@ -21,11 +20,7 @@ class Sign(SignTemplate):
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
             self.spacer_1.visible = False
-            self.cp_login.role = None
-
-    def form_show(self, **event_args):
-        time.sleep(0.3)  # Hack around weird initialization of flowpanel
-        self.fp_outer.visible = True
+            self.cp_login.role = ['narrow-col', 'narrow-col-mobile']
 
     def btn_signin_click(self, **event_args):
         """This method is called when the button is clicked"""
