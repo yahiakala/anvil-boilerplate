@@ -31,6 +31,6 @@ class Sign(SignTemplate):
         routing.set_url_hash(url_pattern='signup', url_dict=self.url_dict)
 
     def form_show(self, **event_args):
-        """This method is called when the FlowPanel is shown on the screen"""
-        time.sleep(0.3)  # weird thing with flow panel
+        """Skip expansion animation with cp inside of fp."""
+        time.sleep(0.3)
         self.fp_outer.visible = True
