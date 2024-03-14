@@ -45,5 +45,5 @@ components:
       properties: {display_mode: shrink_to_fit, source: _/theme/notalone.png}
       type: Image
       layout_properties: {grid_position: 'ZLAQUD,WJJNKY'}
-  event_bindings: {}
+  event_bindings: {show: form_show}
 is_package: true
