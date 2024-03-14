@@ -3,6 +3,7 @@ from anvil import *
 import anvil.users
 import time
 from anvil_extras import routing
+from anvil_squared import utils
 
 from .. import Global
 
@@ -35,8 +36,7 @@ class Signin(SigninTemplate):
             routing.set_url_hash('app')
     
     def btn_google_click(self, **event_args):
-        """This method is called when the button is clicked"""
-        # Note: if user does not exist, it just creates a user.
+        """Signin with google. Creates a user if none exists."""
         self.user = anvil.users.login_with_google(remember=True)
         self.route_user()
 
@@ -55,37 +55,44 @@ class Signin(SigninTemplate):
         routing.set_url_hash(url_pattern='signup', url_dict=self.url_dict)
 
     def btn_signin_click_custom(self, **event_args):
-        """This method is called when the button is clicked"""
-        self.lbl_error.visible = False
-        self.user = anvil.users.get_user(allow_remembered=True)
-        email = self.tb_email.text
-        password = self.tb_password.text
-        if self.user:
-            self.route_user()
-        else:
-            try:
-                self.user = anvil.server.call('login_with_email_custom', email, password)
-                # self.user = anvil.users.login_with_email(email, password, remember=True)
-                self.route_user()
-            except anvil.users.MFARequired as e:
-                r = anvil.users.mfa.mfa_login_with_form(email, password)
-                if r == 'reset_mfa':
-                    anvil.users.mfa.send_mfa_reset_email(email)
-                    self.lbl_error.text = "Requested 2-factor authentication reset for " + email + ". Check your email."
-                elif r == None:
-                    self.lbl_error.text = "Cancelled login."
-                else:
-                    self.user = anvil.users.login_with_email(email, password, mfa=r, remember=True)
-                    self.route_user()
-            except anvil.users.AuthenticationFailed as e:
-                self.lbl_error.text = e.args[0]
-                self.lbl_error.visible = True
-            except anvil.users.EmailNotConfirmed as e:
-                self.lbl_error.text = "You haven't confirmed your email address. Please check your email and click the confirmation link, or reset your password."
-                self.lbl_error.visible = True
-            except anvil.users.TooManyPasswordFailures as e:
-                self.lbl_error.text = e.args[0]
-                self.lbl_error.visible = True
+        self.user = utils.signin_with_email(
+            self.tb_email, self.tb_password,
+            'login_with_email_custom', self.lbl_error
+        )
+        self.route_user()
+
+    # def btn_signin_click_custom(self, **event_args):
+    #     """This method is called when the button is clicked"""
+    #     self.lbl_error.visible = False
+    #     self.user = anvil.users.get_user(allow_remembered=True)
+    #     email = self.tb_email.text
+    #     password = self.tb_password.text
+    #     if self.user:
+    #         self.route_user()
+    #     else:
+    #         try:
+    #             self.user = anvil.server.call('login_with_email_custom', email, password)
+    #             # self.user = anvil.users.login_with_email(email, password, remember=True)
+    #             self.route_user()
+    #         except anvil.users.MFARequired as e:
+    #             r = anvil.users.mfa.mfa_login_with_form(email, password)
+    #             if r == 'reset_mfa':
+    #                 anvil.users.mfa.send_mfa_reset_email(email)
+    #                 self.lbl_error.text = "Requested 2-factor authentication reset for " + email + ". Check your email."
+    #             elif r == None:
+    #                 self.lbl_error.text = "Cancelled login."
+    #             else:
+    #                 self.user = anvil.users.login_with_email(email, password, mfa=r, remember=True)
+    #                 self.route_user()
+    #         except anvil.users.AuthenticationFailed as e:
+    #             self.lbl_error.text = e.args[0]
+    #             self.lbl_error.visible = True
+    #         except anvil.users.EmailNotConfirmed as e:
+    #             self.lbl_error.text = "You haven't confirmed your email address. Please check your email and click the confirmation link, or reset your password."
+    #             self.lbl_error.visible = True
+    #         except anvil.users.TooManyPasswordFailures as e:
+    #             self.lbl_error.text = e.args[0]
+    #             self.lbl_error.visible = True
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""

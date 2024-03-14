@@ -12,6 +12,7 @@ class Signup(SignupTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
+        self.user = Global.user
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
             self.spacer_1.visible = False
@@ -41,7 +42,9 @@ class Signup(SignupTemplate):
 
     def btn_signup_click(self, **event_args):
         """Signup with email/password"""
-        self.lbl_error.visible = False
+        if self.user:
+            self.route_user()
+
         self.user = utils.signup_with_email(
             self.tb_email, self.tb_password, self.tb_password_repeat,
             'Boilerplate', 'signup_with_email_custom', self.lbl_error
