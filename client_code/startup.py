@@ -1,12 +1,11 @@
-import anvil
-
 from anvil_extras import routing
 
 from .Router import Router
 from .BlankTemplate import BlankTemplate
 from .Static import Static
+from . import Global
 
-@routing.redirect(path="app", priority=20, condition=lambda: Globals.user is None)
+@routing.redirect(path="app", priority=20, condition=lambda: Global.user is None)
 def redirect_no_user():
     return "sign"
 
