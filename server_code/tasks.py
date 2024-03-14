@@ -28,3 +28,9 @@ def get_permissions():
 def do_admin():
     print('doing admin thing.')
     pass
+
+@anvil.server.callable
+def test_this():
+    client_info = anvil.server.context.client
+    print(client_info)
+    print(client_info.type)

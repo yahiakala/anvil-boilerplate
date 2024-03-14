@@ -62,7 +62,7 @@ class Signin(SigninTemplate):
     def btn_signin_click_custom(self, **event_args):
         """This method is called when the button is clicked"""
         self.lbl_error.visible = False
-        self.user = anvil.users.get_user()
+        self.user = anvil.users.get_user(allow_remembered=True)
         email = self.tb_email.text
         password = self.tb_password.text
         if self.user:
