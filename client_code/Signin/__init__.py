@@ -20,7 +20,7 @@ class Signin(SigninTemplate):
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
             self.spacer_1.visible = False
-            self.cp_login.role = 'tonal-card'
+            # self.cp_login.role = 'tonal-card'
     
     def form_show(self, **event_args):
         time.sleep(0.3)  # Hack around weird initialization of flowpanel
