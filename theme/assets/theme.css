@@ -1097,13 +1097,13 @@ div.plot-container.plotly svg.main-svg {
 
 /* Don't let users scroll beyond limits horizontally */
 /* And get rid of overflow horizontally */
-html,
+/* html,
 body {
     height: 100%;
     overscroll-behavior-x: none;
     -webkit-overflow-scrolling-x: auto;
     overflow-x: hidden;
-}
+} */
 
 /* Make the left nav same background color */
 .nav-holder .left-nav, .left-nav-placeholder {
