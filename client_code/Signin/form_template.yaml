@@ -6,7 +6,7 @@ components:
   layout_properties: {grid_position: 'UUEUAQ,BIZINF'}
 - name: cp_login
   properties:
-    role: [elevated-card]
+    role: [elevated-card, narrow-col]
     visible: true
   type: ColumnPanel
   components:

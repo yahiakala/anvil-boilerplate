@@ -6,7 +6,7 @@ components:
   layout_properties: {grid_position: 'FHSBMQ,MFMXCL'}
 - name: cp_login
   properties:
-    role: [elevated-card]
+    role: [elevated-card, narrow-col]
   type: ColumnPanel
   components:
   - name: lbl_title

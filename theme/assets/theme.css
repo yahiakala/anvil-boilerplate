@@ -1090,9 +1090,10 @@ div.plot-container.plotly svg.main-svg {
 }
 
 .anvil-role-narrow-col {
-    max-width: 400px;
+/*     max-width: 400px; */
+    overflow: hidden;
     padding: 35px;
-    overflow-x: hidden;
+/*     overflow-x: hidden; */
 }
 
 /* Don't let users scroll beyond limits horizontally */
