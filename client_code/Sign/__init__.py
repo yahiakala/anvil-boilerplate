@@ -32,4 +32,4 @@ class Sign(SignTemplate):
 
     def form_show(self, **event_args):
         """This method is called when the FlowPanel is shown on the screen"""
-        time.sleep(0.3)  # weird thing with flow panel
+        time.sleep(0.4)  # weird thing with flow panel
