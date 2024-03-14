@@ -1094,6 +1094,9 @@ div.plot-container.plotly svg.main-svg {
     padding: 35px;
 /*     overflow-x: hidden; */
 }
+.anvil-role-narrow-col-mobile {
+    padding-bottom: 0px;
+}
 
 /* Don't let users scroll beyond limits horizontally */
 /* And get rid of overflow horizontally */
