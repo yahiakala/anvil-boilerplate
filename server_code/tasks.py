@@ -34,3 +34,11 @@ def test_this():
     client_info = anvil.server.context.client
     print(client_info)
     print(client_info.type)
+
+
+@anvil.server.callable(require_user=True)
+@authorisation_required('dev')
+def impersonate_user(email):
+    new_user = app_tables.users.get(email=email)
+    anvil.users.force_login(new_user)
+    return new_user
