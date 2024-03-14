@@ -3,6 +3,8 @@ from anvil.tables import app_tables
 import anvil.users
 import anvil.email
 
+from anvil_squared import auth
+
 
 @anvil.server.callable
 def login_with_email_custom(email, password):

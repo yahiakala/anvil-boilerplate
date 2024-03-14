@@ -2,8 +2,8 @@ from ._anvil_designer import SignupTemplate
 from anvil import *
 import anvil.users
 from anvil_extras import routing
+from anvil_squared import utils
 
-from .. import utils
 from .. import Global
 
 
@@ -27,7 +27,10 @@ class Signup(SignupTemplate):
             routing.set_url_hash('app')
 
     def btn_google_click(self, **event_args):
-        """This method is called when the button is clicked"""
+        """Signup with Google"""
+        if self.user:
+            self.route_user()
+
         try:
             self.user = anvil.users.signup_with_google(remember=True)
             self.route_user()
@@ -36,54 +39,20 @@ class Signup(SignupTemplate):
             self.user = None
             routing.set_url_hash(url_pattern='signin', url_dict=self.url_dict)
 
-        if self.user:
-            self.route_user()
-
     def btn_signup_click(self, **event_args):
-        """This method is called when the button is clicked"""
+        """Signup with email/password"""
         self.lbl_error.visible = False
-        self.user = None
-        email = self.tb_email.text
-        password = self.tb_password.text
-        proceed = self.tb_password_repeat_lost_focus()
-        if proceed:
-            try:
-                # self.user = anvil.users.signup_with_email(email, password, remember=True)
-                self.user = anvil.server.call('signup_with_email_custom', email, password, app_name='Dreambyte')
-            # except anvil.users.MFARequired:
-            #     mfa_method, _ = anvil.users.mfa._configure_mfa(email, None, False, [("Cancel", None)], "Sign up")
-            #     self.user = anvil.server.call("anvil.private.users.signup_with_email", email, password, mfa_method=mfa_method, remember=True)
-            except anvil.users.UserExists as e:
-                anvil.alert(str(e.args[0]))
-                self.user = None
-                routing.set_url_hash(url_pattern='signin', url_dict=self.url_dict)
-            except anvil.users.PasswordNotAcceptable as e:
-                self.lbl_error.text = str(e.args[0])
-                self.lbl_error.visible = True
+        self.user = utils.signup_with_email(
+            self.tb_email, self.tb_password, self.tb_password_repeat,
+            'Boilerplate', 'signup_with_email_custom', self.lbl_error
+        )
 
-        if self.user:
-            self.tb_email.text = ''
-            self.tb_password.text = ''
-            self.tb_password_repeat.text = ''
-            self.lbl_error.text = (
-                "We've sent a confirmation email to " + email + ". Open your inbox and click the link to complete your signup."
-            )
-            self.lbl_error.visible = True
-
-    def tb_password_repeat_lost_focus(self, **event_args):
+    def tb_signup_lost_focus(self, **event_args):
         """This method is called when the TextBox loses focus."""
-        if len(self.tb_email.text) < 5 or "@" not in self.tb_email.text or "." not in self.tb_email.text:
-            self.lbl_error.text = "Enter an email address"
-        elif self.tb_password.text == '' or self.tb_password.text is None:
-            self.lbl_error.text = 'Please enter a password.'
-        elif self.tb_password_repeat.text != self.tb_password.text:
-            self.lbl_error.text = 'Passwords do not match.'
-        else:
-            self.lbl_error.visible = False
-            return True
-
-        self.lbl_error.visible = True
-        return False
+        return utils.signup_with_email_checker(
+            self.tb_email.text, self.tb_password.text,
+            self.tb_password_repeat.text, self.lbl_error
+        )
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""

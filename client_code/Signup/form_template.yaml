@@ -30,15 +30,17 @@ components:
     properties: {role: outlined, placeholder: Email Address}
     type: TextBox
     layout_properties: {grid_position: 'LNZGPA,VMCQXE'}
+    event_bindings: {lost_focus: tb_signup_lost_focus, change: tb_signup_lost_focus}
   - name: tb_password
     properties: {role: outlined, placeholder: Password, hide_text: true}
     type: TextBox
     layout_properties: {grid_position: 'YSBFLK,JSZBJZ'}
+    event_bindings: {lost_focus: tb_signup_lost_focus, change: tb_signup_lost_focus}
   - name: tb_password_repeat
     properties: {role: outlined, placeholder: Re-enter Password, hide_text: true}
     type: TextBox
     layout_properties: {grid_position: 'USHBNH,MHLMUI'}
-    event_bindings: {lost_focus: tb_password_repeat_lost_focus}
+    event_bindings: {lost_focus: tb_signup_lost_focus, change: tb_signup_lost_focus}
   - name: btn_signup
     properties:
       text: Sign up
