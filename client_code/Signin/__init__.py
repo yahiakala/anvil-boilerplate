@@ -8,7 +8,7 @@ from .. import utils
 from .. import Global
 
 
-@routing.route('', template='Static')
+# @routing.route('', template='Static')
 @routing.route('signin', template='Static', url_keys=[routing.ANY])
 class Signin(SigninTemplate):
     def __init__(self, **properties):

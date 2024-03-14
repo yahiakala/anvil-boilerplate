@@ -4,6 +4,7 @@ from anvil_extras import routing
 
 from ..Signin import Signin
 from ..Signup import Signup
+from ..Sign import Sign
 
 
 @routing.template(path='', priority=0, condition=None)

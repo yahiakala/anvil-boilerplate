@@ -1109,3 +1109,12 @@ body {
 .nav-holder .left-nav, .left-nav-placeholder {
   background: %color:Background%;
 }
+
+.anvil-role-vertically-centered {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+/*justify-content will be applied vertically because the flex direction is column*/
+  justify-content: center;
+}
