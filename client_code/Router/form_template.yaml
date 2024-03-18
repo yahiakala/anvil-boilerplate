@@ -53,3 +53,9 @@ components:
     type: Link
     layout_properties: {grid_position: 'FPKVPS,GRULCP'}
     event_bindings: {click: nav_click}
+    components: []
+  - name: link_forum
+    properties: {text: Forum}
+    type: Link
+    layout_properties: {grid_position: 'VVEAHG,FBWQAS'}
+    event_bindings: {click: nav_click}
