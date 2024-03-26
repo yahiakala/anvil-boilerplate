@@ -3,7 +3,7 @@ from anvil import *
 import anvil.users
 from anvil_extras import routing
 
-from .. import Global
+from ..Global import Global
 
 
 @routing.route('/settings', template='Router')

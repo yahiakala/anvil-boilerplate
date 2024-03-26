@@ -5,7 +5,7 @@ import time
 from anvil_extras import routing
 from anvil_squared import utils
 
-from .. import Global
+from ..Global import Global
 
 
 @routing.route('signin', template='Static', url_keys=[routing.ANY])

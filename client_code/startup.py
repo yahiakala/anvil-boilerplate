@@ -3,7 +3,7 @@ from anvil_extras import routing
 from .Router import Router
 from .BlankTemplate import BlankTemplate
 from .Static import Static
-from . import Global
+from .Global import Global
 
 @routing.redirect(path="app", priority=20, condition=lambda: Global.user is None)
 def redirect_no_user():

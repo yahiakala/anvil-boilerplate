@@ -4,7 +4,7 @@ import anvil.users
 import time
 from anvil_extras import routing
 
-from .. import Global
+from ..Global import Global
 
 
 @routing.route('', template='Static')

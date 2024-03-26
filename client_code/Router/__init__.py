@@ -2,7 +2,7 @@ from ._anvil_designer import RouterTemplate
 from anvil import *
 import anvil.users
 
-from .. import Global
+from ..Global import Global
 
 from anvil_extras import routing
 

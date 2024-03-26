@@ -4,7 +4,7 @@ import anvil.users
 from anvil_extras import routing
 from anvil_squared import utils
 
-from .. import Global
+from ..Global import Global
 
 
 @routing.route('signup', template='Static', url_keys=[routing.ANY])
