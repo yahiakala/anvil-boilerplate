@@ -34,46 +34,6 @@ runtime_options:
 startup_form: null
 native_deps:
   head_html: |-
-    <!-- <script>
-        document.querySelectorAll('[rel="manifest"]')[0].remove()
-    </script>
-    <link rel="manifest" href="_/theme/manifest.json?buildTime=0"> -->
-
-    <!-- <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      // Attempt to find an existing theme-color meta tag
-      var themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
-
-      if (themeColorMetaTag) {
-        // If found, update its content attribute to the new color
-        themeColorMetaTag.setAttribute('content', '#FFFBFE');
-        console.log("Theme color updated to #FFFBFE.");
-      } else {
-        // If not found, create a new meta tag for theme-color
-        themeColorMetaTag = document.createElement('meta');
-        themeColorMetaTag.name = 'theme-color';
-        themeColorMetaTag.content = '#FFFBFE';
-        document.head.appendChild(themeColorMetaTag);
-        console.log("Theme color meta tag added with color #FFFBFE.");
-      }
-    });
-    </script>
-
-    <script>
-    function updateThemeColor(color) {
-        var metaThemeColor = document.querySelector('meta[name=theme-color]');
-        if (metaThemeColor) {
-          metaThemeColor.setAttribute('content', color);
-        } else {
-          // If for some reason the meta tag doesn't exist, create it.
-          metaThemeColor = document.createElement('meta');
-          metaThemeColor.name = 'theme-color';
-          metaThemeColor.content = color;
-          document.head.appendChild(metaThemeColor);
-        }
-    }
-    </script> -->
-
     <meta name="theme-color" content="#FFFBFE">
 
     <script defer>
