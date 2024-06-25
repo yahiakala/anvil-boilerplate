@@ -42,6 +42,7 @@ class Signup(SignupTemplate):
 
     def btn_signup_click(self, **event_args):
         """Signup with email/password"""
+        # TODO: Enhance to allow immediate login and be more lax about email confirmation.
         if self.user:
             self.route_user()
 
