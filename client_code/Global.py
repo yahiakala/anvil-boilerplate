@@ -1,6 +1,7 @@
 import anvil.server
 import anvil.users
 import anvil.js
+from anvil_squared.utils import print_timestamp
 
 
 class GlobalCache:
@@ -17,10 +18,15 @@ class GlobalCache:
         if name in self._global_dict:
             if name == 'user':
                 self._global_dict[name] = self._global_dict[name] or anvil.users.get_user()
+                print_timestamp('Global: user')
             elif name == 'is_mobile':
                 self._global_dict[name] = self._global_dict[name] or anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
+                print_timestamp('Global: is_mobile')
             else:
-                self._global_dict[name] = self._global_dict[name] or anvil.server.call('get_' + name)
+                print_timestamp(f'Global before: {name}')
+                if self._global_dict[name] is None:  # Only check None condition.
+                    self._global_dict[name] = anvil.server.call('get_' + name)
+                print_timestamp(f'Global after: {name}')
             return self._global_dict[name]
         raise AttributeError(f"Attribute {name} not found")
 
@@ -39,6 +45,7 @@ class GlobalCache:
     def clear_global_attributes(self):
         for name in list(self._global_dict.keys()):
             self._global_dict[name] = None
+
 
 # Initialize the global cache instance
 Global = GlobalCache()
