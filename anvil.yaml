@@ -39,7 +39,7 @@ native_deps:
     </script>
     <link rel="manifest" href="_/theme/manifest.json?buildTime=0"> -->
 
-    <script>
+    <!-- <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       // Attempt to find an existing theme-color meta tag
       var themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
@@ -72,6 +72,12 @@ native_deps:
           document.head.appendChild(metaThemeColor);
         }
     }
+    </script> -->
+
+    <meta name="theme-color" content="#FFFBFE">
+
+    <script defer>
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFBFE');
     </script>
 db_schema:
   users:
