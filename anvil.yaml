@@ -10,10 +10,7 @@ services:
   client_config: {}
   server_config: {}
 - source: /runtime/services/anvil/users.yml
-  client_config: {mfa_timeout_days: 7, require_secure_passwords: true, share_login_status: true,
-    use_token: true, allow_mfa_email_reset: true, use_email: true, allow_remember_me: true,
-    allow_signup: true, enable_automatically: true, confirm_email: true, require_mfa: true,
-    remember_me_days: 30, use_google: true}
+  client_config: {mfa_timeout_days: 7, require_secure_passwords: true, share_login_status: true, use_token: true, allow_mfa_email_reset: true, use_email: true, allow_remember_me: true, allow_signup: true, enable_automatically: true, confirm_email: true, require_mfa: true, remember_me_days: 30, use_google: true}
   server_config: {user_table: users}
 - source: /runtime/services/google.yml
   client_config: {}
@@ -35,24 +32,47 @@ runtime_options:
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
 startup_form: null
-native_deps: {head_html: "<!-- <script>\n    document.querySelectorAll('[rel=\"manifest\"\
-    ]')[0].remove()\n</script>\n<link rel=\"manifest\" href=\"_/theme/manifest.json?buildTime=0\"\
-    > -->\n\n<script>\ndocument.addEventListener('DOMContentLoaded', (event) => {\n\
-    \  // Attempt to find an existing theme-color meta tag\n  var themeColorMetaTag\
-    \ = document.querySelector('meta[name=\"theme-color\"]');\n\n  if (themeColorMetaTag)\
-    \ {\n    // If found, update its content attribute to the new color\n    themeColorMetaTag.setAttribute('content',\
-    \ '#FFFBFE');\n    console.log(\"Theme color updated to #FFFBFE.\");\n  } else\
-    \ {\n    // If not found, create a new meta tag for theme-color\n    themeColorMetaTag\
-    \ = document.createElement('meta');\n    themeColorMetaTag.name = 'theme-color';\n\
-    \    themeColorMetaTag.content = '#FFFBFE';\n    document.head.appendChild(themeColorMetaTag);\n\
-    \    console.log(\"Theme color meta tag added with color #FFFBFE.\");\n  }\n});\n\
-    </script>\n\n<script>\nfunction updateThemeColor(color) {\n    var metaThemeColor\
-    \ = document.querySelector('meta[name=theme-color]');\n    if (metaThemeColor)\
-    \ {\n      metaThemeColor.setAttribute('content', color);\n    } else {\n    \
-    \  // If for some reason the meta tag doesn't exist, create it.\n      metaThemeColor\
-    \ = document.createElement('meta');\n      metaThemeColor.name = 'theme-color';\n\
-    \      metaThemeColor.content = color;\n      document.head.appendChild(metaThemeColor);\n\
-    \    }\n}\n</script>"}
+native_deps:
+  head_html: |-
+    <!-- <script>
+        document.querySelectorAll('[rel="manifest"]')[0].remove()
+    </script>
+    <link rel="manifest" href="_/theme/manifest.json?buildTime=0"> -->
+
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      // Attempt to find an existing theme-color meta tag
+      var themeColorMetaTag = document.querySelector('meta[name="theme-color"]');
+
+      if (themeColorMetaTag) {
+        // If found, update its content attribute to the new color
+        themeColorMetaTag.setAttribute('content', '#FFFBFE');
+        console.log("Theme color updated to #FFFBFE.");
+      } else {
+        // If not found, create a new meta tag for theme-color
+        themeColorMetaTag = document.createElement('meta');
+        themeColorMetaTag.name = 'theme-color';
+        themeColorMetaTag.content = '#FFFBFE';
+        document.head.appendChild(themeColorMetaTag);
+        console.log("Theme color meta tag added with color #FFFBFE.");
+      }
+    });
+    </script>
+
+    <script>
+    function updateThemeColor(color) {
+        var metaThemeColor = document.querySelector('meta[name=theme-color]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', color);
+        } else {
+          // If for some reason the meta tag doesn't exist, create it.
+          metaThemeColor = document.createElement('meta');
+          metaThemeColor.name = 'theme-color';
+          metaThemeColor.content = color;
+          document.head.appendChild(metaThemeColor);
+        }
+    }
+    </script>
 db_schema:
   users:
     title: Users

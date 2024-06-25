@@ -41,7 +41,6 @@ components:
         type: TextBox
         layout_properties: {expand: true}
       - name: btn_confirm
-        properties: {text: Confirm, role: filled-button, background: 'theme:Error',
-          align: right}
+        properties: {text: Confirm, role: filled-button, background: 'theme:Error', align: right}
         type: Button
         event_bindings: {click: btn_confirm_click}

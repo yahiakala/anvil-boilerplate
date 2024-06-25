@@ -1,13 +1,29 @@
 container:
   type: HtmlTemplate
-  properties: {html: "<!-- Static with no Bounce Scroll -->\n<div class=\"structure\"\
-      >\n  <div class=\"nav-holder\">\n    <div class=\"content\">\n      <div anvil-slot-repeat=\"\
-      default\" class=\"anvil-measure-this\"></div>\n      <div class=\"placeholder\
-      \ drop-here\" anvil-if-slot-empty=\"default\" anvil-drop-slot=\"default\">Drop\
-      \ a ColumnPanel here.</div>\n    </div>\n  </div>\n</div>\n\n<!-- <div anvil-slot=\"\
-      default\"></div> -->\n\n<style>\n    html,\n    body {\n        overscroll-behavior:\
-      \ none;\n        -webkit-overflow-scrolling: auto;\n    }\n    .anvil-panel-section-container\
-      \ {\n        max-width:400px;\n    }\n</style>"}
+  properties:
+    html: |-
+      <!-- Static with no Bounce Scroll -->
+      <div class="structure">
+        <div class="nav-holder">
+          <div class="content">
+            <div anvil-slot-repeat="default" class="anvil-measure-this"></div>
+            <div class="placeholder drop-here" anvil-if-slot-empty="default" anvil-drop-slot="default">Drop a ColumnPanel here.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div anvil-slot="default"></div> -->
+
+      <style>
+          html,
+          body {
+              overscroll-behavior: none;
+              -webkit-overflow-scrolling: auto;
+          }
+          .anvil-panel-section-container {
+              max-width:400px;
+          }
+      </style>
 components:
 - name: content_panel
   properties: {}

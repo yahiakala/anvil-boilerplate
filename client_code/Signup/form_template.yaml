@@ -67,8 +67,7 @@ components:
       event_bindings: {click: link_help_click}
       components: []
   - name: lbl_error
-    properties: {text: Passwords must match, align: center, foreground: 'theme:Error',
-      visible: false}
+    properties: {text: Passwords must match, align: center, foreground: 'theme:Error', visible: false}
     type: Label
     layout_properties: {grid_position: 'JQRGMG,UQBUBY'}
   - name: img_logo
