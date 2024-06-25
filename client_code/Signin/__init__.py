@@ -41,13 +41,7 @@ class Signin(SigninTemplate):
 
     def link_forgot_click(self, **event_args):
         """This method is called when the link is clicked"""
-        if not self.tb_email.text:
-            self.lbl_error.text = 'Please enter a valid email.'
-            self.lbl_error.visible = True
-        else:
-            anvil.users.send_password_reset_email(self.tb_email.text)
-            self.lbl_error.text = f'Please check your email ({self.tb_email.text}) for a password reset link.'
-            self.lbl_error.visible = True
+        utils.reset_password(self.tb_mail, self.lbl_error)
 
     def link_signup_click(self, **event_args):
         """This method is called when the link is clicked"""
