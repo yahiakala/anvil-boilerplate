@@ -73,80 +73,86 @@ db_schema:
       admin_ui: {width: 200}
       type: datetime
     - name: roles
-      admin_ui: {width: 200, order: 9}
+      admin_ui: {width: 200}
       type: link_multiple
       target: roles
     - name: email_confirmation_key
       admin_ui: {width: 200}
       type: string
   permissions:
+    title: Permissions
     client: none
     server: full
     columns:
     - name: name
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: string
     - name: description
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: string
-    title: Permissions
   roles:
+    title: Roles
     client: none
     server: full
     columns:
     - name: name
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: string
     - name: permissions
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: link_multiple
       target: permissions
     - name: tenant
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: link_single
       target: tenants
-    title: Roles
+    - name: can_edit
+      admin_ui: {width: 200, order: 3}
+      type: bool
   usermap:
+    title: Usermap
     client: none
     server: full
     columns:
     - name: user
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: link_single
       target: users
     - name: roles
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: link_multiple
       target: roles
     - name: customer_id
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: string
-    title: UserMap
   tenants:
+    title: Tenants
     client: none
     server: full
     columns:
     - name: name
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: string
-    title: Tenants
+    - name: new_roles
+      admin_ui: {width: 200, order: 1}
+      type: simpleObject
   usertenant:
+    title: UserTenant
     client: none
     server: full
     columns:
     - name: user
-      admin_ui: {width: 200, order: 0}
+      admin_ui: {width: 200}
       type: link_single
       target: users
     - name: tenant
-      admin_ui: {width: 200, order: 1}
+      admin_ui: {width: 200}
       type: link_single
       target: tenants
     - name: roles
-      admin_ui: {width: 200, order: 2}
+      admin_ui: {width: 200}
       type: link_multiple
       target: roles
-    title: UserTenant
 secrets:
   LEMON_API_TEST:
     value: {WQET73GEV5APXBAG: uL1uywQAun5YpPJVv+NCPZrEf6JEpRf345syjF9W0KtBsyPoInTQ39eFXFt4aR1cS2ewp8gK4aZKUUWR3ZjuyGDw8GpFyoKE8S8NeSfRH3HDK8+LndmthNckWzsqx/5eEe6N7w==}
