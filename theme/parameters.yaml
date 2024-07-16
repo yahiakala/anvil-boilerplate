@@ -54,6 +54,7 @@ roles:
 - {name: soft-fp}
 - {name: narrow-col}
 - {name: vertically-centered}
+- {name: skeleton}
 color_scheme:
   preset_groups:
   - name: Colour Scheme

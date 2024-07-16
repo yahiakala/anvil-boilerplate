@@ -52,11 +52,12 @@ class Router(RouterTemplate):
 
     def icon_logout_click(self, **event_args):
         """This method is called when the link is clicked"""
-        anvil.users.logout()
-        Global.clear_global_attributes()
-        self.set_account_state(None)
-        routing.set_url_hash('signin')
-        routing.clear_cache()
+        with anvil.server.no_loading_indicator:
+            anvil.users.logout()
+            self.set_account_state(None)
+            routing.clear_cache()
+            Global.clear_global_attributes()
+            routing.set_url_hash('signin', load_from_cache=False)
 
     def set_account_state(self, user):
         self.icon_logout.visible = user is not None
