@@ -63,7 +63,6 @@ class Router(RouterTemplate):
         self.icon_logout.visible = user is not None
         self.link_logout.visible = user is not None
         self.link_settings.visible = user is not None
-        self.link_dev.visible = user is not None and 'dev' in Global.permissions
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""

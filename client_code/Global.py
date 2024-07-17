@@ -1,4 +1,4 @@
-from anvil_squared.utils import GlobalCache
+from anvil_squared.globals import GlobalCache
 
 
 _global_dict = {
