@@ -26,11 +26,12 @@ package_name: SaaS_Boilerplate
 allow_embedding: false
 name: SaaS Boilerplate
 runtime_options:
-  version: 2
+  version: 3
   client_version: '3'
   server_version: python3-full
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
+  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
 startup_form: null
 native_deps:
   head_html: |-
