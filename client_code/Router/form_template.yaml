@@ -1,61 +1,61 @@
-is_package: true
-container:
-  type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
 components:
-- type: ColumnPanel
-  properties: {col_widths: '{}'}
-  name: content_panel
+- components: []
   layout_properties: {slot: default}
-  components: []
-- type: FlowPanel
-  properties: {}
-  name: navbar_links
-  layout_properties: {slot: nav-right}
-  components:
-  - name: fp_navbar
-    properties: {align: right, vertical_align: middle}
-    type: FlowPanel
-    components:
-    - name: link_dev
+  name: content_panel
+  properties: {col_widths: '{}'}
+  type: ColumnPanel
+- components:
+  - components:
+    - event_bindings: {click: nav_click}
+      layout_properties: {}
+      name: link_dev
       properties: {text: Dev}
       type: Link
+    - event_bindings: {click: link_help_click}
       layout_properties: {}
-      event_bindings: {click: nav_click}
-    - name: link_help
+      name: link_help
       properties: {icon: 'fa:question-circle', text: ''}
       type: Link
-      layout_properties: {}
-      event_bindings: {click: link_help_click}
-    - name: icon_logout
+    - event_bindings: {click: icon_logout_click}
+      name: icon_logout
       properties: {icon: 'fa:sign-out'}
       type: Link
-      event_bindings: {click: icon_logout_click}
     layout_properties: {}
-- name: cp_sidebar
+    name: fp_navbar
+    properties: {align: right, vertical_align: middle}
+    type: FlowPanel
+  layout_properties: {slot: nav-right}
+  name: navbar_links
   properties: {}
-  type: ColumnPanel
-  layout_properties: {slot: left-nav}
-  components:
-  - name: link_home
+  type: FlowPanel
+- components:
+  - event_bindings: {click: nav_click}
+    layout_properties: {grid_position: 'CHAVES,CHUIDO'}
+    name: link_home
     properties: {text: Home}
     type: Link
-    layout_properties: {grid_position: 'CHAVES,CHUIDO'}
-    event_bindings: {click: nav_click}
-  - name: link_logout
+  - components: []
+    event_bindings: {click: icon_logout_click}
+    layout_properties: {grid_position: 'GHZOLU,BVEMER'}
+    name: link_logout
     properties: {text: Logout}
     type: Link
-    layout_properties: {grid_position: 'GHZOLU,BVEMER'}
-    event_bindings: {click: icon_logout_click}
-    components: []
-  - name: link_settings
+  - components: []
+    event_bindings: {click: nav_click}
+    layout_properties: {grid_position: 'FPKVPS,GRULCP'}
+    name: link_settings
     properties: {text: Settings}
     type: Link
-    layout_properties: {grid_position: 'FPKVPS,GRULCP'}
-    event_bindings: {click: nav_click}
-    components: []
-  - name: link_forum
+  - event_bindings: {click: nav_click}
+    layout_properties: {grid_position: 'VVEAHG,FBWQAS'}
+    name: link_forum
     properties: {text: Forum}
     type: Link
-    layout_properties: {grid_position: 'VVEAHG,FBWQAS'}
-    event_bindings: {click: nav_click}
+  layout_properties: {slot: left-nav}
+  name: cp_sidebar
+  properties: {}
+  type: ColumnPanel
+container:
+  properties: {html: '@theme:standard-page.html'}
+  type: HtmlTemplate
+is_package: true

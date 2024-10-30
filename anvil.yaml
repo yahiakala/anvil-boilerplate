@@ -1,38 +1,129 @@
+allow_embedding: false
+db_schema:
+  permissions:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: name
+      type: string
+    - admin_ui: {width: 200}
+      name: description
+      type: string
+    server: full
+    title: Permissions
+  roles:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: name
+      type: string
+    - admin_ui: {width: 200}
+      name: permissions
+      target: permissions
+      type: link_multiple
+    - admin_ui: {width: 200}
+      name: tenant
+      target: tenants
+      type: link_single
+    - admin_ui: {order: 3, width: 200}
+      name: can_edit
+      type: bool
+    server: full
+    title: Roles
+  tenants:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: name
+      type: string
+    - admin_ui: {order: 1, width: 200}
+      name: new_roles
+      type: simpleObject
+    server: full
+    title: Tenants
+  usermap:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: user
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: roles
+      target: roles
+      type: link_multiple
+    - admin_ui: {width: 200}
+      name: customer_id
+      type: string
+    server: full
+    title: Usermap
+  users:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: email
+      type: string
+    - admin_ui: {width: 200}
+      name: enabled
+      type: bool
+    - admin_ui: {width: 200}
+      name: last_login
+      type: datetime
+    - admin_ui: {width: 200}
+      name: password_hash
+      type: string
+    - admin_ui: {width: 200}
+      name: n_password_failures
+      type: number
+    - admin_ui: {width: 200}
+      name: confirmed_email
+      type: bool
+    - admin_ui: {width: 200}
+      name: remembered_logins
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: mfa
+      type: simpleObject
+    - admin_ui: {width: 200}
+      name: signed_up
+      type: datetime
+    - admin_ui: {width: 200}
+      name: roles
+      target: roles
+      type: link_multiple
+    - admin_ui: {width: 200}
+      name: email_confirmation_key
+      type: string
+    server: full
+    title: Users
+  usertenant:
+    client: none
+    columns:
+    - admin_ui: {width: 200}
+      name: user
+      target: users
+      type: link_single
+    - admin_ui: {width: 200}
+      name: tenant
+      target: tenants
+      type: link_single
+    - admin_ui: {width: 200}
+      name: roles
+      target: roles
+      type: link_multiple
+    server: full
+    title: UserTenant
 dependencies:
 - dep_id: dep_y3wjt8qhkkrbfy
-  version: {version_tag: v06}
   resolution_hints: {app_id: CVAFGUBPSRFZNPZD, name: anvil_extras, package_name: anvil_extras}
+  version: {version_tag: v06}
 - dep_id: dep_i3kq70u5al9g
-  version: {dev: true}
   resolution_hints: {app_id: KDKDM3MG6IQHC2FK, name: Anvil Squared, package_name: anvil_squared}
-services:
-- source: /runtime/services/tables.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/users.yml
-  client_config: {mfa_timeout_days: 7, require_secure_passwords: true, share_login_status: true, use_token: true, allow_mfa_email_reset: true, use_email: true, allow_remember_me: true, allow_signup: true, enable_automatically: true, confirm_email: true, require_mfa: true, remember_me_days: 30, use_google: true}
-  server_config: {user_table: users}
-- source: /runtime/services/google.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/email.yml
-  client_config: {}
-  server_config: {}
-- source: /runtime/services/anvil/secrets.yml
-  client_config: {}
-  server_config: {}
-startup: {type: module, module: startup}
-package_name: SaaS_Boilerplate
-allow_embedding: false
+  version: {dev: true}
+- dep_id: dep_lo3ygyt7zfaefi
+  resolution_hints: {app_id: 4UK6WHQ6UX7AKELK, name: Material 3 Theme, package_name: m3}
+  version: {version_tag: v1.1.3}
 name: SaaS Boilerplate
-runtime_options:
-  version: 3
-  client_version: '3'
-  server_version: python3-full
-  server_spec: null
-  server_spec_disabled: {base: python310-standard, requirements: bcrypt}
-  legacy_features: {class_names: true, bootstrap3: true, __dict__: true, root_container: true}
-startup_form: null
 native_deps:
   head_html: |-
     <meta name="theme-color" content="#FFFBFE">
@@ -40,140 +131,52 @@ native_deps:
     <script defer>
         document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFBFE');
     </script>
-db_schema:
-  users:
-    title: Users
-    client: none
-    server: full
-    columns:
-    - name: email
-      admin_ui: {width: 200}
-      type: string
-    - name: enabled
-      admin_ui: {width: 200}
-      type: bool
-    - name: last_login
-      admin_ui: {width: 200}
-      type: datetime
-    - name: password_hash
-      admin_ui: {width: 200}
-      type: string
-    - name: n_password_failures
-      admin_ui: {width: 200}
-      type: number
-    - name: confirmed_email
-      admin_ui: {width: 200}
-      type: bool
-    - name: remembered_logins
-      admin_ui: {width: 200}
-      type: simpleObject
-    - name: mfa
-      admin_ui: {width: 200}
-      type: simpleObject
-    - name: signed_up
-      admin_ui: {width: 200}
-      type: datetime
-    - name: roles
-      admin_ui: {width: 200}
-      type: link_multiple
-      target: roles
-    - name: email_confirmation_key
-      admin_ui: {width: 200}
-      type: string
-  permissions:
-    title: Permissions
-    client: none
-    server: full
-    columns:
-    - name: name
-      admin_ui: {width: 200}
-      type: string
-    - name: description
-      admin_ui: {width: 200}
-      type: string
-  roles:
-    title: Roles
-    client: none
-    server: full
-    columns:
-    - name: name
-      admin_ui: {width: 200}
-      type: string
-    - name: permissions
-      admin_ui: {width: 200}
-      type: link_multiple
-      target: permissions
-    - name: tenant
-      admin_ui: {width: 200}
-      type: link_single
-      target: tenants
-    - name: can_edit
-      admin_ui: {width: 200, order: 3}
-      type: bool
-  usermap:
-    title: Usermap
-    client: none
-    server: full
-    columns:
-    - name: user
-      admin_ui: {width: 200}
-      type: link_single
-      target: users
-    - name: roles
-      admin_ui: {width: 200}
-      type: link_multiple
-      target: roles
-    - name: customer_id
-      admin_ui: {width: 200}
-      type: string
-  tenants:
-    title: Tenants
-    client: none
-    server: full
-    columns:
-    - name: name
-      admin_ui: {width: 200}
-      type: string
-    - name: new_roles
-      admin_ui: {width: 200, order: 1}
-      type: simpleObject
-  usertenant:
-    title: UserTenant
-    client: none
-    server: full
-    columns:
-    - name: user
-      admin_ui: {width: 200}
-      type: link_single
-      target: users
-    - name: tenant
-      admin_ui: {width: 200}
-      type: link_single
-      target: tenants
-    - name: roles
-      admin_ui: {width: 200}
-      type: link_multiple
-      target: roles
+package_name: SaaS_Boilerplate
+renamed: true
+runtime_options:
+  client_version: '3'
+  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
+  server_spec: null
+  server_spec_disabled: {base: python310-standard, requirements: bcrypt}
+  server_version: python3-full
+  version: 3
 secrets:
-  LEMON_API_TEST:
-    value: {WQET73GEV5APXBAG: uL1uywQAun5YpPJVv+NCPZrEf6JEpRf345syjF9W0KtBsyPoInTQ39eFXFt4aR1cS2ewp8gK4aZKUUWR3ZjuyGDw8GpFyoKE8S8NeSfRH3HDK8+LndmthNckWzsqx/5eEe6N7w==}
-    type: secret
-  LEMON_SIGNING_TEST:
-    value: {WQET73GEV5APXBAG: XnFfIiuY5EzYPj6LKzIyfg8UeNOUWWqRQ/9vN4w0lb/8u70iEigYkb8ua8H78Jd8QOQXSu47quZleaI2akkLxeVXbPASJsd+SqlYu7QLr7dJb09C55vmYx8euZsBP5DCeaQpBA==}
-    type: secret
-  LEMON_API:
-    value: {WQET73GEV5APXBAG: qIFwYXcfuwgkYMBeDIlFUwknqiFrAstU/BsQPmGf+Cwx+TiB0Cf14NHH/9+TuSvSeC/kBRP6IVYD5sC3zaaoLaH7IF+eUM6VuPtCQJenvt6o7ivDIZf/PgizJR3GAbH3ZnbP}
-    type: secret
-  LEMON_SIGNING:
-    value: {WQET73GEV5APXBAG: dsFw7YDaXCQiKeqTMpqAryFP9eoCPY7+qbYfYMBtHUYuEIGamJxXUO2/Xm8r0biHqjLDuZU8AgjOtrrpAAj43AZ3GY1Gu6azBfQbM5nnTdkdIbT7aFJJkqZ3kXQi5iXEHlZJOiQ=}
-    type: secret
-  DISCOURSE_CONNECT:
+  DISCOURSE_API:
     type: secret
     value: {WQET73GEV5APXBAG: ''}
-  DISCOURSE_API:
+  DISCOURSE_CONNECT:
     type: secret
     value: {WQET73GEV5APXBAG: ''}
   DISCOURSE_WEBHOOK:
     type: secret
     value: {WQET73GEV5APXBAG: ''}
-renamed: true
+  LEMON_API:
+    type: secret
+    value: {WQET73GEV5APXBAG: qIFwYXcfuwgkYMBeDIlFUwknqiFrAstU/BsQPmGf+Cwx+TiB0Cf14NHH/9+TuSvSeC/kBRP6IVYD5sC3zaaoLaH7IF+eUM6VuPtCQJenvt6o7ivDIZf/PgizJR3GAbH3ZnbP}
+  LEMON_API_TEST:
+    type: secret
+    value: {WQET73GEV5APXBAG: uL1uywQAun5YpPJVv+NCPZrEf6JEpRf345syjF9W0KtBsyPoInTQ39eFXFt4aR1cS2ewp8gK4aZKUUWR3ZjuyGDw8GpFyoKE8S8NeSfRH3HDK8+LndmthNckWzsqx/5eEe6N7w==}
+  LEMON_SIGNING:
+    type: secret
+    value: {WQET73GEV5APXBAG: dsFw7YDaXCQiKeqTMpqAryFP9eoCPY7+qbYfYMBtHUYuEIGamJxXUO2/Xm8r0biHqjLDuZU8AgjOtrrpAAj43AZ3GY1Gu6azBfQbM5nnTdkdIbT7aFJJkqZ3kXQi5iXEHlZJOiQ=}
+  LEMON_SIGNING_TEST:
+    type: secret
+    value: {WQET73GEV5APXBAG: XnFfIiuY5EzYPj6LKzIyfg8UeNOUWWqRQ/9vN4w0lb/8u70iEigYkb8ua8H78Jd8QOQXSu47quZleaI2akkLxeVXbPASJsd+SqlYu7QLr7dJb09C55vmYx8euZsBP5DCeaQpBA==}
+services:
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/tables.yml
+- client_config: {allow_mfa_email_reset: true, allow_remember_me: true, allow_signup: true, confirm_email: true, enable_automatically: true, mfa_timeout_days: 7, remember_me_days: 30, require_mfa: true, require_secure_passwords: true, share_login_status: true, use_email: true, use_google: true, use_token: true}
+  server_config: {user_table: users}
+  source: /runtime/services/anvil/users.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/google.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/email.yml
+- client_config: {}
+  server_config: {}
+  source: /runtime/services/anvil/secrets.yml
+startup: {module: startup, type: module}
+startup_form: null
