@@ -1,29 +1,38 @@
 from ._anvil_designer import SettingsTemplate
 from anvil import *
 import anvil.users
-from anvil_extras import routing
+import anvil.server
 
-from ..Global import Global
+from ...Global import Global
 
 
-@routing.route('/settings', template='Router')
 class Settings(SettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
         self.rp_mfa.add_event_handler('x-remove-mfa-id', self.remove_mfa_id)
-        self.link_portal.url = Global.customer_portal
-        if self.link_portal.url:
-            self.link_portal.visible = True
+        
+    def form_show(self, **event_args):
+        """This method is called when the form is shown on the page"""
+        with anvil.server.no_loading_indicator:
+            self.load_data()
+
+    def load_data(self, **event_args):
         self.user = Global.user
         if self.user['password_hash']:
-            self.cp_password.visible = True
+            self.cp_password_change.visible = True
             self.cp_mfa.visible = True
         self.rp_mfa.items = self.user['mfa']
 
+        self.usertenant = Global.usertenant
+
+        self.link_portal.url = Global.customer_portal
+        if self.link_portal.url:
+            self.link_portal.visible = True
+    
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False
-        user = Global.user
+        self.user = Global.user
         if self.tb_oldpw.text and self.tb_newpw.text:
             print('Changing password')
             try:
@@ -77,3 +86,5 @@ class Settings(SettingsTemplate):
             self.rp_mfa.items = self.user['mfa']
         except anvil.users.AuthenticationFailed as e:
             alert('Password is incorrect.')
+
+

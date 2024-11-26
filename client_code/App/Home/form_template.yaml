@@ -3,5 +3,7 @@ components:
   name: lbl_title
   properties: {text: Home Detail}
   type: Label
-container: {type: ColumnPanel}
+container:
+  event_bindings: {show: form_show}
+  type: ColumnPanel
 is_package: true

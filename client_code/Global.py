@@ -4,9 +4,14 @@ from anvil_squared.globals import GlobalCache
 _global_dict = {
     'user': None,
     'is_mobile': None,
-    'customer_portal': None,
+    'customer_portal': None
+}
+
+_tenanted_dict = {
+    'permissions': None,
     'usertenant': None,
-    'permissions': None
 }
 
 Global = GlobalCache(_global_dict)
+
+AppName = 'SaaS Boilerplate'

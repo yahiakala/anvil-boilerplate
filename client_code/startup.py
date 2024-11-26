@@ -1,16 +1,6 @@
-from anvil_extras import routing
+from routing.router import launch
+from . import routes  # noqa
 
-from .Router import Router
-from .BlankTemplate import BlankTemplate
-from .Static import Static
-from .Global import Global
 
-@routing.redirect(path="app", priority=20, condition=lambda: Global.user is None)
-def redirect_no_user():
-    return "sign"
-
-hash, pattern, dict = routing.get_url_components()
-
-routing.set_url_hash(hash)
-
-routing.launch()
+if __name__ == "__main__":
+    launch()
