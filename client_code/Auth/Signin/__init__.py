@@ -67,8 +67,7 @@ class Signin(SigninTemplate):
             self.user = utils.signin_with_email(
                 self.tb_email,
                 self.tb_password,
-                "login_with_email_custom",
-                self.lbl_error,
+                self.lbl_error
             )
             self.route_user()
 

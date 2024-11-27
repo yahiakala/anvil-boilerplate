@@ -69,9 +69,8 @@ class Signup(SignupTemplate):
                 self.tb_email,
                 self.tb_password,
                 self.tb_password_repeat,
-                AppName,
-                "signup_with_email_custom",
                 self.lbl_error,
+                AppName
             )
 
         # Restore button state
