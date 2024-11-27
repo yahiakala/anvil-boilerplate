@@ -21,9 +21,16 @@ class EnsureUserMixin:
                 raise Redirect(path='/app/admin')
 
 
-class SignRoute(BaseRoute):
+class LandingRoute(BaseRoute):
     template = 'Templates.Static'
     path = '/'
+    form = 'Website.Landing'
+    cache_form = True
+
+
+class SignRoute(BaseRoute):
+    template = 'Templates.Static'
+    path = '/sign'
     form = 'Pages.Sign'
     cache_form = True
 
