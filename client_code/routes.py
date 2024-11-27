@@ -1,4 +1,3 @@
-# from routing.router import Route
 from routing.router import TemplateWithContainerRoute as BaseRoute
 from routing.router import Redirect
 from .Global import Global
