@@ -8,6 +8,7 @@ from .helpers import get_permissions, usertenant_row_to_dict, validate_user
 
 import anvil_squared.multi_tenant as mt
 
+
 # --------------------
 # Non tenanted globals
 # --------------------
