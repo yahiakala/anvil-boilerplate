@@ -16,6 +16,8 @@ class EnsureUserMixin:
                 Global.tenant_id = Global.tenant.get_id()
             except Exception:
                 Global.tenant_id = Global.tenant['id']
+            print(Global.permissions)
+            print(Global.tenant)
             if 'delete_members' in Global.permissions and (Global.tenant['name'] is None or Global.tenant['name'] == ''):
                 raise Redirect(path='/app/admin')
 

@@ -14,6 +14,6 @@ _tenanted_dict = {
     'usertenant': None,
 }
 
-Global = GlobalCache(_global_dict)
+Global = GlobalCache(_global_dict, _tenanted_dict)
 
 AppName = 'SaaS Boilerplate'

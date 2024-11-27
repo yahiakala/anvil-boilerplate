@@ -186,13 +186,8 @@ def list_to_csv(data):
 # Return rows as dicts
 # --------------------
 def usertenant_row_to_dict(row):
+    # TODO: generalize and move to anvil squared
     row_dict = {
-        'notion_api_key': row['notion_api_key'],
-        'notion_team_user_id': row['notion_team_user_id'],
-        'notion_task_db_id': row['notion_task_db_id'],
-        'notion_user_id': row['notion_user_id'],
-        'notion_users_personal': row['notion_users_personal'],
-        'notion_users_team': row['notion_users_team'],
         'email': row['user']['email'],
         'last_login': row['user']['last_login'],
         'signed_up': row['user']['signed_up'],
