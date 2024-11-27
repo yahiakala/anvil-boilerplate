@@ -1,9 +1,10 @@
 from ._anvil_designer import TestsTemplate
 from anvil import *
-from anvil_extras import routing
+from routing import router
+from ...Global import Global
+import anvil.server
 
 
-@routing.route('/tests', template='Router')
 class Tests(TestsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -20,4 +21,4 @@ class Tests(TestsTemplate):
         self.user = anvil.server.call('impersonate_user', self.tb_impersonate.text)
         # reset the globals
         Global.clear_global_attributes()
-        routing.set_url_hash('')
+        router.navigate(path='/')
