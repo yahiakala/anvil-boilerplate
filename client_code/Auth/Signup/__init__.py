@@ -7,7 +7,6 @@ from routing import router
 from ...Global import Global, AppName
 
 
-@routing.route('signup', template='Static', url_keys=[routing.ANY])
 class Signup(SignupTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
         # Set Form properties and Data Bindings.

@@ -67,8 +67,7 @@ class Settings(SettingsTemplate):
             
             if mfa_method:
                 try:
-                    # anvil.users.mfa.add_mfa_method(password, mfa_method)
-                    self.user = anvil.server.call('add_mfa_method', password, mfa_method)
+                    self.user = anvil.server.call('add_mfa_method_squared', password, mfa_method)
                     alert("Your two-factor authentication configuration has been added.")
                     return True
                 except anvil.users.AuthenticationFailed as e:
@@ -81,7 +80,7 @@ class Settings(SettingsTemplate):
     def remove_mfa_id(self, **event_args):
         """Remove a configured MFA method."""
         try:
-            self.user = anvil.server.call('delete_mfa_method', event_args['password'], event_args['id'])
+            self.user = anvil.server.call('delete_mfa_method_squared', event_args['password'], event_args['id'])
             Global.user = self.user
             self.rp_mfa.items = self.user['mfa']
         except anvil.users.AuthenticationFailed as e:
