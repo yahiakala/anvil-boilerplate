@@ -30,47 +30,47 @@ class LandingRoute(BaseRoute):
 class SignRoute(BaseRoute):
     template = 'Templates.Static'
     path = '/sign'
-    form = 'Pages.Sign'
+    form = 'Auth.Sign'
     cache_form = True
 
 
 class SigninRoute(BaseRoute):
     template = 'Templates.Static'
     path = '/signin'
-    form = 'Pages.Signin'
+    form = 'Auth.Signin'
     cache_form = True
 
 
 class SignupRoute(BaseRoute):
     template = 'Templates.Static'
     path = '/signup'
-    form = 'Pages.Signup'
+    form = 'Auth.Signup'
     cache_form = True
 
 
 class HomeRoute(EnsureUserMixin, BaseRoute):
     template = 'Templates.Router'
     path = '/app/home'
-    form = 'Pages.Home'
+    form = 'App.Home'
     cache_form = True
 
 
 class SettingsRoute(EnsureUserMixin, BaseRoute):
     template = 'Templates.Router'
     path = '/app/settings'
-    form = 'Pages.Settings'
+    form = 'App.Settings'
     cache_form = True
 
 
 class AdminRoute(EnsureUserMixin, BaseRoute):
     template = 'Templates.Router'
     path = '/app/admin'
-    form = 'Pages.Admin'
+    form = 'App.Admin'
     cache_form = True
 
 
 class TestsRoute(EnsureUserMixin, BaseRoute):
     template = 'Templates.Router'
     path = '/app/tests'
-    form = 'Pages.Tests'
+    form = 'App.Tests'
     cache_form = True

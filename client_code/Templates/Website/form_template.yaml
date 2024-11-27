@@ -1,0 +1,73 @@
+components:
+- components:
+  - components:
+    - layout_properties: {width: 25}
+      name: img_logo
+      properties: {display_mode: shrink_to_fit, height: '', source: _/theme/search.png, spacing_above: none, spacing_below: none}
+      type: Image
+    - layout_properties: {}
+      name: lbl_title
+      properties: {spacing_above: none, spacing_below: none, text: AppName}
+      type: Label
+    layout_properties: {}
+    name: fp_header_left
+    properties: {spacing: medium, spacing_above: none, spacing_below: none, vertical_align: middle}
+    type: FlowPanel
+  - components:
+    - event_bindings: {click: btn_signin_click}
+      layout_properties: {}
+      name: btn_signin
+      properties: {role: outlined-button, spacing_above: none, spacing_below: none, text: Sign In}
+      type: Button
+    - event_bindings: {click: btn_signup_click}
+      layout_properties: {}
+      name: btn_signup
+      properties: {role: filled-button, spacing_above: none, spacing_below: none, text: Get Started for FREE}
+      type: Button
+    - event_bindings: {click: btn_nav_click}
+      name: btn_nav
+      properties: {font_size: 18, icon: 'fa:bars', role: hamburger, text: '', visible: false}
+      type: Button
+    layout_properties: {}
+    name: fp_header_right
+    properties: {align: right, role: null, spacing_above: none, spacing_below: none, vertical_align: middle}
+    type: FlowPanel
+  layout_properties: {slot: nav-bar-full}
+  name: fp_navbar
+  properties: {align: justify, role: fp-navbar, vertical_align: middle}
+  type: FlowPanel
+- layout_properties: {slot: default}
+  name: content_panel
+  properties: {role: website-content}
+  type: ColumnPanel
+- components:
+  - components:
+    - components:
+      - layout_properties: {}
+        name: link_linkedin
+        properties: {font_size: 34, icon: 'fa:linkedin-square', text: '', url: 'https://linkedin.com/in/yahiakala'}
+        type: Link
+      - layout_properties: {}
+        name: link_mail
+        properties: {font_size: 32, icon: 'fa:envelope', url: 'mailto:info@dreambyte.ai'}
+        type: Link
+      name: fp_footer_left
+      properties: {}
+      type: FlowPanel
+    - layout_properties: {}
+      name: lbl_footer
+      properties: {align: center, text: © Dreambyte Inc. All rights reserved.}
+      type: Label
+    layout_properties: {grid_position: 'GMFIEQ,ZBXODG'}
+    name: fp_footer
+    properties: {align: justify, spacing: tiny, vertical_align: middle}
+    type: FlowPanel
+  layout_properties: {slot: default}
+  name: cp_footer
+  properties: {background: ''}
+  type: ColumnPanel
+container:
+  properties:
+    html: "<link rel=\"stylesheet\" href=\"_/theme/webtheme.css\">\n<div class=\"structure\">\n    <div class=\"website-bar\" anvil-drop-container=\".anvil-container\" anvil-drop-redirect=\".placeholder\" style=\"align-content: center;\">\n        <div class=\"nav-bar-full\" anvil-slot=\"nav-bar-full\">\n            <div class=\"placeholder anvil-designer-only\" anvil-if-slot-empty=\"nav-bar-full\" anvil-drop-here>Drop nav content here</div>\n        </div>\n        <div style=\"clear:both\"></div>\n    </div>\n\n    <div class=\"nav-holder\">\n        <div class=\"menu-nav anvil-measure-this hidden\" anvil-slot-repeat=\"menu-nav\" anvil-drop-container=\">.anvil-container\">\n        </div>\n        <div class=\"menu-nav-placeholder anvil-designer-only\" anvil-if-slot-empty=\"menu-nav\" anvil-drop-slot=\"menu-nav\">\n            <div class=\"prompt\">To add a sidebar, drop a ColumnPanel here.</div>\n        </div>\n        <div class=\"content\">\n            <div anvil-slot-repeat=\"default\" class=\"anvil-measure-this\"></div>\n            <div class=\"placeholder drop-here\" anvil-if-slot-empty=\"default\" anvil-drop-slot=\"default\">Drop a ColumnPanel here.</div>\n        </div>\n    </div>\n\n    <div class=\"nav-shield\"></div>\n</div>\n<div anvil-drop-default anvil-drop-redirect=\".placeholder\" anvil-drop-container=\".anvil-container\"></div>\n\n<script>\n    var ln = $('.structure > .nav-holder > .menu-nav');\n    var lnp = $('.structure > .nav-holder > .menu-nav-placeholder');\n    var appBar = $('.website-bar')[0];\n\n    function hideSidebar() {\n        ln.css({left: -ln.outerWidth()});\n        ln.removeClass(\"in-transition shown\").addClass(\"hidden\");\n        $('.nav-shield').removeClass(\"shown\");\n        $(window).trigger('resize');\n    \n        if (window.innerWidth > 998) {\n            $('.content').css({'margin-left': 0});\n        }\n    }\n\n    function showSidebar() {\n        $('.nav-shield').addClass(\"shown\");\n        ln.addClass(\"shown\").removeClass(\"hidden\").css({left: 0}).removeClass(\"in-transition\");\n        $(window).trigger('resize');\n        if (window.innerWidth > 998) {\n            $('.content').css({'margin-left': ln.outerWidth().toString() + 'px'});\n        }\n    }\n\n    $('.sidebar-toggle, .nav-shield').off('click').on('click', function() { \n        if (ln.is(\":visible\") || $('.nav-shield').is(\".shown\")) {\n            hideSidebar();\n        } else if(!ln.is(\":empty\")) {\n            showSidebar();\n        }\n    });\n    $('.menu-nav').off('click').on('click', 'a, button', function() {\n        if ($('.nav-shield').is(\":visible\")) {\n            $('.nav-shield').trigger('click');\n        }\n    });\n\n    function clickNav() {\n        $('.nav-shield').trigger('click');\n    }\n\n    document.addEventListener('scroll', function() {\n        if (appBar.classList.contains('scrolled')) {\n            if (window.scrollY === 0) {\n                appBar.classList.remove('scrolled')\n            }\n        }\n        else {\n            appBar.classList.add('scrolled')\n        }\n    });\n\n    function addMarginToContent() {\n        //check if there is a free banner and set the top margin accordiningly\n        if ($('#anvil-header').css('display') == 'block') {\n            var topMargin = appBar.clientHeight + 50\n        } else {\n            var topMargin = appBar.clientHeight\n        }\n        //the left-nav-placeholder in the designer needs to shift down for the app bar\n        lnp.css({'top': appBar.clientHeight.toString() + 'px'})\n\n        //if the window is small\n        if (window.innerWidth < 999) {\n            //if in Anvil designer\n            if (window.anvilInDesigner) {\n                //add left margin to content to make room for left-nav or left-nav-placeholder\n                $('.content').css({'margin-left': Math.max(ln.outerWidth(), lnp.outerWidth()).toString() + 'px'});\n                $('.content').css({'margin-top': appBar.clientHeight.toString() + 'px'})\n                ln.css({'top': topMargin.toString() + 'px'})\n            } else {\n                //if not in Anvil designer, content gets no left margin because left-nav will be a modal overlay\n                $('.content').css({'margin-left': '0px'});\n                ln.css({'top': '0px'})\n                //add top margin to content\n                $('.content').css({'margin-top': topMargin.toString() + 'px'});\n            }\n        } else {\n            //if the window is big, add margin to content and left-nav for app bar\n            $('.content').css({'margin-top': appBar.clientHeight.toString() + 'px'});\n            ln.css({'top': topMargin.toString() + 'px'})\n            if (window.anvilInDesigner) {\n                //if in the designer, add left margin for either the left-nav or the placeholder\n                $('.content').css({'margin-left': Math.max(ln.outerWidth(), lnp.outerWidth()).toString() + 'px'});\n            } else {\n                //if not in the designer, only add margin for the left-nav because placeholder still has a width outside of designer\n                $('.content').css({'margin-left': ln.outerWidth() + 'px'});\n            }\n        }\n    }\n\n    addMarginToContent()\n    window.addEventListener('resize', addMarginToContent);\n</script>\n<!-- <style>\n    html,\n    body {\n        overscroll-behavior: none;\n        -webkit-overflow-scrolling: auto;\n    }\n</style> -->"
+  type: HtmlTemplate
+is_package: true
