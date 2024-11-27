@@ -17,6 +17,8 @@ for key, val in role_dict.items():
 perm_list = list(set(perm_list))
 
 
+
+
 def print_timestamp(input_str):
     import datetime as dt
     import pytz
