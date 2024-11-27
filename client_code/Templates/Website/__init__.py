@@ -1,6 +1,7 @@
 from ._anvil_designer import WebsiteTemplate
 from anvil import *
 import anvil.js
+from routing import router
 
 
 class Website(WebsiteTemplate):
@@ -24,11 +25,11 @@ class Website(WebsiteTemplate):
 
     def btn_signin_click(self, **event_args):
         """This method is called when the button is clicked"""
-        pass
+        router.navigate(path="/signin")
 
     def btn_signup_click(self, **event_args):
         """This method is called when the button is clicked"""
-        pass
+        router.navigate(path="/signup")
 
     def btn_nav_click(self, **event_args):
         """This method is called when the button is clicked"""
