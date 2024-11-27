@@ -146,6 +146,9 @@ secrets:
   LEMON_SIGNING_TEST:
     type: secret
     value: {WQET73GEV5APXBAG: XnFfIiuY5EzYPj6LKzIyfg8UeNOUWWqRQ/9vN4w0lb/8u70iEigYkb8ua8H78Jd8QOQXSu47quZleaI2akkLxeVXbPASJsd+SqlYu7QLr7dJb09C55vmYx8euZsBP5DCeaQpBA==}
+  SQUARED:
+    type: secret
+    value: {WQET73GEV5APXBAG: 9cmR5mdypHrcIfGi2774noou0KgNiIbRNfSSlhptnLismpL1L6CvE6Iww6auETBxRJzpCZ4mwI6ZdUBROdNdgF56DSpYPqbZDPGKtR/jrluLmV9BYwyqXZwU/gKK7/whKi//JLBl2KxW49UDk86Z4/oFTgA4XPk=}
 services:
 - client_config: {}
   server_config: {}
