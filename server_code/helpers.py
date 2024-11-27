@@ -1,7 +1,7 @@
-# TODO: move most of this to anvil squared
 from anvil.tables import app_tables
 import anvil.tables.query as q
 from anvil_squared.helpers import print_timestamp
+from . import routes  # noqa
 
 from anvil_squared.multi_tenant import authorization, tasks
 
