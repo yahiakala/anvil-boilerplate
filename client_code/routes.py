@@ -21,7 +21,7 @@ class EnsureUserMixin:
 
 
 class LandingRoute(BaseRoute):
-    template = 'Templates.Static'
+    template = 'Templates.Website'
     path = '/'
     form = 'Website.Landing'
     cache_form = True
