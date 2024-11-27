@@ -10,12 +10,6 @@ role_dict = {
     'Admin': ['see_profile', 'see_members', 'edit_members', 'delete_members', 'delete_admin', 'edit_roles'],
 }
 
-perm_list = []
-for key, val in role_dict.items():
-    perm_list = perm_list + val
-
-perm_list = list(set(perm_list))
-
 
 def populate_roles(tenant):
     """Some basic roles."""
