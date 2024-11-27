@@ -1208,24 +1208,8 @@ body {
   top: %anvil-banner-height%;
   right: 0;
   left: 0;
-}
-/* .website-bar a:hover, .website-bar a:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
-  opacity: 100%;
-} */
 
-.website-bar a.anvil-role-selected  {
-  background-color: %color:Secondary Container%;
-  color: %color:On Secondary Container%;
-}
-
-.website-bar a.anvil-role-selected:hover {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
-}
-
-.website-bar {
   min-height: 56px;
-  /* padding: 0 16px 0 72px; */
   position: fixed;
   width: 100%;
   
@@ -1239,6 +1223,15 @@ body {
   -o-transition: background-color 250ms;
   
   z-index: 1;
+}
+
+.website-bar a.anvil-role-selected  {
+  background-color: %color:Secondary Container%;
+  color: %color:On Secondary Container%;
+}
+
+.website-bar a.anvil-role-selected:hover {
+  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
 }
 
 .website-bar.scrolled {
@@ -1274,6 +1267,7 @@ body {
 }
 .website-bar .label-text {
     padding: 0px !important;
+    font-size: 20px;
 }
 
 .website-bar .title .anvil-component {
@@ -1293,24 +1287,6 @@ body {
   width: 30px;
   text-align: center;
 }
-
-/* Don't put spacing on the top-level container (eg FlowPanel) */
-/* .app-bar-nav > .anvil-container {
-  margin: 0;
-  padding: 0;
-  min-height: 56px;
-}
-
-.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a) {
-  outline: 1px dotted #fff;
-  margin-top: 8px;
-  min-height: 40px;
-  padding: 5px 8px;
-}
-
-.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a)::after {  
-  content: "Drop Links here"
-} */
 
 /* Rejig margin vs padding to give links the halo */
 .website-bar a, .website-bar a.anvil-component {

@@ -337,3 +337,11 @@ roles:
 - {name: narrow-col}
 - {name: vertically-centered}
 - {name: skeleton}
+- {name: fp-navbar}
+- {name: h1-style1}
+- {name: p-style1}
+- {name: h2-style1}
+- {name: h3-style1}
+- {name: cp-fixed1}
+- {name: hamburger}
+- {name: website-content}
