@@ -106,7 +106,7 @@ dependencies:
   version: {version_tag: v1.0.0}
 - dep_id: dep_wxq8reuq1eify
   resolution_hints: {app_id: PIJ33MOHKDZDE7NS, name: routing, package_name: routing}
-  version: {version_tag: v1.0.0}
+  version: {version_tag: v0.3.2}
 name: SaaS Boilerplate
 native_deps:
   head_html: |-
