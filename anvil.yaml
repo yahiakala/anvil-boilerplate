@@ -100,7 +100,7 @@ db_schema:
 dependencies:
 - dep_id: dep_y3wjt8qhkkrbfy
   resolution_hints: {app_id: CVAFGUBPSRFZNPZD, name: anvil_extras, package_name: anvil_extras}
-  version: {version_tag: v06}
+  version: {version_tag: v3.1.0}
 - dep_id: dep_i3kq70u5al9g
   resolution_hints: {app_id: KDKDM3MG6IQHC2FK, name: Anvil Squared, package_name: anvil_squared}
   version: {version_tag: v1.0.0}
