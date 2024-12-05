@@ -1,5 +1,7 @@
-from ._anvil_designer import MiscTemplate
 from anvil import *
+
+from ._anvil_designer import MiscTemplate
+
 
 class Misc(MiscTemplate):
     def __init__(self, **properties):

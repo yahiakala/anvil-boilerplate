@@ -1,11 +1,11 @@
 import anvil.server
 import anvil.tables.query as q
 import anvil.users
+import anvil_squared.multi_tenant as mt
 from anvil.tables import app_tables
 from anvil_squared.helpers import print_timestamp
 
 from .helpers import usertenant_row_to_dict
-import anvil_squared.multi_tenant as mt
 
 
 # --------------------
@@ -40,10 +40,7 @@ def get_users_iterable(tenant_id, user):
     tenant, usertenant, permissions = mt.authorization.validate_user(tenant_id, user)
     if "see_members" not in permissions:
         return []
-    return app_tables.usertenant.client_readable(
-        q.only_cols("user"),
-        tenant=tenant
-    )
+    return app_tables.usertenant.client_readable(q.only_cols("user"), tenant=tenant)
 
 
 def get_usertenant_dict(tenant_id, user):

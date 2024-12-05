@@ -28,7 +28,7 @@
   /* padding: 0 16px 0 72px; */
   position: fixed;
   width: 100%;
-  
+
   line-height: 40px;
   font-size: 20px;
 
@@ -37,7 +37,7 @@
   -webkit-transition: background-color 250ms;
   -moz-transition: background-color 250ms;
   -o-transition: background-color 250ms;
-  
+
   z-index: 1;
 }
 
@@ -108,7 +108,7 @@
   padding: 5px 8px;
 }
 
-.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a)::after {  
+.anvil-highlight .app-bar-nav > .anvil-container:not(.has-components):not(a)::after {
   content: "Drop Links here"
 } */
 
@@ -176,7 +176,7 @@
     /* transition: right 0.5s; */
     /* height: 100%; */
   }
-  
+
   html:not(.designer) .nav-holder .menu-nav.shown {
     display: block;
   }

@@ -1,5 +1,6 @@
-from ._anvil_designer import LandingTemplate
 from anvil import *
+
+from ._anvil_designer import LandingTemplate
 
 
 class Landing(LandingTemplate):

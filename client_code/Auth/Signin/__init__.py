@@ -1,15 +1,15 @@
-from ._anvil_designer import SigninTemplate
-from anvil import *
 import anvil.users
+from anvil import *
 from anvil_squared import utils
 from routing import router
 
-from ...Global import Global, AppName
+from ...Global import AppName, Global
+from ._anvil_designer import SigninTemplate
 
 
 class Signin(SigninTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
-        self.lbl_title.text = 'Sign in to ' + AppName
+        self.lbl_title.text = "Sign in to " + AppName
         self.init_components(**properties)
         self.routing_context = routing_context
         self.url_dict = routing_context.query
@@ -19,7 +19,7 @@ class Signin(SigninTemplate):
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
             self.spacer_1.visible = False
-            self.cp_login.role = ['narrow-col', 'narrow-col-mobile']
+            self.cp_login.role = ["narrow-col", "narrow-col-mobile"]
 
     def route_user(self, **event_args):
         """Send the user on their way."""
@@ -33,7 +33,7 @@ class Signin(SigninTemplate):
             self.tb_password.text = ""
             Global.user = self.user
             router.navigate(path="/app/home")
-    
+
     def btn_google_click(self, **event_args):
         """Signin with google. Creates a user if none exists."""
         # Disable button and show processing state
@@ -65,9 +65,7 @@ class Signin(SigninTemplate):
         # Make server call without loading indicator
         with anvil.server.no_loading_indicator:
             self.user = utils.signin_with_email(
-                self.tb_email,
-                self.tb_password,
-                self.lbl_error
+                self.tb_email, self.tb_password, self.lbl_error
             )
             self.route_user()
 
@@ -77,4 +75,6 @@ class Signin(SigninTemplate):
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""
-        alert("Email support@dreambyte.ai and we'll get back to you within 24-48 hours.")
+        alert(
+            "Email support@dreambyte.ai and we'll get back to you within 24-48 hours."
+        )

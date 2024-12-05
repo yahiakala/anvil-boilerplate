@@ -1,16 +1,16 @@
-from ._anvil_designer import SignupTemplate
-from anvil import *
 import anvil.users
+from anvil import *
 from anvil_squared import utils
 from routing import router
 
-from ...Global import Global, AppName
+from ...Global import AppName, Global
+from ._anvil_designer import SignupTemplate
 
 
 class Signup(SignupTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
         # Set Form properties and Data Bindings.
-        self.lbl_title.text = 'Sign up for ' + AppName
+        self.lbl_title.text = "Sign up for " + AppName
         self.init_components(**properties)
         self.url_dict = routing_context.query
         self.user = Global.user
@@ -69,7 +69,7 @@ class Signup(SignupTemplate):
                 self.tb_password,
                 self.tb_password_repeat,
                 self.lbl_error,
-                AppName
+                AppName,
             )
 
         # Restore button state
@@ -87,7 +87,9 @@ class Signup(SignupTemplate):
 
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""
-        alert("Email support@dreambyte.ai and we'll get back to you within 24-48 hours.")
+        alert(
+            "Email support@dreambyte.ai and we'll get back to you within 24-48 hours."
+        )
 
     def link_signin_click(self, **event_args):
         """This method is called when the link is clicked"""
