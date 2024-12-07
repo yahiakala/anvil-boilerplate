@@ -364,8 +364,9 @@ color: %color:On Primary Container%;
 }
 
 .left-nav a:hover, .app-bar a:hover, .app-bar a:active {
-  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
-  opacity: 100%;
+  /* background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%; */
+  /* opacity: 100%; */
+  background: %color:Secondary Container%;
 }
 
 .left-nav a.anvil-role-selected, .app-bar a.anvil-role-selected  {
@@ -409,7 +410,8 @@ color: %color:On Primary Container%;
   line-height: 40px;
   font-size: 20px;
 
-  background-color: %color:Surface%;
+  /* background-color: %color:Surface%; */
+  background-color: %color:Background%;
   border-bottom: 1px solid #E1E0E7;
   transition: background-color 250ms;
   -webkit-transition: background-color 250ms;
@@ -1111,7 +1113,8 @@ body {
 
 /* Make the left nav same background color */
 .nav-holder .left-nav, .left-nav-placeholder {
-  background: %color:Background%;
+  /* background: %color:Background%; */
+  background: rgb(247, 249, 250);
   border-right: 1px solid #E1E0E7;
 
 }
