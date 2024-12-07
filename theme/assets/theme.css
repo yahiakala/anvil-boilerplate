@@ -410,6 +410,7 @@ color: %color:On Primary Container%;
   font-size: 20px;
 
   background-color: %color:Surface%;
+  border-bottom: 1px solid #E1E0E7;
   transition: background-color 250ms;
   -webkit-transition: background-color 250ms;
   -moz-transition: background-color 250ms;
@@ -1111,6 +1112,8 @@ body {
 /* Make the left nav same background color */
 .nav-holder .left-nav, .left-nav-placeholder {
   background: %color:Background%;
+  border-right: 1px solid #E1E0E7;
+
 }
 
 .anvil-role-vertically-centered {
