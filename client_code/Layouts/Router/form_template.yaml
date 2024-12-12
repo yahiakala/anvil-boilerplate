@@ -15,7 +15,7 @@ components_by_slot:
   - event_bindings: {click: nav_logout_click}
     layout_properties: {}
     name: nav_logout
-    properties: {icon: 'mi:logout', text: Logout}
+    properties: {icon: 'mi:logout', path: /signin, text: Logout}
     type: form:dep_wxq8reuq1eify:router.NavLink
 is_package: true
 layout:

@@ -47,29 +47,29 @@ class SignupRoute(Route):
     cache_form = True
 
 
-# class HomeRoute(EnsureUserMixin, BaseRoute):
-#     template = "Templates.Router"
-#     path = "/app/home"
-#     form = "App.Home"
-#     cache_form = True
+class HomeRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
+    path = "/app/home"
+    form = "App.Home"
+    cache_form = True
 
 
-# class SettingsRoute(EnsureUserMixin, BaseRoute):
-#     template = "Templates.Router"
-#     path = "/app/settings"
-#     form = "App.Settings"
-#     cache_form = True
+class SettingsRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
+    path = "/app/settings"
+    form = "App.Settings"
+    cache_form = True
 
 
-# class AdminRoute(EnsureUserMixin, BaseRoute):
-#     template = "Templates.Router"
-#     path = "/app/admin"
-#     form = "App.Admin"
-#     cache_form = True
+class AdminRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
+    path = "/app/admin"
+    form = "App.Admin"
+    cache_form = True
 
 
-# class TestsRoute(EnsureUserMixin, BaseRoute):
-#     template = "Templates.Router"
-#     path = "/app/tests"
-#     form = "App.Tests"
-#     cache_form = True
+class TestsRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
+    path = "/app/tests"
+    form = "App.Tests"
+    cache_form = True
