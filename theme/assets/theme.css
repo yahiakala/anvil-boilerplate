@@ -141,4 +141,56 @@ body {
     box-shadow: none;/*0px 0px 10px 10px #fcfcfc;*/
     background-color: transparent;
     background-image: url("_/theme/search.png") !important;
+} */
+
+
+/* --------------- */
+/* Website styling */
+/* --------------- */
+
+/* Custom Nav bar styling */
+/* ---------------------- */
+.website-bar {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  top: %anvil-banner-height%;
+  right: 0;
+  left: 0;
 }
+/* .website-bar a:hover, .website-bar a:active {
+  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  opacity: 100%;
+} */
+
+.website-bar a.anvil-role-selected  {
+  background-color: %color:Secondary Container%;
+  color: %color:On Secondary Container%;
+}
+
+.website-bar a.anvil-role-selected:hover {
+  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+}
+
+.website-bar {
+  min-height: 56px;
+  /* padding: 0 16px 0 72px; */
+  position: fixed;
+  top: 0;
+  top: %anvil-banner-height%;
+  right: 0;
+  left: 0;
+  width: 100%;
+
+  line-height: 40px;
+  font-size: 20px;
+
+  background-color: %color:Surface%;
+  transition: background-color 250ms;
+  -webkit-transition: background-color 250ms;
+  -moz-transition: background-color 250ms;
+  -o-transition: background-color 250ms;
+
+  z-index: 1;
+}
+
