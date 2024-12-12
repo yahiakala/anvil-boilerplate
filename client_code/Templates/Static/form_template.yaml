@@ -1,8 +1,4 @@
-components:
-- layout_properties: {slot: default}
-  name: content_panel
-  properties: {}
-  type: ColumnPanel
+components: []
 container:
   properties:
     html: |-
@@ -30,3 +26,8 @@ container:
       </style>
   type: HtmlTemplate
 is_package: true
+slots:
+  content_slot:
+    index: 0
+    set_layout_properties: {slot: default}
+    target: {name: '', type: container}

@@ -1,9 +1,4 @@
 components:
-- components: []
-  layout_properties: {slot: default}
-  name: content_panel
-  properties: {col_widths: '{}'}
-  type: ColumnPanel
 - components:
   - components:
     - event_bindings: {click: nav_click}
@@ -55,3 +50,8 @@ container:
   properties: {html: '@theme:standard-page.html'}
   type: HtmlTemplate
 is_package: true
+slots:
+  content_slot:
+    index: 2
+    set_layout_properties: {slot: default}
+    target: {name: '', type: container}
