@@ -30,7 +30,8 @@ components_by_slot:
         margin: ['0', null, '0', null]
         placeholder: ''
       type: form:dep_nessix61qswk:_Components.TextInput.TextBox
-    - layout_properties: {slot: card-content-slot}
+    - event_bindings: {pressed_enter: btn_signup_click}
+      layout_properties: {slot: card-content-slot}
       name: tb_password_repeat
       properties:
         appearance: outlined

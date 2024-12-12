@@ -4,6 +4,8 @@ from anvil import *
 
 from ...Global import Global
 from ._anvil_designer import SettingsTemplate
+
+
 class Settings(SettingsTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
@@ -18,8 +20,9 @@ class Settings(SettingsTemplate):
     def load_data(self, **event_args):
         self.user = Global.user
         if self.user["password_hash"]:
-            self.cp_password_change.visible = True
-            self.cp_mfa.visible = True
+            self.card_password.visible = True
+            self.card_mfa.visible = True
+        print(self.user)
         self.rp_mfa.items = self.user["mfa"]
 
         self.usertenant = Global.usertenant
