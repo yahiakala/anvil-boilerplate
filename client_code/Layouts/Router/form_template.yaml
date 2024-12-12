@@ -12,11 +12,11 @@ components_by_slot:
     name: nav_admin
     properties: {icon: 'mi:admin_panel_settings', path: /app/admin, text: Admin}
     type: form:dep_wxq8reuq1eify:router.NavLink
-  - event_bindings: {click: btn_logout_click}
+  - event_bindings: {click: nav_logout_click}
     layout_properties: {}
-    name: btn_logout
-    properties: {align: center, icon: 'mi:logout'}
-    type: form:dep_nessix61qswk:_Components.IconButton
+    name: nav_logout
+    properties: {icon: 'mi:logout', text: Logout}
+    type: form:dep_wxq8reuq1eify:router.NavLink
 is_package: true
 layout:
   properties: {show_sidesheet: false}
