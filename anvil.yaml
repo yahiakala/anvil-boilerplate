@@ -115,7 +115,7 @@ native_deps:
     <script defer>
         document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFBFE');
     </script>
-package_name: OSS_Boilerplate
+package_name: oss_boilerplate
 renamed: true
 runtime_options:
   client_version: '3'
