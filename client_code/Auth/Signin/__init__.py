@@ -18,7 +18,6 @@ class Signin(SigninTemplate):
 
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
-            self.spacer_1.visible = False
             self.cp_login.role = ["narrow-col", "narrow-col-mobile"]
 
     def route_user(self, **event_args):
@@ -57,8 +56,14 @@ class Signin(SigninTemplate):
         """This method is called when the link is clicked"""
         router.navigate(path="/signup", query=self.url_dict)
 
-    def btn_signin_click_custom(self, **event_args):
-        # Disable button and show processing state
+    def link_help_click(self, **event_args):
+        """This method is called when the link is clicked"""
+        alert(
+            "Email support@dreambyte.ai and we'll get back to you within 24-48 hours."
+        )
+
+    def btn_signin_click(self, **event_args):
+        """This method is called when the component is clicked."""
         self.btn_signin.enabled = False
         self.btn_signin.text = "Signing in..."
 
@@ -72,9 +77,3 @@ class Signin(SigninTemplate):
         # Restore button state
         self.btn_signin.text = "Sign in"
         self.btn_signin.enabled = True
-
-    def link_help_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        alert(
-            "Email support@dreambyte.ai and we'll get back to you within 24-48 hours."
-        )
