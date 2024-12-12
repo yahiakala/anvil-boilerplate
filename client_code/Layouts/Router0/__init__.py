@@ -3,8 +3,8 @@ from anvil import *
 from routing import router
 
 from ...Global import Global
-from ._anvil_designer import RouterTemplate
-class Router(RouterTemplate):
+from ._anvil_designer import Router0Template
+class Router0(Router0Template):
     def __init__(self, **properties):
         self.init_components(**properties)
 
