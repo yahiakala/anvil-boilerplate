@@ -3,10 +3,10 @@ from anvil import *
 from routing import router
 
 from ...Global import Global
-from ._anvil_designer import Router0Template
+from ._anvil_designer import RouterTemplate
 
 
-class Router0(Router0Template):
+class Router(RouterTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
 
@@ -16,15 +16,6 @@ class Router0(Router0Template):
     def on_form_load(self, url_hash, url_pattern, url_dict, form):
         """Any time a form is loaded."""
         self.set_account_state(Global.user)
-
-    def icon_logout_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        with anvil.server.no_loading_indicator:
-            anvil.users.logout()
-            self.set_account_state(None)
-            router.clear_cache()
-            Global.clear_global_attributes()
-            router.navigate(path="/signin")
 
     def set_account_state(self, user):
         self.icon_logout.visible = user is not None
@@ -36,3 +27,11 @@ class Router0(Router0Template):
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""
         alert("For help, contact example@example.com")
+
+    def btn_logout_click(self, **event_args):
+        with anvil.server.no_loading_indicator:
+            anvil.users.logout()
+            self.set_account_state(None)
+            router.clear_cache()
+            Global.clear_global_attributes()
+            router.navigate(path="/signin")

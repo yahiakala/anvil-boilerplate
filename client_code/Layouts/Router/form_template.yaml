@@ -1,0 +1,28 @@
+components_by_slot:
+  navigation:
+  - layout_properties: {}
+    name: nav_home
+    properties: {icon: 'mi:home_filled', path: /app/home, text: Home}
+    type: form:dep_wxq8reuq1eify:router.NavLink
+  - layout_properties: {}
+    name: nav_settings
+    properties: {icon: 'mi:settings', path: /app/settings, text: Settings}
+    type: form:dep_wxq8reuq1eify:router.NavLink
+  - layout_properties: {}
+    name: nav_admin
+    properties: {icon: 'mi:admin_panel_settings', path: /app/admin, text: Admin}
+    type: form:dep_wxq8reuq1eify:router.NavLink
+  - event_bindings: {click: btn_logout_click}
+    layout_properties: {}
+    name: btn_logout
+    properties: {align: center, icon: 'mi:logout'}
+    type: form:dep_nessix61qswk:_Components.IconButton
+is_package: true
+layout:
+  properties: {show_sidesheet: false}
+  type: form:dep_nessix61qswk:Layouts.NavigationRailLayout
+slots:
+  content:
+    index: 0
+    set_layout_properties: {}
+    target: {name: content, type: slot}
