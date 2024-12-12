@@ -22,14 +22,13 @@ class Settings(SettingsTemplate):
         if self.user["password_hash"]:
             self.card_password.visible = True
             self.card_mfa.visible = True
-        print(self.user)
         self.rp_mfa.items = self.user["mfa"]
 
         self.usertenant = Global.usertenant
 
-        self.link_portal.url = Global.customer_portal
-        if self.link_portal.url:
-            self.link_portal.visible = True
+        # self.link_portal.url = Global.customer_portal
+        # if self.link_portal.url:
+        #     self.link_portal.visible = True
 
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False
