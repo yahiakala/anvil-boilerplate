@@ -1,0 +1,196 @@
+/* YK Customizations */
+
+.anvil-role-soft-fp {
+    border-radius: 5px;
+    padding: 0px 20px;
+    border: solid 1px %color:Outline%;
+}
+.anvil-role-soft-button > .btn {
+    border-radius: 10px;
+}
+
+/* Create a picture inside of the button */
+.anvil-role-google-sign > button::before {
+    content: "";
+    background-image: url("_/theme/search.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: auto;
+    width: 25px;
+    max-width: 25px;
+    max-height: 40px;
+    height: 40px;
+    margin-left: 20px;
+    background-size: 20px 20px;
+}
+
+/* Move the text to avoid overlap with picture */
+.anvil-role-google-sign .button-text {
+    padding-left: 25px;
+}
+
+/* Set hover effect on the button */
+.anvil-role-google-sign > button:hover {
+    background-color: lightgray;
+}
+
+.anvil-role-narrow-col {
+    overflow: hidden;
+    padding: 35px;
+/*     overflow-x: hidden; */
+}
+.anvil-role-narrow-col-mobile {
+    padding-bottom: 0px;
+}
+
+/* Don't let users scroll beyond limits horizontally */
+/* And get rid of overflow horizontally */
+/* html,
+body {
+    height: 100%;
+    overscroll-behavior-x: none;
+    -webkit-overflow-scrolling-x: auto;
+    overflow-x: hidden;
+} */
+
+/* Make the left nav same background color */
+.nav-holder .left-nav, .left-nav-placeholder {
+  /* background: %color:Background%; */
+  background: rgb(247, 249, 250);
+  border-right: 1px solid #E1E0E7;
+
+}
+
+.anvil-role-vertically-centered {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+/*justify-content will be applied vertically because the flex direction is column*/
+  justify-content: center;
+}
+
+/* Loading Skeletons */
+.anvil-role-skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+  height:30px;
+  border-radius: 12px;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+.anvil-role-skeleton >button{
+  width:10px
+}
+
+/* Custom Spinner */
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+    50% {
+        -webkit-transform: translateX(-50%) scale3d(1.05, 1.05, 1.05);
+        transform: translateX(-50%) scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+@keyframes pulse {
+    0% {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+    50% {
+        -webkit-transform: translateX(-50%) scale3d(1.05, 1.05, 1.05);
+        transform: translateX(-50%) scale3d(1.05, 1.05, 1.05);
+    }
+    to {
+        -webkit-transform: translateX(-50%) scaleX(1);
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+#loadingSpinner {
+    -webkit-animation: pulse;
+    -moz-animation: pulse;
+    animation: pulse;
+  	animation-duration: 1s;
+    animation-iteration-count: infinite;
+
+    position: fixed;
+    top: 0%;
+    left: 50%;
+
+    width: 600px;
+    height:500px;
+
+    max-width: 100vw;
+
+    box-sizing: border-box;
+
+    border-radius: 0;
+    box-shadow: none;/*0px 0px 10px 10px #fcfcfc;*/
+    background-color: transparent;
+    background-image: url("_/theme/search.png") !important;
+} */
+
+
+/* --------------- */
+/* Website styling */
+/* --------------- */
+
+/* Custom Nav bar styling */
+/* ---------------------- */
+.website-bar {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  top: %anvil-banner-height%;
+  right: 0;
+  left: 0;
+}
+/* .website-bar a:hover, .website-bar a:active {
+  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), linear-gradient(0deg, %color:Primary Overlay 1%, %color:Primary Overlay 1%), %color:Background%;
+  opacity: 100%;
+} */
+
+.website-bar a.anvil-role-selected  {
+  background-color: %color:Secondary Container%;
+  color: %color:On Secondary Container%;
+}
+
+.website-bar a.anvil-role-selected:hover {
+  background: linear-gradient(0deg, %color:Dark Overlay 1%, %color:Dark Overlay 1%), %color:Secondary Container%;
+}
+
+.website-bar {
+  min-height: 56px;
+  /* padding: 0 16px 0 72px; */
+  position: fixed;
+  top: 0;
+  top: %anvil-banner-height%;
+  right: 0;
+  left: 0;
+  width: 100%;
+
+  line-height: 40px;
+  font-size: 20px;
+
+  background-color: %color:Surface%;
+  transition: background-color 250ms;
+  -webkit-transition: background-color 250ms;
+  -moz-transition: background-color 250ms;
+  -o-transition: background-color 250ms;
+
+  z-index: 1;
+}
+
