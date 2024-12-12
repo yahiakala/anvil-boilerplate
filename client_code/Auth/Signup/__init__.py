@@ -5,6 +5,8 @@ from routing import router
 
 from ...Global import AppName, Global
 from ._anvil_designer import SignupTemplate
+
+
 class Signup(SignupTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
         # Set Form properties and Data Bindings.

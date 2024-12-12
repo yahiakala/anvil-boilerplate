@@ -56,4 +56,3 @@ This is a comprehensive boilerplate for building SaaS (Software as a Service) ap
 │   └── payments/         # Payment integration
 └── theme/                # Application theming
 ```
-

@@ -1,7 +1,7 @@
 import anvil.server
-from routing.router import Redirect
+
 # from routing.router import TemplateWithContainerRoute as BaseRoute
-from routing.router import Route
+from routing.router import Redirect, Route
 
 from .Global import Global
 
@@ -24,7 +24,6 @@ class EnsureUserMixin:
                 Global.tenant["name"] is None or Global.tenant["name"] == ""
             ):
                 raise Redirect(path="/app/admin")
-
 
 
 class SignRoute(Route):

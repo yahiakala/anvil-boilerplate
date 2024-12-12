@@ -6,6 +6,8 @@ from routing import router
 
 from ...Global import AppName, Global
 from ._anvil_designer import SignTemplate
+
+
 class Sign(SignTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
         self.lbl_title.text = "Welcome to " + AppName

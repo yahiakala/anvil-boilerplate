@@ -41,7 +41,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Client: client/architecture.md
-  - Server: 
+  - Server:
     - Architecture: server/architecture.md
     - Database Schema: server/database-schema.md
     - Payment Integration: server/payment-integration.md
