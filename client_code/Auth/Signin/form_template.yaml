@@ -10,15 +10,10 @@ components_by_slot:
         name: lbl_title
         properties: {align: center, text: Sign in to App}
         type: form:dep_nessix61qswk:_Components.Heading
-      - event_bindings: {click: btn_google_click}
-        layout_properties: {slot: card-content-container-slot}
+      - layout_properties: {slot: card-content-container-slot}
         name: btn_google
-        properties:
-          align: center
-          icon: ''
-          role: [google-sign, outlined-button, soft-button]
-          text: Sign in with Google
-        type: Button
+        properties: {align: center, appearance: outlined, icon: '', role: google-sign, text: Sign in with Google}
+        type: form:dep_nessix61qswk:_Components.Button
       - layout_properties: {slot: card-content-container-slot}
         name: lbl_or
         properties: {align: center, text: Or}

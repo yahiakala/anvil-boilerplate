@@ -10,11 +10,13 @@ components_by_slot:
         name: lbl_title
         properties: {align: center, text: Welcome to App}
         type: form:dep_nessix61qswk:_Components.Heading
-      - layout_properties: {slot: card-content-container-slot}
+      - event_bindings: {click: btn_signin_click}
+        layout_properties: {slot: card-content-container-slot}
         name: btn_signin
         properties: {align: full, text: Sign In}
         type: form:dep_nessix61qswk:_Components.Button
-      - layout_properties: {slot: card-content-container-slot}
+      - event_bindings: {click: btn_signup_click}
+        layout_properties: {slot: card-content-container-slot}
         name: btn_signup
         properties: {align: full, appearance: outlined, text: Sign Up}
         type: form:dep_nessix61qswk:_Components.Button
