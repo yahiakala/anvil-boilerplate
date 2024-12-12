@@ -5,8 +5,6 @@ from routing import router
 
 from ...Global import AppName, Global
 from ._anvil_designer import SigninTemplate
-
-
 class Signin(SigninTemplate):
     def __init__(self, routing_context: router.RoutingContext, **properties):
         self.lbl_title.text = "Sign in to " + AppName

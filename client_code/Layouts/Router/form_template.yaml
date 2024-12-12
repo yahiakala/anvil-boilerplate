@@ -24,26 +24,30 @@ components:
   properties: {}
   type: FlowPanel
 - components:
-  - layout_properties: {grid_position: 'XCAJFS,XUBOCG'}
+  - layout_properties: {grid_position: 'IJTUCS,VBLZXW XCAJFS,XUBOCG'}
     name: nav_home
     properties: {icon: 'fa:home', path: /app/home, text: Home}
     type: form:dep_wxq8reuq1eify:router.NavLink
-  - layout_properties: {grid_position: 'NNWBLB,YCCSOK'}
+  - layout_properties: {grid_position: 'IJTUCS,VBLZXW NNWBLB,YCCSOK'}
     name: nav_settings
     properties: {icon: 'fa:gear', path: /app/settings, text: Settings}
     type: form:dep_wxq8reuq1eify:router.NavLink
-  - layout_properties: {grid_position: 'GJNKFY,RLWXQJ'}
+  - layout_properties: {grid_position: 'IJTUCS,VBLZXW GJNKFY,RLWXQJ'}
     name: nav_admin
     properties: {icon: 'fa:gears', path: /app/admin, text: Admin, visible: true}
     type: form:dep_wxq8reuq1eify:router.NavLink
   - components: []
     event_bindings: {click: icon_logout_click}
-    layout_properties: {grid_position: 'GHZOLU,BVEMER'}
+    layout_properties: {grid_position: 'IJTUCS,VBLZXW GHZOLU,BVEMER'}
     name: link_logout
     properties: {icon: 'fa:sign-out', text: Logout}
     type: Link
   layout_properties: {slot: left-nav}
   name: cp_sidebar
+  properties: {}
+  type: ColumnPanel
+- layout_properties: {slot: default}
+  name: content_panel
   properties: {}
   type: ColumnPanel
 container:
@@ -52,6 +56,6 @@ container:
 is_package: true
 slots:
   content_slot:
-    index: 2
-    set_layout_properties: {slot: default}
-    target: {name: '', type: container}
+    index: 0
+    set_layout_properties: {grid_position: 'AMVABB,JQSEPC'}
+    target: {name: column_panel_1, type: container}

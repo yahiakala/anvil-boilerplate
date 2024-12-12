@@ -4,8 +4,6 @@ from routing import router
 
 from ...Global import Global
 from ._anvil_designer import RouterTemplate
-
-
 class Router(RouterTemplate):
     def __init__(self, **properties):
         self.init_components(**properties)
