@@ -5,13 +5,10 @@ _global_dict = {
     "is_mobile": None,
     "customer_portal": None,
     "tenant": None,
-    "tenant_id": None
+    "tenant_id": None,
 }
 
-_tenanted_dict = {
-    "permissions": None,
-    "usertenant": None
-}
+_tenanted_dict = {"permissions": None, "usertenant": None}
 
 Global = GlobalCache(_global_dict, _tenanted_dict)
 

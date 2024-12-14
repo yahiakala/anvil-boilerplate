@@ -1,6 +1,6 @@
 components:
 - layout_properties: {slot: default}
-  name: content_panel
+  name: column_panel_1
   properties: {}
   type: ColumnPanel
 container:
@@ -30,3 +30,8 @@ container:
       </style>
   type: HtmlTemplate
 is_package: true
+slots:
+  content_slot:
+    index: 0
+    set_layout_properties: {grid_position: 'KHQCYZ,ULCXAF'}
+    target: {name: column_panel_1, type: container}

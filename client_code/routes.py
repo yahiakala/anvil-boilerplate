@@ -1,6 +1,7 @@
 import anvil.server
-from routing.router import Redirect
-from routing.router import TemplateWithContainerRoute as BaseRoute
+
+# from routing.router import TemplateWithContainerRoute as BaseRoute
+from routing.router import Redirect, Route
 
 from .Global import Global
 
@@ -25,57 +26,50 @@ class EnsureUserMixin:
                 raise Redirect(path="/app/admin")
 
 
-class LandingRoute(BaseRoute):
-    template = "Templates.Website"
+class SignRoute(Route):
+    # template = "Templates.Static"
     path = "/"
-    form = "Website.Landing"
-    cache_form = True
-
-
-class SignRoute(BaseRoute):
-    template = "Templates.Static"
-    path = "/sign"
     form = "Auth.Sign"
     cache_form = True
 
 
-class SigninRoute(BaseRoute):
-    template = "Templates.Static"
+class SigninRoute(Route):
+    # template = "Templates.Static"
     path = "/signin"
     form = "Auth.Signin"
     cache_form = True
 
 
-class SignupRoute(BaseRoute):
-    template = "Templates.Static"
+class SignupRoute(Route):
+    # template = "Templates.Static"
     path = "/signup"
     form = "Auth.Signup"
     cache_form = True
 
 
-class HomeRoute(EnsureUserMixin, BaseRoute):
-    template = "Templates.Router"
+class HomeRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
     path = "/app/home"
     form = "App.Home"
     cache_form = True
 
 
-class SettingsRoute(EnsureUserMixin, BaseRoute):
-    template = "Templates.Router"
+class SettingsRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
     path = "/app/settings"
     form = "App.Settings"
     cache_form = True
 
 
-class AdminRoute(EnsureUserMixin, BaseRoute):
-    template = "Templates.Router"
+class AdminRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
     path = "/app/admin"
     form = "App.Admin"
     cache_form = True
 
 
-class TestsRoute(EnsureUserMixin, BaseRoute):
-    template = "Templates.Router"
+class TestsRoute(EnsureUserMixin, Route):
+    # template = "Templates.Router"
     path = "/app/tests"
     form = "App.Tests"
     cache_form = True

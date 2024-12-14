@@ -16,7 +16,6 @@ class Signup(SignupTemplate):
         self.user = Global.user
         is_mobile = anvil.js.window.navigator.userAgent.lower().find("mobi") > -1
         if is_mobile:
-            self.spacer_1.visible = False
             self.cp_login.role = ["narrow-col", "narrow-col-mobile"]
 
     def route_user(self, **event_args):

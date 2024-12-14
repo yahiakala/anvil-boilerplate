@@ -17,18 +17,7 @@ class Router(RouterTemplate):
         """Any time a form is loaded."""
         self.set_account_state(Global.user)
 
-    def icon_logout_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        with anvil.server.no_loading_indicator:
-            anvil.users.logout()
-            self.set_account_state(None)
-            router.clear_cache()
-            Global.clear_global_attributes()
-            router.navigate(path="/signin")
-
     def set_account_state(self, user):
-        self.icon_logout.visible = user is not None
-        self.link_logout.visible = user is not None
         self.nav_admin.visible = (
             user is not None and "see_members" in Global.permissions
         )
@@ -36,3 +25,12 @@ class Router(RouterTemplate):
     def link_help_click(self, **event_args):
         """This method is called when the link is clicked"""
         alert("For help, contact example@example.com")
+
+    def nav_logout_click(self, **event_args):
+        """This method is called when the component is clicked"""
+        with anvil.server.no_loading_indicator:
+            anvil.users.logout()
+            self.set_account_state(None)
+            router.clear_cache()
+            Global.clear_global_attributes()
+            router.navigate(path="/signin")

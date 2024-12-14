@@ -107,7 +107,10 @@ dependencies:
 - dep_id: dep_wxq8reuq1eify
   resolution_hints: {app_id: PIJ33MOHKDZDE7NS, name: routing, package_name: routing}
   version: {version_tag: v0.3.2}
-name: SaaS Boilerplate
+- dep_id: dep_nessix61qswk
+  resolution_hints: {app_id: 4UK6WHQ6UX7AKELK, name: Material 3 Theme, package_name: m3}
+  version: {version_tag: v1.2.1}
+name: OSS Boilerplate
 native_deps:
   head_html: |-
     <meta name="theme-color" content="#FFFBFE">
@@ -115,11 +118,11 @@ native_deps:
     <script defer>
         document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FFFBFE');
     </script>
-package_name: SaaS_Boilerplate
+package_name: oss_boilerplate
 renamed: true
 runtime_options:
   client_version: '3'
-  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
+  legacy_features: {__dict__: false, bootstrap3: false, class_names: false, root_container: false}
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
   server_version: python3-full

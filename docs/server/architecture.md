@@ -27,4 +27,3 @@ This document details the server-side architecture of the Anvil SaaS Boilerplate
 - Error handling
 - Logging system
 - Security utilities
-

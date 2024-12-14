@@ -20,15 +20,15 @@ class Settings(SettingsTemplate):
     def load_data(self, **event_args):
         self.user = Global.user
         if self.user["password_hash"]:
-            self.cp_password_change.visible = True
-            self.cp_mfa.visible = True
+            self.card_password.visible = True
+            self.card_mfa.visible = True
         self.rp_mfa.items = self.user["mfa"]
 
         self.usertenant = Global.usertenant
 
-        self.link_portal.url = Global.customer_portal
-        if self.link_portal.url:
-            self.link_portal.visible = True
+        # self.link_portal.url = Global.customer_portal
+        # if self.link_portal.url:
+        #     self.link_portal.visible = True
 
     def btn_chg_pw_click(self, **event_args):
         self.lbl_pw_error.visible = False

@@ -1,7 +1,0 @@
-components:
-- layout_properties: {grid_position: 'EAJMQH,DSKPSX'}
-  name: lbl_junk
-  properties: {text: Landing page}
-  type: Label
-container: {type: ColumnPanel}
-is_package: true

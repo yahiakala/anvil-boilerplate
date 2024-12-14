@@ -1,6 +1,5 @@
-from anvil import *
-
 from ._anvil_designer import AdminTemplate
+from anvil import *
 
 
 class Admin(AdminTemplate):
