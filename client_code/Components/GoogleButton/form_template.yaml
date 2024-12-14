@@ -1,0 +1,21 @@
+components: []
+container:
+  properties:
+    html: |-
+      <div anvil-name="anvil-m3-button-component" style="display:flex">
+        <button anvil-name="anvil-m3-button" class="anvil-m3-button google-signin">
+          <img anvil-name="anvil-m3-button-icon" class="google-signin-logo" alt="Google logo">
+          <span anvil-name="anvil-m3-button-text">Sign in with Google</span>
+        </button>
+      </div>
+      <style>
+          .google-signin-logo {
+              content: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OCA0OCI+PHBhdGggZmlsbD0iI0VBNDMzNSIgZD0iTTI0IDkuNWMzLjU0IDAgNi43MSAxLjIyIDkuMjEgMy42bDYuODUtNi44NUMzNS45IDIuMzggMzAuNDcgMCAyNCAwIDEyLjY2IDAgMy4yMyA1LjEzLjc2IDE5LjQ1bDguMDEgNi4yNkMxMS4xIDE1LjkgMTcgOS41IDI0IDkuNXoiLz48cGF0aCBmaWxsPSIjNDI4NUY0IiBkPSJNNDYuOTggMjQuNTVjMC0xLjU3LS4xNS0zLjA5LS4zOC00LjU1SDI0djkuMDJoMTIuOTRjLS41OCAyLjk2LTIuMjYgNS40OC00Ljc4IDcuMThsNy43MyA2YzQuNTEtNC4xOCA3LjA5LTEwLjM2IDcuMDktMTcuNjV6Ii8+PHBhdGggZmlsbD0iI0ZCQkMwNSIgZD0iTTEwLjUzIDI4LjU5Yy0uNDgtMS40NS0uNzYtMi45OS0uNzYtNC41OXMuMjctMy4xNC43Ni00LjU5bC03Ljk4LTYuMTlDLjkyIDE2LjQ2IDAgMjAuMTIgMCAyNGMwIDMuODguOTIgNy41NCAyLjU2IDEwLjc4bDcuOTctNi4xOXoiLz48cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNMjQgNDhjNi40OCAwIDExLjkzLTIuMTMgMTUuODktNS44MWwtNy43My02Yy0yLjE1IDEuNDUtNC45MiAyLjMtOC4xNiAyLjMtNyAwLTEyLjktNC41LTE1LTEwLjc5bC03Ljk4IDYuMTlDNS4yNCA0Mi41NyAxNC4yMyA0OCAyNCA0OHoiLz48L3N2Zz4=");
+              width: 18px;
+              height: 18px;
+              margin-right: 8px;
+              display: inline-block;
+          }
+      </style>
+  type: HtmlTemplate
+is_package: true
