@@ -5,12 +5,6 @@ components_by_slot:
       name: lbl_title
       properties: {align: center, scale: small, text: Sign in to App}
       type: form:dep_nessix61qswk:_Components.Heading
-    - data_bindings: []
-      event_bindings: {click: btn_google_old_click}
-      layout_properties: {slot: card-content-slot}
-      name: btn_google_old
-      properties: {align: full, appearance: outlined, icon: '', role: google-sign, text: Sign in with Google, visible: false}
-      type: form:dep_nessix61qswk:_Components.Button
     - event_bindings: {click: btn_google_click}
       layout_properties: {slot: card-content-slot}
       name: btn_google

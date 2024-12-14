@@ -15,8 +15,8 @@ container:
               align-items: center;
               gap: 12px;
               background-color: white;
-              border: 1px solid #dadce0;
-              border-radius: 20px;
+              border: 1px solid #79747E;
+              border-radius: 100px;
               padding: 10px 24px;
               cursor: pointer;
               font-family: 'Roboto', Arial, sans-serif;

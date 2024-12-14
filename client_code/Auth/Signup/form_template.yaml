@@ -5,10 +5,11 @@ components_by_slot:
       name: lbl_title
       properties: {align: center, scale: small, text: Sign up for App}
       type: form:dep_nessix61qswk:_Components.Heading
-    - layout_properties: {slot: card-content-slot}
+    - event_bindings: {click: btn_google_click}
+      layout_properties: {slot: card-content-slot}
       name: btn_google
-      properties: {align: full, appearance: outlined, text: Sign up with Google}
-      type: form:dep_nessix61qswk:_Components.Button
+      properties: {text: Sign up with Google}
+      type: form:Components.GoogleButton
     - layout_properties: {slot: card-content-slot}
       name: lbl_or
       properties: {align: center, text: Or}
