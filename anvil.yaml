@@ -122,7 +122,7 @@ package_name: oss_boilerplate
 renamed: true
 runtime_options:
   client_version: '3'
-  legacy_features: {__dict__: true, bootstrap3: true, class_names: true, root_container: true}
+  legacy_features: {__dict__: false, bootstrap3: false, class_names: false, root_container: false}
   server_spec: null
   server_spec_disabled: {base: python310-standard, requirements: bcrypt}
   server_version: python3-full

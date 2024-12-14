@@ -3,61 +3,62 @@ components_by_slot:
   - components:
     - components:
       - components:
-        - layout_properties: {grid_position: 'PLMQPP,IAWXDO'}
-          name: label_title_acc
-          properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: 'fa:user', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Password, tooltip: '', underline: false, visible: true}
-          type: Label
-        - layout_properties: {grid_position: 'BSWNME,RMNSDJ'}
+        - layout_properties: {grid_position: 'TQDICI,JXDQCX'}
+          name: heading_1
+          properties: {align: center, icon: 'mi:lock', icon_size: null, scale: large, style: title, text: Password}
+          type: form:dep_nessix61qswk:_Components.Heading
+        - layout_properties: {grid_position: 'FYCGIT,ROBRRL'}
           name: tb_oldpw
-          properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: true, italic: false, placeholder: Old Password, role: outlined, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
-          type: TextBox
-        - layout_properties: {grid_position: 'SBSUEL,ALAPRO'}
+          properties: {appearance: outlined, hide_text: true, label: Old Password}
+          type: form:dep_nessix61qswk:_Components.TextInput.TextBox
+        - layout_properties: {grid_position: 'ZQUJXJ,WARTTA'}
           name: tb_newpw
-          properties: {align: left, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', hide_text: true, italic: false, placeholder: New Password, role: outlined, spacing_above: small, spacing_below: small, text: '', tooltip: '', type: text, underline: false, visible: true}
-          type: TextBox
+          properties: {appearance: outlined, hide_text: true, label: New Password}
+          type: form:dep_nessix61qswk:_Components.TextInput.TextBox
         - layout_properties: {grid_position: 'PNMQJF,CDMJXA'}
           name: lbl_pw_error
           properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: 'theme:Error', icon: '', icon_align: left, italic: false, role: null, spacing_above: small, spacing_below: small, text: '', tooltip: '', underline: false, visible: false}
           type: Label
         - event_bindings: {click: btn_chg_pw_click}
-          layout_properties: {grid_position: 'DPDLLY,DPGKMY'}
+          layout_properties: {grid_position: 'JESADW,PFWJMT'}
           name: btn_chg_pw
-          properties: {align: center, background: '', bold: false, border: '', enabled: true, font: '', font_size: null, foreground: '', icon: '', icon_align: left, italic: false, role: tonal-button, spacing_above: small, spacing_below: small, text: Change Password, tooltip: '', underline: false, visible: true}
-          type: Button
+          properties: {align: center, text: Change Password}
+          type: form:dep_nessix61qswk:_Components.Button
         layout_properties: {slot: card-content-container-slot}
         name: cp_password
         properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: tonal-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
         type: ColumnPanel
       layout_properties: {slot: card-content-slot}
-      name: card_content_container_2
-      properties: {}
+      name: ccc_password
+      properties:
+        margin: ['16', '32', '16', '32']
       type: form:dep_nessix61qswk:_Components.Card.CardContentContainer
     layout_properties: {}
     name: card_password
-    properties: {appearance: outlined, visible: false}
+    properties: {appearance: elevated, visible: false}
     type: form:dep_nessix61qswk:_Components.Card
   - components:
     - components:
       - components:
-        - layout_properties: {grid_position: 'PMPUZI,HNHBUG'}
-          name: lbl_mfa_title
-          properties: {align: center, background: '', bold: false, border: '', font: '', font_size: null, foreground: '', icon: 'fa:user', icon_align: left, italic: false, role: title, spacing_above: small, spacing_below: small, text: Multi Factor Authentication (MFA), tooltip: '', underline: false, visible: true}
-          type: Label
+        - layout_properties: {grid_position: 'WFPMQX,VDAGBR'}
+          name: heading_1_copy
+          properties: {align: center, icon: 'mi:security', icon_size: null, scale: large, style: title, text: Multi Factor Authentication (MFA)}
+          type: form:dep_nessix61qswk:_Components.Heading
         - layout_properties: {grid_position: 'SSJSZY,HKGEQU'}
           name: rp_mfa
           properties: {item_template: App.Settings.MFAItem}
           type: RepeatingPanel
         - event_bindings: {click: btn_add_mfa_click}
-          layout_properties: {grid_position: 'OXZBJX,GOBNOE'}
+          layout_properties: {grid_position: 'HXAEIE,QTLPJJ'}
           name: btn_add_mfa
-          properties: {role: filled-button, text: Add MFA Method}
-          type: Button
+          properties: {align: center, text: Add MFA Method}
+          type: form:dep_nessix61qswk:_Components.Button
         layout_properties: {slot: card-content-container-slot}
         name: cp_mfa
         properties: {background: '', border: '', col_spacing: medium, col_widths: '{}', foreground: '', role: tonal-card, spacing_above: small, spacing_below: small, tooltip: '', visible: true, wrap_on: mobile}
         type: ColumnPanel
       layout_properties: {slot: card-content-slot}
-      name: card_content_container_1
+      name: ccc_mfa
       properties: {}
       type: form:dep_nessix61qswk:_Components.Card.CardContentContainer
     layout_properties: {}
