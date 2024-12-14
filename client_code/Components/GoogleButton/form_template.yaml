@@ -9,6 +9,7 @@ container:
           <span anvil-name="anvil-ss-google-button-text">Sign in with Google</span>
         </button>
       </div>
+    visible: true
   type: HtmlTemplate
 custom_component: true
 events:
@@ -16,6 +17,6 @@ events:
 is_package: true
 properties:
 - {default_binding_prop: true, default_value: Sign in with Google, important: true, name: text, type: string}
-- {default_value: true, important: true, name: enabled, type: boolean}
-- {default_value: false, important: true, name: italic, type: boolean}
+- {default_value: true, designer_hint: enabled, important: true, name: enabled, type: boolean}
+- {default_value: false, designer_hint: font-italic, important: true, name: italic, type: boolean}
 - {important: true, name: spacing, type: spacing}
