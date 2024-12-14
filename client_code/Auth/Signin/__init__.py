@@ -33,7 +33,7 @@ class Signin(SigninTemplate):
             Global.user = self.user
             router.navigate(path="/app/home")
 
-    def btn_google_click(self, **event_args):
+    def btn_google_old_click(self, **event_args):
         """Signin with google. Creates a user if none exists."""
         # Disable button and show processing state
         self.btn_google.enabled = False

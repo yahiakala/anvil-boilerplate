@@ -1,5 +1,6 @@
 components: []
 container:
+  event_bindings: {show: form_show}
   properties:
     html: |-
       <div anvil-name="anvil-oss-google-button" style="display:flex">
@@ -22,7 +23,15 @@ container:
               font-size: 14px;
               color: #3c4043;
               transition: all 0.2s;
+
+              /* full width */
+              flex-grow: 1;
+              /* display: flex; */
+              justify-content: center;
+              /* align-items: center; */
           }
+          .anvil-ss-google-button:disabled { cursor: not-allowed; color: rgba(29, 27, 32, 0.38); background: none; }
+
           .anvil-ss-google-button:hover {
               background-color: #f8f9fa;
               box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -36,4 +45,12 @@ container:
           }
       </style>
   type: HtmlTemplate
+custom_component: true
+events:
+- {default_event: true, name: click}
 is_package: true
+properties:
+- {default_binding_prop: true, default_value: Sign in with Google, important: true, name: text, type: string}
+- {default_value: true, important: true, name: enabled, type: boolean}
+- {default_value: false, important: true, name: italic, type: boolean}
+- {important: true, name: spacing, type: spacing}
