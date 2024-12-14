@@ -59,11 +59,12 @@ components_by_slot:
         type: ColumnPanel
       layout_properties: {slot: card-content-slot}
       name: ccc_mfa
-      properties: {}
+      properties:
+        margin: ['16', '32', '16', '32']
       type: form:dep_nessix61qswk:_Components.Card.CardContentContainer
     layout_properties: {}
     name: card_mfa
-    properties: {appearance: outlined, visible: false}
+    properties: {appearance: elevated, visible: false}
     type: form:dep_nessix61qswk:_Components.Card
   - components: []
     layout_properties: {}
