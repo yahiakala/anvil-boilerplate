@@ -1,4 +1,5 @@
 /* YK Customizations */
+@import '_/theme/googlebutton.css';
 
 .anvil-role-soft-fp {
     border-radius: 5px;
