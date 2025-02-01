@@ -3,7 +3,13 @@ from anvil.tables import app_tables
 from anvil_squared.helpers import print_timestamp
 from anvil_squared.multi_tenant import authorization, tasks
 
-from . import routes  # noqa
+def get_deployment():
+    try:
+        _ = anvil.secrets.get_secret("NOTION_OAUTH_CLIENT_ID")
+        return "saas"
+    except anvil.secrets.SecretError:
+        return "oss"
+
 
 role_dict = {
     "Member": ["see_profile"],

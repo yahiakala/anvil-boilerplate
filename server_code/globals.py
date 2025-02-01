@@ -5,7 +5,11 @@ import anvil_squared.multi_tenant as mt
 from anvil.tables import app_tables
 from anvil_squared.helpers import print_timestamp
 
-from .helpers import usertenant_row_to_dict
+from .helpers import usertenant_row_to_dict, get_deployment
+
+# Import routes based on deployment
+if get_deployment() == 'oss':
+    from . import routes  # noqa
 
 
 # --------------------
@@ -17,6 +21,8 @@ def get_data(key):
     # user = anvil.users.get_user(allow_remembered=True)
     if key == "all_permissions":
         return mt.authorization.get_all_permissions()
+    elif key == "deployment":
+        return get_deployment()
 
 
 # ----------------
