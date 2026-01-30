@@ -153,7 +153,7 @@ secrets:
     type: secret
     value: {WQET73GEV5APXBAG: 9cmR5mdypHrcIfGi2774noou0KgNiIbRNfSSlhptnLismpL1L6CvE6Iww6auETBxRJzpCZ4mwI6ZdUBROdNdgF56DSpYPqbZDPGKtR/jrluLmV9BYwyqXZwU/gKK7/whKi//JLBl2KxW49UDk86Z4/oFTgA4XPk=}
 services:
-- client_config: {}
+- client_config: {enable_v2: true}
   server_config: {}
   source: /runtime/services/tables.yml
 - client_config: {allow_mfa_email_reset: true, allow_remember_me: true, allow_signup: true, confirm_email: true, enable_automatically: true, mfa_timeout_days: 7, remember_me_days: 30, require_mfa: true, require_secure_passwords: true, share_login_status: true, use_email: true, use_google: true, use_token: true}
